@@ -45,7 +45,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 		describe("Column headings", () => {
 			it.each([
 				["Meeting date", 1],
-				["Topic title", 2],
+				["Topic title and rationale", 2],
 				["Routing decision", 3],
 				["Rationale", 4],
 				["Decision publication date", 5],

@@ -254,7 +254,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-topic-title"
+                        aria-controls="group-topic-title-and-rationale"
                         aria-expanded="true"
                         type="button"
                       >
@@ -274,9 +274,9 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                           />
                         </svg>
                         <span
-                          id="group-heading-topic-title"
+                          id="group-heading-topic-title-and-rationale"
                         >
-                          Topic title
+                          Topic title and rationale
                            
                         </span>
                       </button>
@@ -284,10 +284,10 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-topic-title"
+                      id="group-topic-title-and-rationale"
                     >
                       <legend>
-                        Topic title
+                        Topic title and rationale
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -467,11 +467,14 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   <option
                     value="Title"
                   >
-                    Topic title
+                    Topic title and rationale
                   </option>
                 </select>
               </div>
             </div>
+            <p>
+              Select a topic title to read why the prioritisation decision was made.
+            </p>
             <div
               class="tableWrapper"
             >
@@ -496,7 +499,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <th
                       scope="col"
                     >
-                      Topic title
+                      Topic title and rationale
                     </th>
                     <th
                       scope="col"
@@ -535,9 +538,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Blood transfusion
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       Prioritisation Board recognised that there is good quality evidence to support expanding the population who could receive tranexamic acid during surgery. There also appear to be potential resource savings for the NHS.
                     </td>
@@ -572,9 +573,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Type 2 diabetes
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       Prioritisation board agreed that there are important clinical questions to address for the system regarding which insulin to use for this population, and when it should be offered.
                     </td>
@@ -609,9 +608,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Digital self-help for eating disorders: early value assessment
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       Prioritisation board agreed that digital technologies for this group have the potential to address current system challenges.
                     </td>
@@ -640,9 +637,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Digital Health Technologies (DHT’s) for the delivery of cognitive behaviour therapy (CBT) to help manage the symptoms of menopause
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       The Prioritisation Board agreed that the topic had the potential for benefit in terms of patient experience and acceptability, and reduced waiting times. Consequently, they agreed that the topic should be prioritised.
                     </td>
@@ -671,9 +666,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Master Alert test
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       <p>
                         Test Rationale description
@@ -704,9 +697,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Alert Indev test-3
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       <p>
                         Test Rationale
@@ -737,9 +728,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         ID-929: Topic prioritisation set on website when blank in Indev (2)
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       <p>
                         test
@@ -776,9 +765,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Pegunigalsidase alfa every 4 weeks for treating Fabry disease [TSID12346]
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       <p>
                         The NICE-Wide Prioritisation Board met on 16 April 2026 and concluded that an evaluation would 
@@ -831,9 +818,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Dabrafenib with trametinib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12398]
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       <p>
                         The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib with trametinib being a paediatric extension of TA396. Please see eligibility criteria within the prioritisation manual for further information.
@@ -870,9 +855,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                         Dabrafenib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12399]
                       </a>
                     </td>
-                    <td>
-                      TBC
-                    </td>
+                    <td />
                     <td>
                       <p>
                         The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib being a paediatric extension of TA321.

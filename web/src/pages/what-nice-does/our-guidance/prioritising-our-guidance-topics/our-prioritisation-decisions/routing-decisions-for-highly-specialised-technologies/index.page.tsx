@@ -10,8 +10,8 @@ import { publicRuntimeConfig } from "@/config";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Meeting date",
-	textFilterHeading = "Topic title",
-	textFilterLabel = "Topic title";
+	textFilterHeading = "Topic title and rationale",
+	textFilterLabel = "Topic title and rationale";
 
 const tableBodyRender = (documents: Document[]) => (
 	<>
@@ -21,7 +21,7 @@ const tableBodyRender = (documents: Document[]) => (
 		<thead>
 			<tr>
 				<th scope="col">Meeting date</th>
-				<th scope="col">Topic title</th>
+				<th scope="col">Topic title and rationale</th>
 				<th scope="col">Routing decision</th>
 				<th scope="col">Rationale</th>
 				<th scope="col">Decision publication date</th>
@@ -34,7 +34,7 @@ const tableBodyRender = (documents: Document[]) => (
 					prioritisationBoardMeetingDate,
 					pathAndQuery,
 					title,
-					//routingDecision,
+					routingDecision,
 					rationale,
 					prioritisationBoardDecisionDate,
 				}) => {
@@ -55,7 +55,7 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>TBC</td>
+							<td>{routingDecision}</td>
 							{rationale ? (
 								<td
 									dangerouslySetInnerHTML={{
@@ -129,22 +129,25 @@ export default getProductListPage({
 	},
 	secondarySort: {
 		order: SortOrder.titleAscending,
-		label: "Topic title",
+		label: "Topic title and rationale",
 	},
 	showDateFilter: true,
 	useFutureDates: false,
 	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
-	navigatorsOrder: [],
+	navigatorsOrder: ["rde"],
 	navigatorsToCollapse: [],
 	searchInputPlaceholder: "E.g. 'diabetes'",
 	variant: true,
+	filterSummaryDescription: (
+		<>Select a topic title to read why the prioritisation decision was made.</>
+	),
 });
 
 export const getServerSideProps = getGetServerSidePropsFunc({
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
-	index: "prioritisation",
+	index: "routing",
 });
