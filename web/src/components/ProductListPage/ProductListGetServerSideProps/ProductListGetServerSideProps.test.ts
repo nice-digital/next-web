@@ -66,11 +66,13 @@ describe("getGetServerSidePropsFunc", () => {
 
 		it.each([
 			[
-				"clamps ps to the nearest allowed size",
+				"clamps ps down to the largest allowed size, never up",
 				"?q=test&ps=9998",
-				"?q=test&ps=9999",
+				"?q=test&ps=50",
 			],
 			["clamps ps down to an allowed size", "?q=test&ps=30", "?q=test&ps=25"],
+			["never rounds ps up to a bigger size", "?q=test&ps=40", "?q=test&ps=25"],
+			["drops ps below the smallest allowed size", "?q=test&ps=5", "?q=test"],
 			["drops default page size", "?q=test&ps=10", "?q=test"],
 			["drops non-numeric ps", "?ps=abc&q=test", "?q=test"],
 			["drops out-of-range page numbers", "?q=test&pa=99999", "?q=test"],
@@ -78,6 +80,8 @@ describe("getGetServerSidePropsFunc", () => {
 			["strips save-all-results", "?q=test&sa=true", "?q=test"],
 			["strips aggsOnly", "?aggsOnly=true&q=test", "?q=test"],
 			["strips expensive params entirely", "?sa=true", ""],
+			["collapses duplicate ps", "?q=test&ps=25&ps=9999", "?q=test&ps=25"],
+			["collapses duplicate pa", "?q=test&pa=1&pa=99999", "?q=test&pa=1"],
 		])("should temporarily redirect: %s", async (_label, query, expected) => {
 			expect(await getRedirect(`/guidance/published${query}`)).toStrictEqual({
 				destination: `/guidance/published${expected}`,
@@ -88,6 +92,7 @@ describe("getGetServerSidePropsFunc", () => {
 		it.each([
 			["a bare list page URL", "/guidance/published"],
 			["an allowed page size", "/guidance/published?q=test&ps=25"],
+			["the largest allowed page size", "/guidance/published?q=test&ps=9999"],
 			["a page within the result window", "/guidance/published?pa=100"],
 			[
 				"UI-generated URLs with encoded facet values",

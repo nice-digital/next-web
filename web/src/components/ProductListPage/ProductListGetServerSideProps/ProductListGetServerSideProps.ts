@@ -22,8 +22,19 @@ import { ActiveModifier, ProductListPageProps } from "../ProductListPageProps";
 
 export const defaultPageSize = 10;
 
-// Mirrors the results-per-page options in ProductListPage's UI
-const allowedPageSizes = [10, 25, 50, 9999];
+/**
+ * The results-per-page options in ProductListPage's UI. They live here, rather
+ * than in the component, so the query sanitisation below can't drift from the
+ * sizes the UI actually offers.
+ */
+export const resultsPerPage = [
+	{ count: 10, label: "10" },
+	{ count: 25, label: "25" },
+	{ count: 50, label: "50" },
+	{ count: 9999, label: "All" },
+];
+
+const allowedPageSizes = resultsPerPage.map(({ count }) => count);
 
 // Elastic's index.max_result_window
 const maxResultWindow = 10000;
@@ -51,13 +62,26 @@ export const sanitiseListPageQuery = (resolvedUrl: string): string => {
 			changed = true;
 		}
 
+	// The checks below only read the first value of each param, so collapse
+	// duplicates: otherwise ?ps=25&ps=9999 sneaks an unclamped value through
+	for (const key of ["ps", "pa"]) {
+		const values = params.getAll(key);
+		if (values.length > 1) {
+			params.set(key, values[0]);
+			changed = true;
+		}
+	}
+
 	const psRaw = params.get("ps");
 	let pageSize = defaultPageSize;
 	if (psRaw !== null) {
+		// Round down to the largest allowed size, never up, so junk like ps=40
+		// can't be clamped into a more expensive query than the one requested
 		const ps = Number(psRaw),
 			clamped = Number.isFinite(ps)
-				? allowedPageSizes.reduce((best, size) =>
-						Math.abs(size - ps) < Math.abs(best - ps) ? size : best
+				? allowedPageSizes.reduce(
+						(best, size) => (size <= ps && size > best ? size : best),
+						defaultPageSize
 				  )
 				: defaultPageSize;
 
@@ -131,7 +155,6 @@ export const getGetServerSidePropsFunc =
 		initSearchClient({
 			baseURL: publicRuntimeConfig.search.baseURL,
 			index: index,
-			timeout: 2000,
 		});
 
 		const searchUrl = getSearchUrl(context.resolvedUrl);

@@ -37,18 +37,14 @@ import { SearchPagination } from "@/components/SearchPagination/SearchPagination
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
 import { ProductListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
-import { defaultPageSize } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
+import {
+	defaultPageSize,
+	resultsPerPage,
+} from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
 import styles from "./ProductListPage.module.scss";
 import { ProductListPageProps } from "./ProductListPageProps";
 
 export { getGetServerSidePropsFunc } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
-
-const resultsPerPage = [
-	{ count: 10, label: "10" },
-	{ count: 25, label: "25" },
-	{ count: 50, label: "50" },
-	{ count: 9999, label: "All" },
-];
 
 export type GetProductListPageOptions = {
 	metaDescription: string;
