@@ -47,6 +47,65 @@ describe("getGetServerSidePropsFunc", () => {
 		});
 	});
 
+	describe("Query sanitisation", () => {
+		beforeEach(() => {
+			(search as jest.Mock).mockResolvedValue(sampleData);
+		});
+
+		const getRedirect = async (resolvedUrl: string) =>
+			(
+				(await getServerSideProps({
+					resolvedUrl,
+					query: {} as ParsedUrlQuery,
+					res: {
+						setHeader:
+							jest.fn() as GetServerSidePropsContext["res"]["setHeader"],
+					},
+				} as GetServerSidePropsContext)) as { redirect?: Redirect }
+			).redirect;
+
+		it.each([
+			[
+				"clamps ps to the nearest allowed size",
+				"?q=test&ps=9998",
+				"?q=test&ps=9999",
+			],
+			["clamps ps down to an allowed size", "?q=test&ps=30", "?q=test&ps=25"],
+			["drops default page size", "?q=test&ps=10", "?q=test"],
+			["drops non-numeric ps", "?ps=abc&q=test", "?q=test"],
+			["drops out-of-range page numbers", "?q=test&pa=99999", "?q=test"],
+			["drops non-numeric pa", "?q=test&pa=abc", "?q=test"],
+			["strips save-all-results", "?q=test&sa=true", "?q=test"],
+			["strips aggsOnly", "?aggsOnly=true&q=test", "?q=test"],
+			["strips expensive params entirely", "?sa=true", ""],
+		])("should temporarily redirect: %s", async (_label, query, expected) => {
+			expect(await getRedirect(`/guidance/published${query}`)).toStrictEqual({
+				destination: `/guidance/published${expected}`,
+				permanent: false,
+			});
+		});
+
+		it.each([
+			["a bare list page URL", "/guidance/published"],
+			["an allowed page size", "/guidance/published?q=test&ps=25"],
+			["a page within the result window", "/guidance/published?pa=100"],
+			[
+				"UI-generated URLs with encoded facet values",
+				"/guidance/published?q=test&ndt=Guidance&ngt=NICE%20guidelines",
+			],
+		])("should not redirect %s", async (_label, resolvedUrl) => {
+			expect(await getRedirect(resolvedUrl)).toBeUndefined();
+		});
+
+		it("should not redirect the URL it redirects to", async () => {
+			const { destination } = (await getRedirect(
+				"/guidance/published?q=test&ps=9998&sa=true"
+			)) as Redirect;
+
+			expect(await getRedirect(destination)).toBeUndefined();
+		});
+	});
+
 	describe("Error", () => {
 		beforeEach(() => {
 			(search as jest.Mock).mockResolvedValue({
@@ -65,8 +124,8 @@ describe("getGetServerSidePropsFunc", () => {
 			} as GetServerSidePropsContext);
 
 			expect(logger.error as jest.Mock).toHaveBeenCalledWith(
-				"Error loading guidance from search on page /guidance/published?q=test: Some server side error message",
-				"Some raw debug response"
+				{ rawResponse: "Some raw debug response" },
+				"Error loading guidance from search on page /guidance/published?q=test: Some server side error message"
 			);
 		});
 
