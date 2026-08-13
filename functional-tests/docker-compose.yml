@@ -23,7 +23,9 @@ services:
     # image. The bus is reached over the compose network, so unlike 4444 it needs
     # no host port published.
     image: selenium/node-chrome:4.8.0-20230210
-    container_name: nxt-selenium-chrome
+    # Scaling needs unnamed containers: compose refuses --scale > 1 when
+    # container_name is set. See --scale in docker-run.sh.
+    # container_name: nxt-selenium-chrome
     # 2gb to match the sibling repos. Chrome renders into /dev/shm and the chrome
     # args here do not set --disable-dev-shm-usage, so 1gb risks renderer crashes
     # on heavy pages now that the browser is 19 releases newer.
