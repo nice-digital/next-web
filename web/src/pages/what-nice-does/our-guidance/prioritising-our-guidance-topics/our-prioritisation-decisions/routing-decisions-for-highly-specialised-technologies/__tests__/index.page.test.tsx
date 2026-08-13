@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
-import sampleData from "@/mockData/search/prioritisation.json";
+import sampleData from "@/mockData/search/routing.json";
 import { render, screen, within } from "@/test-utils/rendering";
 import { formatDateStr } from "@/utils/datetime";
 
@@ -80,14 +80,15 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 			const {
 				prioritisationBoardMeetingDate,
 				title,
-				prioritisationDecision /* replace*/,
+				routingDecision,
 				rationale,
 				prioritisationBoardDecisionDate,
 			} = sampleData.documents[0];
+
 			it.each([
 				[formatDateStr(String(prioritisationBoardMeetingDate))],
 				[title],
-				[prioritisationDecision] /* replace*/,
+				[routingDecision],
 				[rationale],
 				[formatDateStr(String(prioritisationBoardDecisionDate))],
 			])("should set data cell to '%s'", (text) => {
@@ -101,22 +102,22 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 		describe("Date formatting", () => {
 			it("should render the date in the NICE style format", () => {
 				expect(
-					screen.getAllByRole("cell", { name: "21 March 2025" })[0]
+					screen.getAllByRole("cell", { name: "3 March 2025" })[0]
 				).toBeInTheDocument();
 			});
 			it("should render the datetime attribute in ISO standard", () => {
 				const time = screen
-					.getAllByRole("cell", { name: "21 March 2025" })[0]
+					.getAllByRole("cell", { name: "4 March 2025" })[0]
 					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
-				expect(time).toHaveAttribute("datetime", "2025-03-21T12:00:00");
+				expect(time).toHaveAttribute("datetime", "2025-03-04T12:00:00");
 			});
 			it("should render a short version of the date as a data attribute for display on small screens with CSS", () => {
 				const time = screen
-					.getAllByRole("cell", { name: "21 March 2025" })[0]
+					.getAllByRole("cell", { name: "4 March 2025" })[0]
 					// eslint-disable-next-line testing-library/no-node-access
 					.querySelector("time");
-				expect(time).toHaveAttribute("data-shortdate", "21/3/2025");
+				expect(time).toHaveAttribute("data-shortdate", "4/3/2025");
 			});
 		});
 	});

@@ -416,6 +416,86 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       </div>
                     </fieldset>
                   </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-rde"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-rde"
+                        >
+                          Routing decision
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-rde"
+                    >
+                      <legend>
+                        Routing decision
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_rde_routed-as-a-ta"
+                      >
+                        <input
+                          id="filter_rde_routed-as-a-ta"
+                          name="rde"
+                          title="Routing decision - Routed as a TA (9)"
+                          type="checkbox"
+                          value="Routed as a TA"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Routed as a TA (9)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_rde_routed-as-an-hst"
+                      >
+                        <input
+                          id="filter_rde_routed-as-an-hst"
+                          name="rde"
+                          title="Routing decision - Routed as an HST (2)"
+                          type="checkbox"
+                          value="Routed as an HST"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Routed as an HST (2)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
             </form>
@@ -441,7 +521,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                    to 
                   10
                    of 
-                  170
+                  11
                 </h2>
               </div>
               <div
@@ -523,33 +603,37 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="26/2/2025"
-                        datetime="2025-02-26T12:00:00"
+                        data-shortdate="3/3/2025"
+                        datetime="2025-03-03T12:00:00"
                       >
                         <span>
-                          26 February 2025
+                          3 March 2025
                         </span>
                       </time>
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/ng24"
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta11722"
                       >
-                        Blood transfusion
+                        Anitocabtagene autoleucel for treating relapsed or refractory multiple myeloma after 3 or more treatment lines [ID6549]
                       </a>
                     </td>
-                    <td />
                     <td>
-                      Prioritisation Board recognised that there is good quality evidence to support expanding the population who could receive tranexamic acid during surgery. There also appear to be potential resource savings for the NHS.
+                      Routed as a TA
+                    </td>
+                    <td>
+                      <p>
+                        Project selected and routed as a TA
+                      </p>
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="21/3/2025"
-                        datetime="2025-03-21T12:00:00"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
                       >
                         <span>
-                          21 March 2025
+                          4 March 2025
                         </span>
                       </time>
                     </td>
@@ -558,115 +642,24 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="8/7/2024"
-                        datetime="2024-07-08T12:00:00"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
                       >
                         <span>
-                          8 July 2024
+                          4 March 2025
                         </span>
                       </time>
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/ng28"
+                        href="https://next-web-tests.nice.org.uk/guidance/ta1199"
                       >
-                        Type 2 diabetes
+                        Master test - Visual Summaries
                       </a>
                     </td>
-                    <td />
                     <td>
-                      Prioritisation board agreed that there are important clinical questions to address for the system regarding which insulin to use for this population, and when it should be offered.
+                      Routed as a TA
                     </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="12/7/2024"
-                        datetime="2024-07-12T12:00:00"
-                      >
-                        <span>
-                          12 July 2024
-                        </span>
-                      </time>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="10/6/2024"
-                        datetime="2024-06-10T12:00:00"
-                      >
-                        <span>
-                          10 June 2024
-                        </span>
-                      </time>
-                    </td>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/htg768"
-                      >
-                        Digital self-help for eating disorders: early value assessment
-                      </a>
-                    </td>
-                    <td />
-                    <td>
-                      Prioritisation board agreed that digital technologies for this group have the potential to address current system challenges.
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="11/7/2024"
-                        datetime="2024-07-11T12:00:00"
-                      >
-                        <span>
-                          11 July 2024
-                        </span>
-                      </time>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span>
-                        Unknown
-                      </span>
-                    </td>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/htg1048"
-                      >
-                        Digital Health Technologies (DHT’s) for the delivery of cognitive behaviour therapy (CBT) to help manage the symptoms of menopause
-                      </a>
-                    </td>
-                    <td />
-                    <td>
-                      The Prioritisation Board agreed that the topic had the potential for benefit in terms of patient experience and acceptability, and reduced waiting times. Consequently, they agreed that the topic should be prioritised.
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="27/11/2025"
-                        datetime="2025-11-27T12:00:00"
-                      >
-                        <span>
-                          27 November 2025
-                        </span>
-                      </time>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span>
-                        Unknown
-                      </span>
-                    </td>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/htg1017"
-                      >
-                        Master Alert test
-                      </a>
-                    </td>
-                    <td />
                     <td>
                       <p>
                         Test Rationale description
@@ -675,73 +668,11 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="12/5/2026"
-                        datetime="2026-05-12T12:00:00"
+                        data-shortdate="21/7/2026"
+                        datetime="2026-07-21T12:00:00"
                       >
                         <span>
-                          12 May 2026
-                        </span>
-                      </time>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span>
-                        Unknown
-                      </span>
-                    </td>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/hst159"
-                      >
-                        Alert Indev test-3
-                      </a>
-                    </td>
-                    <td />
-                    <td>
-                      <p>
-                        Test Rationale
-                      </p>
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="6/5/2026"
-                        datetime="2026-05-06T12:00:00"
-                      >
-                        <span>
-                          6 May 2026
-                        </span>
-                      </time>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span>
-                        Unknown
-                      </span>
-                    </td>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta12260"
-                      >
-                        ID-929: Topic prioritisation set on website when blank in Indev (2)
-                      </a>
-                    </td>
-                    <td />
-                    <td>
-                      <p>
-                        test
-                      </p>
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="15/5/2026"
-                        datetime="2026-05-15T02:07:28"
-                      >
-                        <span>
-                          15 May 2026
+                          21 July 2026
                         </span>
                       </time>
                     </td>
@@ -750,88 +681,37 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="16/4/2026"
-                        datetime="2026-04-16T12:00:00"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
                       >
                         <span>
-                          16 April 2026
+                          4 March 2025
                         </span>
                       </time>
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11994"
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta11420"
                       >
-                        Pegunigalsidase alfa every 4 weeks for treating Fabry disease [TSID12346]
+                        TAK-880 for managing primary immunodeficiency diseases in people hypersensitive to IgA [TSID11883]
                       </a>
                     </td>
-                    <td />
+                    <td>
+                      Routed as a TA
+                    </td>
                     <td>
                       <p>
-                        The NICE-Wide Prioritisation Board met on 16 April 2026 and concluded that an evaluation would 
-                        <strong>
-                          not
-                        </strong>
-                         be appropriate for this product. 
-                        <a
-                          href="https://www.gov.uk/government/publications/2024-voluntary-scheme-for-branded-medicines-pricing-access-and-growth"
-                        >
-                          The 2024 voluntary scheme for branded medicines, pricing, access and growth
-                        </a>
-                         states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers concluded that the clear rationale to not evaluate this product is due to the proposed extension being a new dosing regimen that is not expected to impact the cost and clinical effectiveness of the published guidance within 
-                        <a
-                          href="https://www.nice.org.uk/guidance/ta915"
-                        >
-                          TA915
-                        </a>
-                        . Please see 
-                        <a
-                          href="https://www.nice.org.uk/process/pmg46/chapter/eligibility-criteria-for-using-the-prioritisation-framework-and-direct-routing-to-guidance"
-                        >
-                          eligibility criteria 
-                        </a>
-                        within the prioritisation manual for further information.
+                        Decision makers agreed that a Technology Appraisal (TA) would not be appropriate for the subject technology due to the commissioning arrangements being covered in the existing NHS England policy.
                       </p>
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="24/4/2026"
-                        datetime="2026-04-24T12:00:00"
+                        data-shortdate="25/6/2026"
+                        datetime="2026-06-25T12:00:00"
                       >
                         <span>
-                          24 April 2026
-                        </span>
-                      </time>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span>
-                        Unknown
-                      </span>
-                    </td>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11990"
-                      >
-                        Dabrafenib with trametinib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12398]
-                      </a>
-                    </td>
-                    <td />
-                    <td>
-                      <p>
-                        The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib with trametinib being a paediatric extension of TA396. Please see eligibility criteria within the prioritisation manual for further information.
-                      </p>
-                    </td>
-                    <td>
-                      <time
-                        class="date"
-                        data-shortdate="4/2/2026"
-                        datetime="2026-02-04T12:00:00"
-                      >
-                        <span>
-                          4 February 2026
+                          25 June 2026
                         </span>
                       </time>
                     </td>
@@ -840,35 +720,283 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="4/2/2026"
-                        datetime="2026-02-04T12:00:00"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
                       >
                         <span>
-                          4 February 2026
+                          4 March 2025
                         </span>
                       </time>
                     </td>
                     <td>
                       <a
-                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11989"
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta11539"
                       >
-                        Dabrafenib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12399]
+                        Olorofim for treating invasive fungal infections in people 16 years and over TSID 11983
                       </a>
                     </td>
-                    <td />
+                    <td>
+                      Routed as an HST
+                    </td>
                     <td>
                       <p>
-                        The 2024 voluntary scheme for branded medicines, pricing, access and growth states that NICE will continue to evaluate all new active substances and significant indications, except where there is a clear rationale not to do so. Decision makers have concluded that the clear rationale to not evaluate your product is due to commissioning under the NHS England commissioning medicines for children in specialised services policy being appropriate with Dabrafenib being a paediatric extension of TA321.
+                        Decision makers have concluded that this technology will not progress as a potential technology appraisal or a highly specialised technology. Traditional approaches to cost-effectiveness analysis, as used in TA, are not appropriate for antimicrobials. New antimicrobials will now be considered for NICE evaluation as part of NHS England’s Antimicrobial Products Subscription Model, which is expected in Summer 2024. Therefore, an evaluation of this product would not be appropriate.
                       </p>
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="4/2/2026"
-                        datetime="2026-02-04T12:00:00"
+                        data-shortdate="18/4/2024"
+                        datetime="2024-04-18T12:00:00"
                       >
                         <span>
-                          4 February 2026
+                          18 April 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
+                      >
+                        <span>
+                          4 March 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta11125"
+                      >
+                        Lenacapavir for treating multidrug resistant HIV-1 [ID6196]
+                      </a>
+                    </td>
+                    <td>
+                      Routed as a TA
+                    </td>
+                    <td>
+                      <p>
+                        The NICE Topic Selection Oversight Panel (TSOP), met in May 2023 to carefully consider the suitability of this topic for a Technology Appraisal (TA). The panel concluded it would not be an efficient use of NHS resources to conduct an evaluation. The topic will be formally removed from the NICE work programme. Due to the non-selection, NHS England may consider the technology for routine commissioning – please see section 3.1 of the NHS England Procedural note: non submission of data to NICE for further information. Any request for consideration for routine commissioning needs to be submitted via a clinician; the Service Development Policy outlines the process.
+                      </p>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="25/6/2026"
+                        datetime="2026-06-25T01:21:45"
+                      >
+                        <span>
+                          25 June 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
+                      >
+                        <span>
+                          4 March 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta11144"
+                      >
+                        CT-P43 (ustekinumab biosimilar) for treating moderate to severe plaque psoriasis [TSID11773]
+                      </a>
+                    </td>
+                    <td>
+                      Routed as a TA
+                    </td>
+                    <td>
+                      <p>
+                        "Decision makers have concluded that this technology will not progress as a potential technology appraisal or a highly specialised technology. This decision follows consideration of the product against the eligibility and selection criteria for technology appraisal and highly specialised technologies.
+                      </p>
+                      
+
+                      <p>
+                        Section 6.2.1 of the Topic Selection Manual states that:
+                      </p>
+                      
+
+                      <p>
+                        Medicines that meet the eligibility criteria will be selected, except when there is a clear rationale not to do so. For example, when: 
+                        <br />
+                        changes to the dose, formulation or administration will not significantly affect the clinical and cost effectiveness of the medicine
+                      </p>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="13/9/2022"
+                        datetime="2022-09-13T12:00:00"
+                      >
+                        <span>
+                          13 September 2022
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
+                      >
+                        <span>
+                          4 March 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta11155"
+                      >
+                        Paclitaxel + XR17 (Paclical) with carboplatin for ovarian cancer [TSID5462]
+                      </a>
+                    </td>
+                    <td>
+                      Routed as a TA
+                    </td>
+                    <td>
+                      <p>
+                        A technology appraisal (TA) would not add value due to the technology being a new formulation of an existing agent.
+                      </p>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="3/3/2011"
+                        datetime="2011-03-03T12:00:00"
+                      >
+                        <span>
+                          3 March 2011
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
+                      >
+                        <span>
+                          4 March 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta11068"
+                      >
+                        ABP 959 (eculizumab biosimilar) for treating paroxysmal nocturnal haemoglobinuria [TSID10250]
+                      </a>
+                    </td>
+                    <td>
+                      Routed as a TA
+                    </td>
+                    <td>
+                      <p>
+                        The technology was considered by the Topic Selection Oversight Panel (TSOP) in June 2022 where the panel agreed that a TA would not add value as the criteria for selection had not been met as per section 4.1.4 and section 6.2.1 of the NICE health technology evaluation topic selection: the manual
+                      </p>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="29/6/2022"
+                        datetime="2022-06-29T12:00:00"
+                      >
+                        <span>
+                          29 June 2022
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
+                      >
+                        <span>
+                          4 March 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-hst10039"
+                      >
+                        Lonafarnib for treating progeria and progeroid laminopathies [ID3867]
+                      </a>
+                    </td>
+                    <td>
+                      Routed as a TA
+                    </td>
+                    <td>
+                      <p>
+                        This topic was presented to the Topic Selection Oversight Panel (TSOP) in April 2021. The panel agreed that there was no clear rationale for an evaluation, and it would not add value to the NHS. The topic was not selected for the TA-HST work programme.
+                      </p>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="30/4/2021"
+                        datetime="2021-04-30T12:00:00"
+                      >
+                        <span>
+                          30 April 2021
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/3/2025"
+                        datetime="2025-03-04T12:00:00"
+                      >
+                        <span>
+                          4 March 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-hst10074"
+                      >
+                        ID-938 Routing decision feed
+                      </a>
+                    </td>
+                    <td>
+                      Routed as an HST
+                    </td>
+                    <td>
+                      <p>
+                        Decision makers agreed that a Technology Appraisal (TA) would not be appropriate for the subject technology due to the commissioning arrangements in the existing NHS England policy cobicistat-policy.pdf (england.nhs.uk).
+                      </p>
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="25/6/2026"
+                        datetime="2026-06-25T12:00:00"
+                      >
+                        <span>
+                          25 June 2026
                         </span>
                       </time>
                     </td>
@@ -912,37 +1040,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                   </a>
                 </li>
                 <li
-                  class="pagination__item"
-                >
-                  <a
-                    aria-label="Go to page 3"
-                    class="pagination__link"
-                    href="/?pa=3"
-                  >
-                    3
-                  </a>
-                </li>
-                <li
-                  class="pagination__item"
-                >
-                  <span
-                    class="pagination__inactive"
-                  >
-                    …
-                  </span>
-                </li>
-                <li
-                  class="pagination__item"
-                >
-                  <a
-                    aria-label="Go to page 17"
-                    class="pagination__link"
-                    href="/?pa=17"
-                  >
-                    17
-                  </a>
-                </li>
-                <li
                   class="pagination__item pagination__item--count"
                 >
                   <span>
@@ -952,7 +1049,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </strong>
                      of 
                     <strong>
-                      17
+                      2
                     </strong>
                   </span>
                 </li>
