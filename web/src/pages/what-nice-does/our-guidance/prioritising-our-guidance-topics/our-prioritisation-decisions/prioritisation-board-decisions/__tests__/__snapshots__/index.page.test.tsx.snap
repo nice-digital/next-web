@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/guidance/indevelopment should match the snapshot 1`] = `
+exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions should match the snapshot 1`] = `
 <div>
   <div
     class="undefined undefined"
@@ -11,45 +11,84 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
         class="container"
         data-component="container"
       >
-        <nav
-          aria-label="Breadcrumbs"
-          data-component="breadcrumbs"
-          role="navigation"
+        <div
+          class="page-header page-header--full-width-light page-header--vertical-padding-loose"
+          data-component="page-header"
+          data-testid="content-start"
+          id="content-start"
         >
-          <ol
-            class="breadcrumbs"
+          <div
+            class="page-header__full-width-container"
           >
-            <li
-              class="breadcrumbs__crumb"
+            <div
+              class="page-header__breadcrumbs"
             >
-              <a
-                href="/"
+              <nav
+                aria-label="Breadcrumbs"
+                data-component="breadcrumbs"
+                role="navigation"
               >
-                Home
-              </a>
-            </li>
-            <li
-              class="breadcrumbs__crumb"
-            >
-              <a
-                href="/guidance"
+                <ol
+                  class="breadcrumbs"
+                >
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does"
+                    >
+                      What NICE does
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does/our-guidance"
+                    >
+                      Our guidance
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does/our-guidance/prioritising-our-guidance-topics"
+                    >
+                      Prioritising our guidance topics
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+                    >
+                      Our prioritisation decisions
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <span>
+                      Prioritisation board decisions
+                    </span>
+                  </li>
+                </ol>
+              </nav>
+              <script
+                type="application/ld+json"
               >
-                NICE guidance
-              </a>
-            </li>
-            <li
-              class="breadcrumbs__crumb"
-            >
-              <span>
-                In development
-              </span>
-            </li>
-          </ol>
-        </nav>
-        <script
-          type="application/ld+json"
-        >
-          {
+                {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
@@ -65,141 +104,74 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
       "@type": "ListItem",
       "position": 2,
       "item": {
-        "@id": "/guidance",
-        "name": "NICE guidance"
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
       }
     },
     {
       "@type": "ListItem",
       "position": 3,
       "item": {
-        "name": "In development"
+        "@id": "/what-nice-does/our-guidance",
+        "name": "Our guidance"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/what-nice-does/our-guidance/prioritising-our-guidance-topics",
+        "name": "Prioritising our guidance topics"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions",
+        "name": "Our prioritisation decisions"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Prioritisation board decisions"
       }
     }
   ]
 }
-        </script>
-        <div
-          class="page-header pageHeader"
-          data-component="page-header"
-          data-testid="content-start"
-          id="content-start"
-        >
-          <h1
-            class="page-header__heading "
-          >
-            In development: Guidance, quality standards and advice
-          </h1>
-          <p
-            class="page-header__lead"
-          >
-            <a
-              class="skipLink"
-              href="#filters"
+              </script>
+            </div>
+            <h1
+              class="page-header__heading "
             >
-              Skip to filters
-            </a>
-            <a
-              class="skipLink"
-              href="#results"
+              Prioritisation board decisions
+            </h1>
+            <p
+              class="page-header__lead"
             >
-              Skip to results
-            </a>
-          </p>
+              <a
+                class="skipLink"
+                href="#filters"
+              >
+                Skip to filters
+              </a>
+              <a
+                class="skipLink"
+                href="#results"
+              >
+                Skip to results
+              </a>
+              We have a centralised approach to prioritising our guidance topics.
+            </p>
+            <div
+              class="page-header__description"
+            >
+              This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.
+            </div>
+          </div>
         </div>
-        <nav
-          aria-label="Stages of guidance development"
-          class="horizontal-nav"
-        >
-          <ul
-            class="horizontal-nav__list"
-          >
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/published"
-              >
-                Published
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/terminated"
-              >
-                Terminated
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/inconsultation"
-              >
-                In consultation
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/indevelopment"
-              >
-                In development
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/deferred"
-              >
-                Deferred
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/awaiting-development"
-              >
-                Awaiting development
-              </a>
-            </li>
-            <li
-              class="horizontal-nav__item"
-              data-component="horizontal-nav"
-            >
-              <a
-                aria-current="false"
-                class="horizontal-nav__link"
-                href="/guidance/prioritisation"
-              >
-                Topic prioritisation
-              </a>
-            </li>
-          </ul>
-        </nav>
         <div
           class="grid grid--loose sectionWrapper"
         >
@@ -271,7 +243,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-keyword-or-reference-number"
+                        aria-controls="group-topic-title-and-rationale"
                         aria-expanded="true"
                         type="button"
                       >
@@ -291,9 +263,9 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-keyword-or-reference-number"
+                          id="group-heading-topic-title-and-rationale"
                         >
-                          Keyword or reference number
+                          Topic title and rationale
                            
                         </span>
                       </button>
@@ -301,10 +273,10 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-keyword-or-reference-number"
+                      id="group-topic-title-and-rationale"
                     >
                       <legend>
-                        Keyword or reference number
+                        Topic title and rationale
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -318,7 +290,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                             class="input__input"
                             id="q"
                             name="q"
-                            placeholder="E.g. 'diabetes' or 'NG28'"
+                            placeholder="E.g. 'diabetes'"
                             spellcheck="false"
                             type="text"
                             value=""
@@ -341,7 +313,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-expected-publication-date"
+                        aria-controls="group-meeting-date"
                         aria-expanded="true"
                         type="button"
                       >
@@ -361,9 +333,9 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-expected-publication-date"
+                          id="group-heading-meeting-date"
                         >
-                          Expected publication date
+                          Meeting date
                            
                         </span>
                       </button>
@@ -371,10 +343,10 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-expected-publication-date"
+                      id="group-meeting-date"
                     >
                       <legend>
-                        Expected publication date
+                        Meeting date
                       </legend>
                       <div
                         class="ph--c pt--c"
@@ -392,8 +364,8 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                           <input
                             class="input__input"
                             id="from"
-                            max="2030-11-22"
-                            min="2020-11-22"
+                            max="2025-06-17"
+                            min="2000-01-01"
                             name="from"
                             pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                             placeholder="yyyy-mm-dd"
@@ -414,8 +386,8 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                           <input
                             class="input__input"
                             id="to"
-                            max="2030-11-22"
-                            min="2020-11-22"
+                            max="2025-06-17"
+                            min="2000-01-01"
                             name="to"
                             pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
                             placeholder="yyyy-mm-dd"
@@ -440,7 +412,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-ngt"
+                        aria-controls="group-pde"
                         aria-expanded="true"
                         type="button"
                       >
@@ -460,216 +432,73 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-ngt"
+                          id="group-heading-pde"
                         >
-                          Guidance programme
+                          Prioritisation decision
                            
-                        </span>
-                        <span
-                          class="filter-group__count"
-                        >
-                          <span
-                            class="visually-hidden"
-                          >
-                            (
-                          </span>
-                          1
-                           selected
-                          <span
-                            class="visually-hidden"
-                          >
-                            )
-                          </span>
                         </span>
                       </button>
                     </h3>
                     <fieldset
                       aria-hidden="false"
                       class="filter-group__options"
-                      id="group-ngt"
+                      id="group-pde"
                     >
                       <legend>
-                        Guidance programme
+                        Prioritisation decision
                       </legend>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_ngt_antimicrobial-prescribing-guidelines"
+                        for="filter_pde_not-prioritised"
                       >
                         <input
-                          id="filter_ngt_antimicrobial-prescribing-guidelines"
-                          name="ngt"
-                          title="Guidance programme - Antimicrobial prescribing guidelines (4)"
+                          id="filter_pde_not-prioritised"
+                          name="pde"
+                          title="Prioritisation decision - Not prioritised (1)"
                           type="checkbox"
-                          value="Antimicrobial prescribing guidelines"
+                          value="Not prioritised"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Antimicrobial prescribing guidelines (4)
+                          Not prioritised (1)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_ngt_clinical-guidelines"
+                        for="filter_pde_not-selected"
                       >
                         <input
-                          id="filter_ngt_clinical-guidelines"
-                          name="ngt"
-                          title="Guidance programme - Clinical guidelines (48)"
+                          id="filter_pde_not-selected"
+                          name="pde"
+                          title="Prioritisation decision - Not selected (139)"
                           type="checkbox"
-                          value="Clinical guidelines"
+                          value="Not selected"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Clinical guidelines (48)
+                          Not selected (139)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_ngt_diagnostics-guidance"
+                        for="filter_pde_prioritised"
                       >
                         <input
-                          id="filter_ngt_diagnostics-guidance"
-                          name="ngt"
-                          title="Guidance programme - Diagnostics guidance (11)"
+                          id="filter_pde_prioritised"
+                          name="pde"
+                          title="Prioritisation decision - Prioritised (30)"
                           type="checkbox"
-                          value="Diagnostics guidance"
+                          value="Prioritised"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Diagnostics guidance (11)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_highly-specialised-technologies-guidance"
-                      >
-                        <input
-                          id="filter_ngt_highly-specialised-technologies-guidance"
-                          name="ngt"
-                          title="Guidance programme - Highly specialised technologies guidance (16)"
-                          type="checkbox"
-                          value="Highly specialised technologies guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Highly specialised technologies guidance (16)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_interventional-procedures-guidance"
-                      >
-                        <input
-                          id="filter_ngt_interventional-procedures-guidance"
-                          name="ngt"
-                          title="Guidance programme - Interventional procedures guidance (72)"
-                          type="checkbox"
-                          value="Interventional procedures guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Interventional procedures guidance (72)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_medical-technologies-guidance"
-                      >
-                        <input
-                          id="filter_ngt_medical-technologies-guidance"
-                          name="ngt"
-                          title="Guidance programme - Medical technologies guidance (21)"
-                          type="checkbox"
-                          value="Medical technologies guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Medical technologies guidance (21)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_nice-guidelines"
-                      >
-                        <input
-                          checked=""
-                          id="filter_ngt_nice-guidelines"
-                          name="ngt"
-                          title="Guidance programme - NICE guidelines (65)"
-                          type="checkbox"
-                          value="NICE guidelines"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          NICE guidelines (65)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_public-health-guidelines"
-                      >
-                        <input
-                          id="filter_ngt_public-health-guidelines"
-                          name="ngt"
-                          title="Guidance programme - Public health guidelines (8)"
-                          type="checkbox"
-                          value="Public health guidelines"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Public health guidelines (8)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_social-care-guidelines"
-                      >
-                        <input
-                          id="filter_ngt_social-care-guidelines"
-                          name="ngt"
-                          title="Guidance programme - Social care guidelines (3)"
-                          type="checkbox"
-                          value="Social care guidelines"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Social care guidelines (3)
-                        </span>
-                      </label>
-                      <label
-                        class="filter-option"
-                        data-component="filter-option"
-                        for="filter_ngt_technology-appraisal-guidance"
-                      >
-                        <input
-                          id="filter_ngt_technology-appraisal-guidance"
-                          name="ngt"
-                          title="Guidance programme - Technology appraisal guidance (437)"
-                          type="checkbox"
-                          value="Technology appraisal guidance"
-                        />
-                        <span
-                          class="filter-option__text"
-                        >
-                          Technology appraisal guidance (437)
+                          Prioritised (30)
                         </span>
                       </label>
                     </fieldset>
@@ -681,13 +510,13 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                       class="filter-group__heading"
                     >
                       <button
-                        aria-controls="group-nai"
-                        aria-expanded="false"
+                        aria-controls="group-ppr"
+                        aria-expanded="true"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
-                          class="filter-group__heading-icon"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
                           fill="none"
                           focusable="false"
                           height="1em"
@@ -701,55 +530,109 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                           />
                         </svg>
                         <span
-                          id="group-heading-nai"
+                          id="group-heading-ppr"
                         >
-                          Area of interest
+                          Prioritisation programme
                            
                         </span>
                       </button>
                     </h3>
                     <fieldset
-                      aria-hidden="true"
+                      aria-hidden="false"
                       class="filter-group__options"
-                      id="group-nai"
+                      id="group-ppr"
                     >
                       <legend>
-                        Area of interest
+                        Prioritisation programme
                       </legend>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_nai_antimicrobial-prescribing"
+                        for="filter_ppr_guidelines"
                       >
                         <input
-                          id="filter_nai_antimicrobial-prescribing"
-                          name="nai"
-                          title="Area of interest - Antimicrobial prescribing (4)"
+                          id="filter_ppr_guidelines"
+                          name="ppr"
+                          title="Prioritisation programme - Guidelines (9)"
                           type="checkbox"
-                          value="Antimicrobial prescribing"
+                          value="Guidelines"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          Antimicrobial prescribing (4)
+                          Guidelines (9)
                         </span>
                       </label>
                       <label
                         class="filter-option"
                         data-component="filter-option"
-                        for="filter_nai_covid-19"
+                        for="filter_ppr_healthtech"
                       >
                         <input
-                          id="filter_nai_covid-19"
-                          name="nai"
-                          title="Area of interest - COVID-19 (2)"
+                          id="filter_ppr_healthtech"
+                          name="ppr"
+                          title="Prioritisation programme - HealthTech (8)"
                           type="checkbox"
-                          value="COVID-19"
+                          value="HealthTech"
                         />
                         <span
                           class="filter-option__text"
                         >
-                          COVID-19 (2)
+                          HealthTech (8)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_interventional-procedures"
+                      >
+                        <input
+                          id="filter_ppr_interventional-procedures"
+                          name="ppr"
+                          title="Prioritisation programme - Interventional procedures (1)"
+                          type="checkbox"
+                          value="Interventional procedures"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Interventional procedures (1)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_medicines-evaluation"
+                      >
+                        <input
+                          id="filter_ppr_medicines-evaluation"
+                          name="ppr"
+                          title="Prioritisation programme - Medicines evaluation (27)"
+                          type="checkbox"
+                          value="Medicines evaluation"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Medicines evaluation (27)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_multi-programme-assessment"
+                      >
+                        <input
+                          id="filter_ppr_multi-programme-assessment"
+                          name="ppr"
+                          title="Prioritisation programme - Multi-programme assessment (2)"
+                          type="checkbox"
+                          value="Multi-programme assessment"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Multi-programme assessment (2)
                         </span>
                       </label>
                     </fieldset>
@@ -779,7 +662,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                    to 
                   10
                    of 
-                  65
+                  170
                 </h2>
               </div>
               <div
@@ -798,18 +681,21 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                 >
                   <option
                     selected=""
-                    value="Title"
-                  >
-                    Title
-                  </option>
-                  <option
                     value="Date"
                   >
-                    Date
+                    Meeting date
+                  </option>
+                  <option
+                    value="Title"
+                  >
+                    Topic title and rationale
                   </option>
                 </select>
               </div>
             </div>
+            <p>
+              Select a topic title to read why the prioritisation decision was made.
+            </p>
             <div
               class="tableWrapper"
             >
@@ -822,218 +708,374 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                 <caption
                   class="visually-hidden"
                 >
-                  Guidance, NICE advice and quality standards in development
+                  List of priorition board decisions
                 </caption>
                 <thead>
                   <tr>
                     <th
                       scope="col"
                     >
-                      Title
+                      Meeting date
                     </th>
                     <th
                       scope="col"
                     >
-                      Type
+                      Topic title and rationale
                     </th>
                     <th
                       scope="col"
                     >
-                      Expected publication date
+                      Prioritisation decision
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Prioritisation programme
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Decision publication date
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10145"
+                      <time
+                        class="date"
+                        data-shortdate="26/2/2025"
+                        datetime="2025-02-26T12:00:00"
                       >
-                        Adults with complex needs: social work interventions including assessment, care management and support
+                        <span>
+                          26 February 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/ng24"
+                      >
+                        Blood transfusion
                       </a>
                     </td>
                     <td>
-                      NICE guideline
+                      Prioritised
                     </td>
                     <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10156"
-                      >
-                        Advocacy services for adults with health and social care needs
-                      </a>
-                    </td>
-                    <td>
-                      NICE guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10052"
-                      >
-                        Assessment, referral and management of Adrenal dysfunction
-                      </a>
-                    </td>
-                    <td>
-                      NICE guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10186"
-                      >
-                        Asthma: diagnosis, monitoring and chronic asthma management
-                      </a>
-                    </td>
-                    <td>
-                      NICE guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10165"
-                      >
-                        Barrett's oesophagus: medical management, endoscopic treatment, follow up and stage 1 adenocarcinoma
-                      </a>
-                    </td>
-                    <td>
-                      NICE guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10168"
-                      >
-                        Blepharitis: antimicrobial prescribing
-                      </a>
-                    </td>
-                    <td>
-                      Antimicrobial prescribing guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10178"
-                      >
-                        Cardiovascular disease: risk assessment and reduction, including lipid modification
-                      </a>
-                    </td>
-                    <td>
-                      NICE guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10166"
-                      >
-                        Conjunctivitis: antimicrobial prescribing
-                      </a>
-                    </td>
-                    <td>
-                      Antimicrobial prescribing guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-ng10243"
-                      >
-                        COVID-19 rapid guideline: managing the long-term effects of COVID-19 (update)
-                      </a>
-                    </td>
-                    <td>
-                      NICE guideline
-                    </td>
-                    <td>
-                      <abbr
-                        title="To be confirmed"
-                      >
-                        TBC
-                      </abbr>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a
-                        href="https://next-web-tests.nice.org.uk/guidance/indevelopment/gid-cgwave0725"
-                      >
-                        Depression in adults: treatment and management (update)
-                      </a>
-                    </td>
-                    <td>
-                      NICE guideline
+                      Guidelines
                     </td>
                     <td>
                       <time
                         class="date"
-                        data-shortdate="5/12/2022"
-                        datetime="2022-12-05T12:00:00"
+                        data-shortdate="21/3/2025"
+                        datetime="2025-03-21T12:00:00"
                       >
                         <span>
-                          5 December 2022
+                          21 March 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="8/7/2024"
+                        datetime="2024-07-08T12:00:00"
+                      >
+                        <span>
+                          8 July 2024
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/ng28"
+                      >
+                        Type 2 diabetes
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      Guidelines
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="12/7/2024"
+                        datetime="2024-07-12T12:00:00"
+                      >
+                        <span>
+                          12 July 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="10/6/2024"
+                        datetime="2024-06-10T12:00:00"
+                      >
+                        <span>
+                          10 June 2024
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/htg768"
+                      >
+                        Digital self-help for eating disorders: early value assessment
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="11/7/2024"
+                        datetime="2024-07-11T12:00:00"
+                      >
+                        <span>
+                          11 July 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/htg1048"
+                      >
+                        Digital Health Technologies (DHT’s) for the delivery of cognitive behaviour therapy (CBT) to help manage the symptoms of menopause
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="27/11/2025"
+                        datetime="2025-11-27T12:00:00"
+                      >
+                        <span>
+                          27 November 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/htg1017"
+                      >
+                        Master Alert test
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="12/5/2026"
+                        datetime="2026-05-12T12:00:00"
+                      >
+                        <span>
+                          12 May 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/hst159"
+                      >
+                        Alert Indev test-3
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="6/5/2026"
+                        datetime="2026-05-06T12:00:00"
+                      >
+                        <span>
+                          6 May 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta12260"
+                      >
+                        ID-929: Topic prioritisation set on website when blank in Indev (2)
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="15/5/2026"
+                        datetime="2026-05-15T02:07:28"
+                      >
+                        <span>
+                          15 May 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="16/4/2026"
+                        datetime="2026-04-16T12:00:00"
+                      >
+                        <span>
+                          16 April 2026
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11994"
+                      >
+                        Pegunigalsidase alfa every 4 weeks for treating Fabry disease [TSID12346]
+                      </a>
+                    </td>
+                    <td>
+                      Not selected
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="24/4/2026"
+                        datetime="2026-04-24T12:00:00"
+                      >
+                        <span>
+                          24 April 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11990"
+                      >
+                        Dabrafenib with trametinib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12398]
+                      </a>
+                    </td>
+                    <td>
+                      Not selected
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/2/2026"
+                        datetime="2026-02-04T12:00:00"
+                      >
+                        <span>
+                          4 February 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/2/2026"
+                        datetime="2026-02-04T12:00:00"
+                      >
+                        <span>
+                          4 February 2026
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11989"
+                      >
+                        Dabrafenib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12399]
+                      </a>
+                    </td>
+                    <td>
+                      Not selected
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/2/2026"
+                        datetime="2026-02-04T12:00:00"
+                      >
+                        <span>
+                          4 February 2026
                         </span>
                       </time>
                     </td>
@@ -1100,11 +1142,11 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                   class="pagination__item"
                 >
                   <a
-                    aria-label="Go to page 7"
+                    aria-label="Go to page 17"
                     class="pagination__link"
-                    href="/?pa=7"
+                    href="/?pa=17"
                   >
-                    7
+                    17
                   </a>
                 </li>
                 <li
@@ -1117,7 +1159,7 @@ exports[`/guidance/indevelopment should match the snapshot 1`] = `
                     </strong>
                      of 
                     <strong>
-                      7
+                      17
                     </strong>
                   </span>
                 </li>
