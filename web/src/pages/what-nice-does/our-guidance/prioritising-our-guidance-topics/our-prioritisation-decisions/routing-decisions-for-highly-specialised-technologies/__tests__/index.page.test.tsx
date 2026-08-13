@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/routing.json";
-import { render, screen, within } from "@/test-utils/rendering";
+import { getByRole, render, screen, within } from "@/test-utils/rendering";
 import { formatDateStr } from "@/utils/datetime";
 
 import IndexPage from "../index.page";
@@ -89,7 +89,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				[formatDateStr(String(prioritisationBoardMeetingDate))],
 				[title],
 				[routingDecision],
-				[rationale],
+				[rationale.replace(/<[^>]*>/g, "").trim()], // remove html in string
 				[formatDateStr(String(prioritisationBoardDecisionDate))],
 			])("should set data cell to '%s'", (text) => {
 				const row = screen.getAllByRole("row")[1];
