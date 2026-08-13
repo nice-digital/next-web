@@ -1,19 +1,39 @@
 services:
+  # Selenium 4.8.0, the same images cks-gatsby and bnf-gatsby run. 3.141.59 was
+  # the final Selenium 3 release and this image was built 2021-07-13, so the grid
+  # was four and a half years behind a wdio 8 client that speaks W3C first.
+  #
+  # bnf-gatsby sat on a 2022 grid and suffered roaming 60s command stalls: a
+  # request would go out and its response never come back, while the browser sat
+  # idle and healthy. Bumping to these images cleared it - five consecutive green
+  # builds across three agents. See section 10 of the CodeArtifact playbook.
+  #
+  # Tagged by Selenium version rather than Chrome version so hub and node are
+  # visibly the same release, and dated so the tag is immutable: plain `4.8.0` is
+  # re-pushed whenever Selenium rebuilds the image.
   selenium-hub:
-    image: selenium/hub:3.141.59-20210713
+    image: selenium/hub:4.8.0-20230210
     container_name: nxt-selenium-hub
     ports:
       - '4444:4444'
 
   selenium-chrome:
-    image: selenium/node-chrome:3.141.59-20210713
+    # Chrome 91 -> 110. Selenium 4 replaced the Selenium 3 HUB_HOST/HUB_PORT
+    # registration with an event bus, so those two vars had to change with the
+    # image. The bus is reached over the compose network, so unlike 4444 it needs
+    # no host port published.
+    image: selenium/node-chrome:4.8.0-20230210
     container_name: nxt-selenium-chrome
-    shm_size: '1gb'
+    # 2gb to match the sibling repos. Chrome renders into /dev/shm and the chrome
+    # args here do not set --disable-dev-shm-usage, so 1gb risks renderer crashes
+    # on heavy pages now that the browser is 19 releases newer.
+    shm_size: '2gb'
     depends_on:
       - selenium-hub
     environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   nxt-test-runner:
     build:
