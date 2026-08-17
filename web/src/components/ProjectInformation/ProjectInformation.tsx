@@ -160,7 +160,7 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 								<dt>Decision publication date:</dt>{" "}
 								<dd>
 									<time dateTime={stripTime(topicSelectionDecisionDate)}>
-										&nbsp;{formatDateStr(topicSelectionDecisionDate)}
+										{formatDateStr(topicSelectionDecisionDate)}
 									</time>
 								</dd>
 							</>

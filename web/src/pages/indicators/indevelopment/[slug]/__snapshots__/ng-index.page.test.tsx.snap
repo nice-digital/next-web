@@ -181,7 +181,6 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               <time
                 datetime="2026-07-01"
               >
-                 
                 1 July 2026
               </time>
             </dd>
