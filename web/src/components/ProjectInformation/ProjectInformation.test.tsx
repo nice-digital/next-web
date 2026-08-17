@@ -145,4 +145,120 @@ describe("ProjectInformation", () => {
 		expect(getByText("Status:").tagName).toBe("DT");
 		expect(getByText("Discontinued").tagName).toBe("DD");
 	});
+
+	it("should not render prioritisationRoutingDecision if prioritisationRoutingDecision is null", async () => {
+		const mockProps = {
+			...props,
+			prioritisationRoutingDecision: null,
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(
+			within(list).queryByText("Prioritisation routing decision:")
+		).toBeNull();
+	});
+
+	it("should not render prioritisationRoutingDecision if prioritisationRoutingDecision is empty", async () => {
+		const mockProps = {
+			...props,
+			prioritisationRoutingDecision: "",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(
+			within(list).queryByText("Prioritisation routing decision:")
+		).toBeNull();
+	});
+
+	it("should render prioritisationRoutingDecision if prioritisationRoutingDecision has content", async () => {
+		const mockProps = {
+			...props,
+			prioritisationRoutingDecision: "Routed as a TA",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		const { getByText } = within(list);
+		expect(getByText("Prioritisation routing decision:").tagName).toBe("DT");
+		expect(getByText("Routed as a TA").tagName).toBe("DD");
+	});
+
+	it("should not render topicSelectionReason if topicSelectionReason is null", async () => {
+		const mockProps = {
+			...props,
+			topicSelectionReason: null,
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(within(list).queryByText("Reason for decision:")).toBeNull();
+	});
+
+	it("should not render topicSelectionReason if topicSelectionReason is empty", async () => {
+		const mockProps = {
+			...props,
+			topicSelectionReason: "",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(within(list).queryByText("Reason for decision:")).toBeNull();
+	});
+
+	it("should render topicSelectionReason if topicSelectionReason has content", async () => {
+		const mockProps = {
+			...props,
+			topicSelectionReason: "Monitor",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		const { getByText } = within(list);
+		expect(getByText("Reason for decision:").tagName).toBe("DT");
+		expect(
+			getByText(
+				"Monitor - awaiting publication of further literature or evidence"
+			).tagName
+		).toBe("DD");
+	});
+
+	it("should not render topicSelectionFurtherInfo if topicSelectionFurtherInfo is null", async () => {
+		const mockProps = {
+			...props,
+			topicSelectionFurtherInfo: null,
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(within(list).queryByText("Further information:")).toBeNull();
+	});
+
+	it("should not render topicSelectionFurtherInfo if topicSelectionFurtherInfo is empty", async () => {
+		const mockProps = {
+			...props,
+			topicSelectionFurtherInfo: "",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(within(list).queryByText("Further information:")).toBeNull();
+	});
+
+	it("should render topicSelectionFurtherInfo if topicSelectionFurtherInfo has content", async () => {
+		const mockProps = {
+			...props,
+			topicSelectionFurtherInfo:
+				"Topic selection further information goes here",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		const { getByText } = within(list);
+		expect(getByText("Further information:").tagName).toBe("DT");
+		expect(
+			getByText("Topic selection further information goes here").tagName
+		).toBe("DD");
+	});
 });
