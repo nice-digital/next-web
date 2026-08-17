@@ -22,8 +22,12 @@ export type ProjectInformationProps = {
 	suspendDiscontinuedUrlText: string | null;
 	technologyType: string | null;
 	title: string;
+	topicSelectionDecision: string | null;
 	topicSelectionReason: string | null;
+	topicSelectionDecisionDate: string | null;
 	topicSelectionFurtherInfo: string | null;
+	prioritisationRouting: string | null;
+	prioritisationRoutingDecision: string | null;
 	isGuidanceHubPage: boolean;
 	content: string | null;
 	children?: never;
@@ -41,8 +45,12 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	suspendDiscontinuedUrl,
 	suspendDiscontinuedUrlText,
 	technologyType,
+	topicSelectionDecision,
 	topicSelectionReason,
+	topicSelectionDecisionDate,
 	topicSelectionFurtherInfo,
+	prioritisationRouting,
+	prioritisationRoutingDecision,
 	isGuidanceHubPage,
 	content,
 }) => {
@@ -105,6 +113,12 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 						{technologyType && (
 							<>
 								<dt>Technology type:</dt> <dd>{technologyType}</dd>
+							</>
+						)}
+						{prioritisationRoutingDecision && (
+							<>
+								<dt>Routing decision:</dt>{" "}
+								<dd>{prioritisationRoutingDecision}</dd>
 							</>
 						)}
 						{topicSelectionReasonText && (

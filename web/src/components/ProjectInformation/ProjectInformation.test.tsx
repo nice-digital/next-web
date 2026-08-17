@@ -24,8 +24,12 @@ const props: ProjectInformationProps = {
 	suspendDiscontinuedUrl: "suspend url",
 	suspendDiscontinuedUrlText: "suspend disontinued text",
 	technologyType: "tech type",
+	topicSelectionDecision: "Prioritised",
 	topicSelectionReason: "topic selection reason",
-	topicSelectionFurtherInfo: "top selection further info",
+	topicSelectionDecisionDate: "2026-07-21T00:00:00",
+	topicSelectionFurtherInfo: "topic selection further info",
+	prioritisationRouting: "",
+	prioritisationRoutingDecision: "",
 	reference: "",
 	title: "",
 };

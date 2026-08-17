@@ -626,6 +626,8 @@ export type ProjectDetail = {
 	areasOfInterestList: [];
 	topicSelectionDecision: string;
 	topicSelectionReason: string | null;
+	prioritisationRouting: string | null;
+	prioritisationRoutingDecision: string | null;
 	topicSelectionDecisionDate: string | null;
 	topicSelectionFurtherInfo: string | null;
 	indicatorSubTypes: [];

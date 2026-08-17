@@ -147,6 +147,13 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               Diagnostic
             </dd>
             <dt>
+              Routing decision:
+            </dt>
+             
+            <dd>
+              Routed as a TA
+            </dd>
+            <dt>
               Further information:
             </dt>
              
@@ -316,6 +323,8 @@ Object {
     "indevTopicItems": Array [],
     "isGuidanceHubPage": false,
     "partialUpdates": Array [],
+    "prioritisationRouting": "HealthTech",
+    "prioritisationRoutingDecision": "Routed as a TA",
     "process": "MTA Standard",
     "projectPath": "/guidance/indevelopment/gid-ta12552",
     "projectType": "TA",
@@ -328,6 +337,8 @@ Object {
     "suspendDiscontinuedUrlText": null,
     "technologyType": "Diagnostic",
     "title": "Rapid MT-RNR1 testing for detecting a genetic variant to guide antibiotic use and prevent hearing loss in babies (provisional title)",
+    "topicSelectionDecision": "Prioritised",
+    "topicSelectionDecisionDate": "2026-07-21T00:00:00",
     "topicSelectionFurtherInfo": "<p>To be updated</p>",
     "topicSelectionReason": null,
   },
