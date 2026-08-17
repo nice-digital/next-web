@@ -117,7 +117,7 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 						)}
 						{prioritisationRoutingDecision && (
 							<>
-								<dt>Routing decision:</dt>{" "}
+								<dt>Prioritisation routing decision:</dt>{" "}
 								<dd>{prioritisationRoutingDecision}</dd>
 							</>
 						)}
