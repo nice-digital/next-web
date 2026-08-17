@@ -115,6 +115,24 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 								<dt>Technology type:</dt> <dd>{technologyType}</dd>
 							</>
 						)}
+						{topicSelectionDecision && (
+							<>
+								<dt>Decision:</dt>
+								<dd>{topicSelectionDecision}</dd>
+							</>
+						)}
+						{topicSelectionDecisionDate && (
+							<>
+								<dt>Decision publication date:</dt>{" "}
+								<dd>{topicSelectionDecisionDate}</dd>
+							</>
+						)}
+						{prioritisationRouting && (
+							<>
+								<dt>Prioritisation programme:</dt>{" "}
+								<dd>{prioritisationRouting}</dd>
+							</>
+						)}
 						{prioritisationRoutingDecision && (
 							<>
 								<dt>Prioritisation routing decision:</dt>{" "}

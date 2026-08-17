@@ -168,6 +168,26 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               In progress
             </dd>
             <dt>
+              Decision:
+            </dt>
+            <dd>
+              Selected
+            </dd>
+            <dt>
+              Decision publication date:
+            </dt>
+             
+            <dd>
+              2026-07-01T00:00:00
+            </dd>
+            <dt>
+              Prioritisation programme:
+            </dt>
+             
+            <dd>
+              MedicinesEvaluation
+            </dd>
+            <dt>
               Further information:
             </dt>
              

@@ -147,6 +147,26 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               Diagnostic
             </dd>
             <dt>
+              Decision:
+            </dt>
+            <dd>
+              Prioritised
+            </dd>
+            <dt>
+              Decision publication date:
+            </dt>
+             
+            <dd>
+              2026-07-21T00:00:00
+            </dd>
+            <dt>
+              Prioritisation programme:
+            </dt>
+             
+            <dd>
+              HealthTech
+            </dd>
+            <dt>
               Prioritisation routing decision:
             </dt>
              
