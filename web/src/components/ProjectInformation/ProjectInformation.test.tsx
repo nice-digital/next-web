@@ -160,14 +160,14 @@ describe("ProjectInformation", () => {
 	it("should not render topicSelectionDecision if topicSelectionDecision is empty", async () => {
 		const mockProps = {
 			...props,
-			topicSelectionDecision: "Prioritised",
+			topicSelectionDecision: "AwaitingDecision",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
 		const { getByText } = within(list);
 		expect(getByText("Decision:").tagName).toBe("DT");
-		expect(getByText("Prioritised").tagName).toBe("DD");
+		expect(getByText("Awaiting decision").tagName).toBe("DD");
 	});
 
 	it("should render topicSelectionDecision if topicSelectionDecision has content", async () => {
@@ -215,7 +215,7 @@ describe("ProjectInformation", () => {
 		const list = screen.getByLabelText("Project information");
 		const { getByText } = within(list);
 		expect(getByText("Decision publication date:").tagName).toBe("DT");
-		expect(getByText("2026-07-21T00:00:00").tagName).toBe("DD");
+		expect(getByText("21 July 2026").tagName).toBe("TIME");
 	});
 
 	it("should not render prioritisationRouting if prioritisationRouting is null", async () => {

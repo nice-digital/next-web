@@ -1,6 +1,10 @@
 import React, { type FC } from "react";
 
-import { ProjectStatus, TopicSelectionReason } from "@/feeds/inDev/types";
+import {
+	ProjectStatus,
+	TopicSelectionReason,
+	TopicSelectionDecision,
+} from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
@@ -74,6 +78,36 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 			break;
 	}
 
+	let topicSelectionDecisionText;
+
+	switch (topicSelectionDecision) {
+		case "NoneSelected":
+			topicSelectionDecisionText = TopicSelectionDecision.NoneSelected;
+			break;
+		case "AwaitingDecision":
+			topicSelectionDecisionText = TopicSelectionDecision.AwaitingDecision;
+			break;
+		case "NotSelected":
+			topicSelectionDecisionText = TopicSelectionDecision.NotSelected;
+			break;
+		case "FurtherInformationRequired":
+			topicSelectionDecisionText =
+				TopicSelectionDecision.FurtherInformationRequired;
+			break;
+		case "Selected":
+			topicSelectionDecisionText = TopicSelectionDecision.Selected;
+			break;
+		case "Prioritised":
+			topicSelectionDecisionText = TopicSelectionDecision.Prioritised;
+			break;
+		case "NotPrioritised":
+			topicSelectionDecisionText = TopicSelectionDecision.NotPrioritised;
+			break;
+		default:
+			topicSelectionDecisionText = null;
+			break;
+	}
+
 	return (
 		<>
 			{isGuidanceHubPage ? (
@@ -115,16 +149,20 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 								<dt>Technology type:</dt> <dd>{technologyType}</dd>
 							</>
 						)}
-						{topicSelectionDecision && (
+						{topicSelectionDecisionText && (
 							<>
 								<dt>Decision:</dt>
-								<dd>{topicSelectionDecision}</dd>
+								<dd>{topicSelectionDecisionText}</dd>
 							</>
 						)}
 						{topicSelectionDecisionDate && (
 							<>
 								<dt>Decision publication date:</dt>{" "}
-								<dd>{topicSelectionDecisionDate}</dd>
+								<dd>
+									<time dateTime={stripTime(topicSelectionDecisionDate)}>
+										&nbsp;{formatDateStr(topicSelectionDecisionDate)}
+									</time>
+								</dd>
 							</>
 						)}
 						{prioritisationRouting && (
