@@ -1,0 +1,1246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions should match the snapshot 1`] = `
+<div>
+  <div
+    class="undefined undefined"
+  >
+    <div />
+    <main>
+      <div
+        class="container"
+        data-component="container"
+      >
+        <div
+          class="page-header page-header--full-width-light page-header--vertical-padding-loose"
+          data-component="page-header"
+          data-testid="content-start"
+          id="content-start"
+        >
+          <div
+            class="page-header__full-width-container"
+          >
+            <div
+              class="page-header__breadcrumbs"
+            >
+              <nav
+                aria-label="Breadcrumbs"
+                data-component="breadcrumbs"
+                role="navigation"
+              >
+                <ol
+                  class="breadcrumbs"
+                >
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does"
+                    >
+                      What NICE does
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does/our-guidance"
+                    >
+                      Our guidance
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does/our-guidance/prioritising-our-guidance-topics"
+                    >
+                      Prioritising our guidance topics
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <a
+                      href="/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions"
+                    >
+                      Our prioritisation decisions
+                    </a>
+                  </li>
+                  <li
+                    class="breadcrumbs__crumb"
+                  >
+                    <span>
+                      Prioritisation board decisions
+                    </span>
+                  </li>
+                </ol>
+              </nav>
+              <script
+                type="application/ld+json"
+              >
+                {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/what-nice-does",
+        "name": "What NICE does"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/what-nice-does/our-guidance",
+        "name": "Our guidance"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "/what-nice-does/our-guidance/prioritising-our-guidance-topics",
+        "name": "Prioritising our guidance topics"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@id": "/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions",
+        "name": "Our prioritisation decisions"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "name": "Prioritisation board decisions"
+      }
+    }
+  ]
+}
+              </script>
+            </div>
+            <h1
+              class="page-header__heading "
+            >
+              Prioritisation board decisions
+            </h1>
+            <p
+              class="page-header__lead"
+            >
+              <a
+                class="skipLink"
+                href="#filters"
+              >
+                Skip to filters
+              </a>
+              <a
+                class="skipLink"
+                href="#results"
+              >
+                Skip to results
+              </a>
+              We have a centralised approach to prioritising our guidance topics.
+            </p>
+            <div
+              class="page-header__description"
+            >
+              This ensures that we produce guidance that is relevant, timely, accessible, and has demonstrable impact.
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid grid--loose sectionWrapper"
+        >
+          <section
+            aria-label="Filter results"
+            class="panelWrapper"
+            data-component="grid-item"
+            data-g="12 md:4 lg:3"
+          >
+            <form
+              aria-label="Filter results"
+              id="filters"
+            >
+              <div
+                class="filter-panel"
+                data-component="filter-panel"
+              >
+                <h2
+                  class="filter-panel__heading"
+                >
+                  <button
+                    aria-controls="filter-panel-body"
+                    aria-expanded="true"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="filter-panel__heading-icon filter-panel__heading-icon--expanded"
+                      fill="none"
+                      focusable="false"
+                      height="1em"
+                      viewBox="0 0 512 512"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Filter
+                  </button>
+                </h2>
+                <div
+                  aria-hidden="false"
+                  class="filter-panel__body"
+                  id="filter-panel-body"
+                >
+                  <a
+                    class="skipLink"
+                    href="#results"
+                  >
+                    Skip to results
+                  </a>
+                  <input
+                    name="ps"
+                    type="hidden"
+                    value=""
+                  />
+                  <input
+                    name="s"
+                    type="hidden"
+                    value=""
+                  />
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-topic-title-and-rationale"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-topic-title-and-rationale"
+                        >
+                          Topic title and rationale
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-topic-title-and-rationale"
+                    >
+                      <legend>
+                        Topic title and rationale
+                      </legend>
+                      <div
+                        class="ph--c pt--c"
+                      >
+                        <div
+                          class="input"
+                          data-component="input"
+                        >
+                          <input
+                            autocomplete="off"
+                            class="input__input"
+                            id="q"
+                            name="q"
+                            placeholder="E.g. 'diabetes'"
+                            spellcheck="false"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                        <button
+                          class="btn btn--secondary ml--0"
+                          data-component="button--secondary"
+                          type="submit"
+                        >
+                          Apply filter
+                        </button>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-meeting-date"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-meeting-date"
+                        >
+                          Meeting date
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-meeting-date"
+                    >
+                      <legend>
+                        Meeting date
+                      </legend>
+                      <div
+                        class="ph--c pt--c"
+                      >
+                        <div
+                          class="input"
+                          data-component="input"
+                        >
+                          <label
+                            class="input__label"
+                            for="from"
+                          >
+                            From date
+                          </label>
+                          <input
+                            class="input__input"
+                            id="from"
+                            max="2025-06-17"
+                            min="2000-01-01"
+                            name="from"
+                            pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                            placeholder="yyyy-mm-dd"
+                            type="date"
+                            value=""
+                          />
+                        </div>
+                        <div
+                          class="input"
+                          data-component="input"
+                        >
+                          <label
+                            class="input__label"
+                            for="to"
+                          >
+                            To date
+                          </label>
+                          <input
+                            class="input__input"
+                            id="to"
+                            max="2025-06-17"
+                            min="2000-01-01"
+                            name="to"
+                            pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
+                            placeholder="yyyy-mm-dd"
+                            type="date"
+                            value=""
+                          />
+                        </div>
+                        <button
+                          class="btn btn--secondary ml--0"
+                          data-component="button--secondary"
+                          type="submit"
+                        >
+                          Apply date filters
+                        </button>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-pde"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-pde"
+                        >
+                          Prioritisation decision
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-pde"
+                    >
+                      <legend>
+                        Prioritisation decision
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_pde_not-prioritised"
+                      >
+                        <input
+                          id="filter_pde_not-prioritised"
+                          name="pde"
+                          title="Prioritisation decision - Not prioritised (1)"
+                          type="checkbox"
+                          value="Not prioritised"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Not prioritised (1)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_pde_not-selected"
+                      >
+                        <input
+                          id="filter_pde_not-selected"
+                          name="pde"
+                          title="Prioritisation decision - Not selected (139)"
+                          type="checkbox"
+                          value="Not selected"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Not selected (139)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_pde_prioritised"
+                      >
+                        <input
+                          id="filter_pde_prioritised"
+                          name="pde"
+                          title="Prioritisation decision - Prioritised (30)"
+                          type="checkbox"
+                          value="Prioritised"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Prioritised (30)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
+                  <div
+                    class="filter-group"
+                  >
+                    <h3
+                      class="filter-group__heading"
+                    >
+                      <button
+                        aria-controls="group-ppr"
+                        aria-expanded="true"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="filter-group__heading-icon filter-group__heading-icon--expanded"
+                          fill="none"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 512 512"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M478.152 174c0 10.091-3.525 18.661-10.576 25.712l-186 186c-7.243 7.243-15.909 10.864-26 10.864-10.283 0-18.853-3.621-25.712-10.864l-186-186C36.621 192.853 33 184.283 33 174c0-10.091 3.621-18.757 10.864-26L65 126.576C72.424 119.525 81.09 116 91 116c10.091 0 18.661 3.525 25.712 10.576L255.576 265.44 394.44 126.576c7.051-7.051 15.621-10.576 25.712-10.576 9.909 0 18.576 3.525 26 10.576L467.576 148c7.051 7.424 10.576 16.091 10.576 26Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <span
+                          id="group-heading-ppr"
+                        >
+                          Prioritisation programme
+                           
+                        </span>
+                      </button>
+                    </h3>
+                    <fieldset
+                      aria-hidden="false"
+                      class="filter-group__options"
+                      id="group-ppr"
+                    >
+                      <legend>
+                        Prioritisation programme
+                      </legend>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_guidelines"
+                      >
+                        <input
+                          id="filter_ppr_guidelines"
+                          name="ppr"
+                          title="Prioritisation programme - Guidelines (9)"
+                          type="checkbox"
+                          value="Guidelines"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Guidelines (9)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_healthtech"
+                      >
+                        <input
+                          id="filter_ppr_healthtech"
+                          name="ppr"
+                          title="Prioritisation programme - HealthTech (8)"
+                          type="checkbox"
+                          value="HealthTech"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          HealthTech (8)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_interventional-procedures"
+                      >
+                        <input
+                          id="filter_ppr_interventional-procedures"
+                          name="ppr"
+                          title="Prioritisation programme - Interventional procedures (1)"
+                          type="checkbox"
+                          value="Interventional procedures"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Interventional procedures (1)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_medicines-evaluation"
+                      >
+                        <input
+                          id="filter_ppr_medicines-evaluation"
+                          name="ppr"
+                          title="Prioritisation programme - Medicines evaluation (27)"
+                          type="checkbox"
+                          value="Medicines evaluation"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Medicines evaluation (27)
+                        </span>
+                      </label>
+                      <label
+                        class="filter-option"
+                        data-component="filter-option"
+                        for="filter_ppr_multi-programme-assessment"
+                      >
+                        <input
+                          id="filter_ppr_multi-programme-assessment"
+                          name="ppr"
+                          title="Prioritisation programme - Multi-programme assessment (2)"
+                          type="checkbox"
+                          value="Multi-programme assessment"
+                        />
+                        <span
+                          class="filter-option__text"
+                        >
+                          Multi-programme assessment (2)
+                        </span>
+                      </label>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </section>
+          <section
+            aria-labelledby="filter-summary"
+            data-component="grid-item"
+            data-g="12 md:8 lg:9"
+          >
+            <div
+              class="filter-summary"
+              data-component="filter-summary"
+              id="filter-summary"
+            >
+              <div
+                class="filter-summary__count"
+              >
+                <h2
+                  class="h5 mv--0"
+                >
+                  Showing 
+                  1
+                   to 
+                  10
+                   of 
+                  170
+                </h2>
+              </div>
+              <div
+                class="filter-summary__sorting"
+              >
+                <label
+                  class="filter-summary__sort-label"
+                  for="sorting-options"
+                >
+                  Sort by
+                </label>
+                <select
+                  class="filter-summary__select"
+                  id="sorting-options"
+                  name="s"
+                >
+                  <option
+                    selected=""
+                    value="Date"
+                  >
+                    Meeting date
+                  </option>
+                  <option
+                    value="Title"
+                  >
+                    Topic title and rationale
+                  </option>
+                </select>
+              </div>
+            </div>
+            <p>
+              Select a topic title to read why the prioritisation decision was made.
+            </p>
+            <div
+              class="tableWrapper"
+            >
+              <table
+                aria-describedby="filter-summary"
+                class="table"
+                data-component="table"
+                id="results"
+              >
+                <caption
+                  class="visually-hidden"
+                >
+                  List of priorition board decisions
+                </caption>
+                <thead>
+                  <tr>
+                    <th
+                      scope="col"
+                    >
+                      Meeting date
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Topic title and rationale
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Prioritisation decision
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Prioritisation programme
+                    </th>
+                    <th
+                      scope="col"
+                    >
+                      Decision publication date
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="26/2/2025"
+                        datetime="2025-02-26T12:00:00"
+                      >
+                        <span>
+                          26 February 2025
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/ng24"
+                      >
+                        Blood transfusion
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      Guidelines
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="21/3/2025"
+                        datetime="2025-03-21T12:00:00"
+                      >
+                        <span>
+                          21 March 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="8/7/2024"
+                        datetime="2024-07-08T12:00:00"
+                      >
+                        <span>
+                          8 July 2024
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/ng28"
+                      >
+                        Type 2 diabetes
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      Guidelines
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="12/7/2024"
+                        datetime="2024-07-12T12:00:00"
+                      >
+                        <span>
+                          12 July 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="10/6/2024"
+                        datetime="2024-06-10T12:00:00"
+                      >
+                        <span>
+                          10 June 2024
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/htg768"
+                      >
+                        Digital self-help for eating disorders: early value assessment
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="11/7/2024"
+                        datetime="2024-07-11T12:00:00"
+                      >
+                        <span>
+                          11 July 2024
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/htg1048"
+                      >
+                        Digital Health Technologies (DHT’s) for the delivery of cognitive behaviour therapy (CBT) to help manage the symptoms of menopause
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="27/11/2025"
+                        datetime="2025-11-27T12:00:00"
+                      >
+                        <span>
+                          27 November 2025
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/htg1017"
+                      >
+                        Master Alert test
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="12/5/2026"
+                        datetime="2026-05-12T12:00:00"
+                      >
+                        <span>
+                          12 May 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/hst159"
+                      >
+                        Alert Indev test-3
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="6/5/2026"
+                        datetime="2026-05-06T12:00:00"
+                      >
+                        <span>
+                          6 May 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/awaiting-development/gid-ta12260"
+                      >
+                        ID-929: Topic prioritisation set on website when blank in Indev (2)
+                      </a>
+                    </td>
+                    <td>
+                      Prioritised
+                    </td>
+                    <td>
+                      HealthTech
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="15/5/2026"
+                        datetime="2026-05-15T02:07:28"
+                      >
+                        <span>
+                          15 May 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="16/4/2026"
+                        datetime="2026-04-16T12:00:00"
+                      >
+                        <span>
+                          16 April 2026
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11994"
+                      >
+                        Pegunigalsidase alfa every 4 weeks for treating Fabry disease [TSID12346]
+                      </a>
+                    </td>
+                    <td>
+                      Not selected
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="24/4/2026"
+                        datetime="2026-04-24T12:00:00"
+                      >
+                        <span>
+                          24 April 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        Unknown
+                      </span>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11990"
+                      >
+                        Dabrafenib with trametinib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12398]
+                      </a>
+                    </td>
+                    <td>
+                      Not selected
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/2/2026"
+                        datetime="2026-02-04T12:00:00"
+                      >
+                        <span>
+                          4 February 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/2/2026"
+                        datetime="2026-02-04T12:00:00"
+                      >
+                        <span>
+                          4 February 2026
+                        </span>
+                      </time>
+                    </td>
+                    <td>
+                      <a
+                        href="https://next-web-tests.nice.org.uk/guidance/prioritisation/gid-ta11989"
+                      >
+                        Dabrafenib for treating unresectable or metastatic BRAF V600 mutation positive melanoma in people 12 to 17 years [TSID12399]
+                      </a>
+                    </td>
+                    <td>
+                      Not selected
+                    </td>
+                    <td>
+                      Medicines evaluation
+                    </td>
+                    <td>
+                      <time
+                        class="date"
+                        data-shortdate="4/2/2026"
+                        datetime="2026-02-04T12:00:00"
+                      >
+                        <span>
+                          4 February 2026
+                        </span>
+                      </time>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <nav
+              aria-label="Pagination"
+              class="pagination "
+              data-component="pagination"
+              role="navigation"
+            >
+              <ol
+                class="pagination__list"
+              >
+                <li
+                  aria-current="true"
+                  class="pagination__item pagination__item--current"
+                >
+                  <span
+                    class="pagination__inactive"
+                  >
+                    <span
+                      class="visually-hidden"
+                    >
+                      Current page 
+                    </span>
+                    1
+                  </span>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <a
+                    aria-label="Go to page 2"
+                    class="pagination__link"
+                    href="/?pa=2"
+                  >
+                    2
+                  </a>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <a
+                    aria-label="Go to page 3"
+                    class="pagination__link"
+                    href="/?pa=3"
+                  >
+                    3
+                  </a>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <span
+                    class="pagination__inactive"
+                  >
+                    …
+                  </span>
+                </li>
+                <li
+                  class="pagination__item"
+                >
+                  <a
+                    aria-label="Go to page 17"
+                    class="pagination__link"
+                    href="/?pa=17"
+                  >
+                    17
+                  </a>
+                </li>
+                <li
+                  class="pagination__item pagination__item--count"
+                >
+                  <span>
+                    Page 
+                    <strong>
+                      1
+                    </strong>
+                     of 
+                    <strong>
+                      17
+                    </strong>
+                  </span>
+                </li>
+                <li
+                  class="pagination__item pagination__item--bookend"
+                >
+                  <a
+                    class="pagination__link"
+                    href="/?pa=2"
+                  >
+                    Next page
+                  </a>
+                </li>
+              </ol>
+            </nav>
+            <div
+              class="grid grid--middle mt--d"
+            >
+              <div
+                class="mb--e mb--0-sm"
+                data-component="grid-item"
+                data-g="12 sm:6"
+              >
+                <button
+                  class="btn mv--0 mh--0"
+                  data-component="button--primary"
+                  type="button"
+                >
+                  Copy 
+                  10 results
+                   to clipboard
+                </button>
+              </div>
+              <div
+                class="text-right"
+                data-component="grid-item"
+                data-g="12 sm:6"
+              >
+                <h3
+                  class="resultsPerPageHeading"
+                >
+                  Results per page
+                </h3>
+                <ol
+                  class="list list--piped resultsPerPageList"
+                >
+                  <li>
+                    10
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show 25 results per page"
+                      href="/?ps=25"
+                    >
+                      25
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show 50 results per page"
+                      href="/?ps=50"
+                    >
+                      50
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      aria-label="Show All results per page"
+                      href="/?ps=9999"
+                    >
+                      All
+                    </a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <noscript />
+  </div>
+</div>
+`;

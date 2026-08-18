@@ -1,0 +1,467 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/indicators/terminated/[slug].page TerminatedDetailsPage should match snapshot for main content 1`] = `
+<body>
+  <div>
+    <nav
+      aria-label="Breadcrumbs"
+      data-component="breadcrumbs"
+      role="navigation"
+    >
+      <ol
+        class="breadcrumbs"
+      >
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/what-nice-does/standards-and-indicators/indicators"
+          >
+            Indicators
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <a
+            href="/indicators/terminated"
+          >
+            Terminated
+          </a>
+        </li>
+        <li
+          class="breadcrumbs__crumb"
+        >
+          <span>
+            IND1002
+          </span>
+        </li>
+      </ol>
+    </nav>
+    <script
+      type="application/ld+json"
+    >
+      {
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "/what-nice-does/standards-and-indicators/indicators",
+        "name": "Indicators"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "/indicators/terminated",
+        "name": "Terminated"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "name": "IND1002"
+      }
+    }
+  ]
+}
+    </script>
+    <div
+      class="page-header "
+      data-component="page-header"
+      id="content-start"
+    >
+      <h1
+        class="page-header__heading page-header__heading--alt"
+      >
+        Test terminated indicator IND1002: The percentage of patients with diabetes who have received a foot examination
+      </h1>
+      <ul
+        class="page-header__metadata"
+      >
+        <li>
+          NICE indicator
+        </li>
+        <li>
+          IND1002
+        </li>
+        <li>
+          Published:
+          <time
+            datetime="2022-09-08"
+          >
+             
+            8 September 2022
+          </time>
+        </li>
+      </ul>
+    </div>
+    <nav
+      class="horizontal-nav"
+    >
+      <ul
+        class="horizontal-nav__list"
+      >
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="true"
+            class="horizontal-nav__link"
+            href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination"
+          >
+            Indicator
+          </a>
+        </li>
+        <li
+          class="horizontal-nav__item"
+          data-component="horizontal-nav"
+        >
+          <a
+            aria-current="false"
+            class="horizontal-nav__link"
+            href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/evidence"
+          >
+            Evidence
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="grid grid--loose"
+    >
+      <section
+        aria-label="Chapters"
+        data-component="grid-item"
+        data-g="12 sm:5 md:3"
+      >
+        <a
+          aria-label="Download indicator PDF file"
+          class="btn btn--cta download"
+          data-component="button--cta"
+          href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/IND1002-20230115.pdf"
+          target="_blank"
+        >
+          Download 
+          indicator
+           (PDF)
+        </a>
+        <nav
+          aria-label="Chapter pages"
+          class="stacked-nav"
+          data-component="stacked-nav"
+        >
+          <ul
+            class="stacked-nav__list"
+          >
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="true"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Overview
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/indicator-nm182"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Indicator NM182
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/indicator-type"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Indicator type
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/introduction"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Introduction
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/rationale"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Rationale
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/source-guidance"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Source guidance
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/specification"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Specification
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              class="stacked-nav__list-item"
+            >
+              <a
+                aria-current="false"
+                href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/further-information"
+              >
+                <span
+                  class="stacked-nav__content-wrapper"
+                >
+                  <span>
+                    Further information
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <section
+        data-component="grid-item"
+        data-g="12 sm:7 md:9"
+      >
+        <div
+          class="grid grid--loose"
+        >
+          <div
+            data-component="grid-item"
+            data-g="12 md:8"
+          >
+            <div
+              class="summary"
+            >
+              <p
+                class="lead"
+              >
+                The percentage of patients with diabetes who have received a foot examination.
+              </p>
+            </div>
+          </div>
+          <div
+            data-component="grid-item"
+            data-g="12"
+          >
+            <hr />
+            <div
+              class="prev-next"
+            >
+              <nav
+                aria-label="Previous and next pages"
+              >
+                <a
+                  class="prev-next__link"
+                  href="/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/indicator-nm182"
+                >
+                  <span
+                    class="prev-next__link-intro"
+                  >
+                    Next page
+                  </span>
+                  <span
+                    class="prev-next__link-text"
+                  >
+                    Indicator NM182
+                  </span>
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`/indicators/terminated/[slug].page getServerSideProps should return a correct props when supplied with a valid slug 1`] = `
+Object {
+  "props": Object {
+    "chapters": Array [
+      Object {
+        "title": "Overview",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination",
+      },
+      Object {
+        "title": "Indicator NM182",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/indicator-nm182",
+      },
+      Object {
+        "title": "Indicator type",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/indicator-type",
+      },
+      Object {
+        "title": "Introduction",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/introduction",
+      },
+      Object {
+        "title": "Rationale",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/rationale",
+      },
+      Object {
+        "title": "Source guidance",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/source-guidance",
+      },
+      Object {
+        "title": "Specification",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/specification",
+      },
+      Object {
+        "title": "Further information",
+        "url": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/chapter/further-information",
+      },
+    ],
+    "hasEvidenceResources": true,
+    "hasHistory": false,
+    "indicatorSubTypes": Array [
+      Object {
+        "enabled": true,
+        "identifierPrefix": "CCG",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "Clinical commissioning group indicator",
+        "pluralName": "Clinical commissioning group indicators",
+      },
+      Object {
+        "enabled": true,
+        "identifierPrefix": "GPIQ",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "General practice indicator suitable for use in QOF",
+        "pluralName": "General practice indicators suitable for use in QOF",
+      },
+      Object {
+        "enabled": true,
+        "identifierPrefix": "GPINQ",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "General practice indicator suitable for use outside of QOF",
+        "pluralName": "General practice indicators suitable for use outside of QOF",
+      },
+      Object {
+        "enabled": true,
+        "identifierPrefix": "NLQ",
+        "lastModified": "2022-07-12T00:00:00",
+        "name": "National library of quality indicators",
+        "pluralName": "National library of quality indicators",
+      },
+    ],
+    "pdfDownloadPath": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination/IND1002-20230115.pdf",
+    "product": Object {
+      "accreditationList": Array [],
+      "additionalAuthorList": undefined,
+      "alert": undefined,
+      "authorList": Array [
+        "National Institute for Health and Care Excellence (NICE)",
+      ],
+      "endorsementList": Array [],
+      "id": "IND1002",
+      "indicatorSubTypeList": Array [
+        "CCG",
+        "GPIQ",
+      ],
+      "lastMajorModificationDate": "2022-09-08T14:19:12.8893126",
+      "metaDescription": "The percentage of patients with diabetes who have received a foot examination",
+      "productStatus": "Terminated",
+      "productType": "IND",
+      "productTypeName": "NICE indicator",
+      "publishedDate": "2022-09-08T14:19:12.8893126",
+      "relatedProductList": Array [],
+      "summary": "<p class=\\"lead\\">The percentage of patients with diabetes who have received a foot examination.</p>",
+      "supportingList": Array [],
+      "terminatedDate": undefined,
+      "title": "Test terminated indicator IND1002: The percentage of patients with diabetes who have received a foot examination",
+    },
+    "productPath": "/indicators/terminated/ind1002-test-terminated-indicator-ind-1002-the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination",
+    "taxonomyBreadcrumb": Array [],
+  },
+}
+`;
