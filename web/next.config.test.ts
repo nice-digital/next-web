@@ -12,44 +12,44 @@ describe("next.config.js", () => {
 			globalHeader = headers.find((h) => h.source === "/(.*)");
 
 		expect(globalHeader?.headers).toMatchInlineSnapshot(`
-		Array [
-		  Object {
+		[
+		  {
 		    "key": "Cache-Control",
 		    "value": "public, s-maxage=900, max-age=480, stale-while-revalidate=1800",
 		  },
-		  Object {
+		  {
 		    "key": "X-App",
 		    "value": "next-web",
 		  },
-		  Object {
+		  {
 		    "key": "X-DNS-Prefetch-Control",
 		    "value": "on",
 		  },
-		  Object {
+		  {
 		    "key": "Strict-Transport-Security",
 		    "value": "max-age=31536000; includeSubDomains; preload",
 		  },
-		  Object {
+		  {
 		    "key": "X-XSS-Protection",
 		    "value": "1; mode=block",
 		  },
-		  Object {
+		  {
 		    "key": "Permissions-Policy",
 		    "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
 		  },
-		  Object {
+		  {
 		    "key": "X-Content-Type-Options",
 		    "value": "nosniff",
 		  },
-		  Object {
+		  {
 		    "key": "Referrer-Policy",
 		    "value": "strict-origin-when-cross-origin",
 		  },
-		  Object {
+		  {
 		    "key": "Content-Security-Policy",
 		    "value": "frame-ancestors 'self' https://app.storyblok.com",
 		  },
-		  Object {
+		  {
 		    "key": "Link",
 		    "value": "<https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js>; rel=preload; as=script,<https://apikeys.civiccomputing.com>; rel=preconnect; crossorigin,<https://www.googletagmanager.com>; rel=preconnect",
 		  },
