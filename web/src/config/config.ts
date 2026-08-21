@@ -15,6 +15,18 @@ export interface CacheControlConfig {
 	readonly defaultCacheHeader: string;
 }
 
+/**
+ * Config for the AWS WAF client application integration, which we use to prove requests come from
+ * a real browser rather than a bot. See _docs/aws-waf-ddos-mitigation.md_
+ */
+export interface AwsWafConfig {
+	/**
+	 * The absolute URL of the AWS WAF JavaScript SDK include, from the 'Application integration'
+	 * page of the WAF console. An empty string disables the integration entirely.
+	 */
+	readonly scriptURL: string;
+}
+
 export interface JotFormPublicConfig {
 	/** The full base URL for NICE's JotForm instance, including protocol but excluding trailing slash */
 	readonly baseURL: string;
@@ -45,6 +57,9 @@ export interface PublicConfig {
 	 * The absolute URL to the NICE cookie banner script include
 	 */
 	readonly cookieBannerScriptURL: string;
+
+	/** Public config for the AWS WAF client application integration */
+	readonly awsWaf: AwsWafConfig;
 
 	/**
 	 * The base URL to the deployed NextJS _public_ folder, see https://nextjs.org/docs/basic-features/static-file-serving.
