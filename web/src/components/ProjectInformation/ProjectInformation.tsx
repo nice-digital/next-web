@@ -58,54 +58,25 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	isGuidanceHubPage,
 	content,
 }) => {
-	let topicSelectionReasonText;
+	let topicSelectionReasonText = null;
+	let topicSelectionDecisionText = null;
 
-	switch (topicSelectionReason) {
-		case "Monitor":
-			topicSelectionReasonText = TopicSelectionReason.Monitor;
-			break;
-		case "Anticipate":
-			topicSelectionReasonText = TopicSelectionReason.Anticipate;
-			break;
-		case "NotEligible":
-			topicSelectionReasonText = TopicSelectionReason.NotEligible;
-			break;
-		case "FurtherDiscussion":
-			topicSelectionReasonText = TopicSelectionReason.FurtherDiscussion;
-			break;
-		default:
-			topicSelectionReasonText = null;
-			break;
+	if (topicSelectionReason) {
+		const tsReasonKey =
+			topicSelectionReason as keyof typeof TopicSelectionReason;
+		topicSelectionReasonText =
+			tsReasonKey in TopicSelectionReason
+				? TopicSelectionReason[tsReasonKey]
+				: null;
 	}
 
-	let topicSelectionDecisionText;
-
-	switch (topicSelectionDecision) {
-		case "NoneSelected":
-			topicSelectionDecisionText = TopicSelectionDecision.NoneSelected;
-			break;
-		case "AwaitingDecision":
-			topicSelectionDecisionText = TopicSelectionDecision.AwaitingDecision;
-			break;
-		case "NotSelected":
-			topicSelectionDecisionText = TopicSelectionDecision.NotSelected;
-			break;
-		case "FurtherInformationRequired":
-			topicSelectionDecisionText =
-				TopicSelectionDecision.FurtherInformationRequired;
-			break;
-		case "Selected":
-			topicSelectionDecisionText = TopicSelectionDecision.Selected;
-			break;
-		case "Prioritised":
-			topicSelectionDecisionText = TopicSelectionDecision.Prioritised;
-			break;
-		case "NotPrioritised":
-			topicSelectionDecisionText = TopicSelectionDecision.NotPrioritised;
-			break;
-		default:
-			topicSelectionDecisionText = null;
-			break;
+	if (topicSelectionDecision) {
+		const tsDecisionKey =
+			topicSelectionDecision as keyof typeof TopicSelectionDecision;
+		topicSelectionDecisionText =
+			tsDecisionKey in TopicSelectionDecision
+				? TopicSelectionDecision[tsDecisionKey]
+				: null;
 	}
 
 	return (
