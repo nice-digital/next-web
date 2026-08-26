@@ -589,11 +589,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <th
                       scope="col"
                     >
-                      Rationale
-                    </th>
-                    <th
-                      scope="col"
-                    >
                       Decision publication date
                     </th>
                   </tr>
@@ -620,11 +615,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Routed as a TA
-                    </td>
-                    <td>
-                      <p>
-                        Project selected and routed as a TA
-                      </p>
                     </td>
                     <td>
                       <time
@@ -661,11 +651,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Routed as a TA
                     </td>
                     <td>
-                      <p>
-                        Test Rationale description
-                      </p>
-                    </td>
-                    <td>
                       <time
                         class="date"
                         data-shortdate="21/7/2026"
@@ -698,11 +683,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Routed as a TA
-                    </td>
-                    <td>
-                      <p>
-                        Decision makers agreed that a Technology Appraisal (TA) would not be appropriate for the subject technology due to the commissioning arrangements being covered in the existing NHS England policy.
-                      </p>
                     </td>
                     <td>
                       <time
@@ -739,11 +719,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Routed as an HST
                     </td>
                     <td>
-                      <p>
-                        Decision makers have concluded that this technology will not progress as a potential technology appraisal or a highly specialised technology. Traditional approaches to cost-effectiveness analysis, as used in TA, are not appropriate for antimicrobials. New antimicrobials will now be considered for NICE evaluation as part of NHS England’s Antimicrobial Products Subscription Model, which is expected in Summer 2024. Therefore, an evaluation of this product would not be appropriate.
-                      </p>
-                    </td>
-                    <td>
                       <time
                         class="date"
                         data-shortdate="18/4/2024"
@@ -776,11 +751,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Routed as a TA
-                    </td>
-                    <td>
-                      <p>
-                        The NICE Topic Selection Oversight Panel (TSOP), met in May 2023 to carefully consider the suitability of this topic for a Technology Appraisal (TA). The panel concluded it would not be an efficient use of NHS resources to conduct an evaluation. The topic will be formally removed from the NICE work programme. Due to the non-selection, NHS England may consider the technology for routine commissioning – please see section 3.1 of the NHS England Procedural note: non submission of data to NICE for further information. Any request for consideration for routine commissioning needs to be submitted via a clinician; the Service Development Policy outlines the process.
-                      </p>
                     </td>
                     <td>
                       <time
@@ -817,23 +787,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Routed as a TA
                     </td>
                     <td>
-                      <p>
-                        "Decision makers have concluded that this technology will not progress as a potential technology appraisal or a highly specialised technology. This decision follows consideration of the product against the eligibility and selection criteria for technology appraisal and highly specialised technologies.
-                      </p>
-                      
-
-                      <p>
-                        Section 6.2.1 of the Topic Selection Manual states that:
-                      </p>
-                      
-
-                      <p>
-                        Medicines that meet the eligibility criteria will be selected, except when there is a clear rationale not to do so. For example, when: 
-                        <br />
-                        changes to the dose, formulation or administration will not significantly affect the clinical and cost effectiveness of the medicine
-                      </p>
-                    </td>
-                    <td>
                       <time
                         class="date"
                         data-shortdate="13/9/2022"
@@ -866,11 +819,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Routed as a TA
-                    </td>
-                    <td>
-                      <p>
-                        A technology appraisal (TA) would not add value due to the technology being a new formulation of an existing agent.
-                      </p>
                     </td>
                     <td>
                       <time
@@ -907,11 +855,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Routed as a TA
                     </td>
                     <td>
-                      <p>
-                        The technology was considered by the Topic Selection Oversight Panel (TSOP) in June 2022 where the panel agreed that a TA would not add value as the criteria for selection had not been met as per section 4.1.4 and section 6.2.1 of the NICE health technology evaluation topic selection: the manual
-                      </p>
-                    </td>
-                    <td>
                       <time
                         class="date"
                         data-shortdate="29/6/2022"
@@ -946,11 +889,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       Routed as a TA
                     </td>
                     <td>
-                      <p>
-                        This topic was presented to the Topic Selection Oversight Panel (TSOP) in April 2021. The panel agreed that there was no clear rationale for an evaluation, and it would not add value to the NHS. The topic was not selected for the TA-HST work programme.
-                      </p>
-                    </td>
-                    <td>
                       <time
                         class="date"
                         data-shortdate="30/4/2021"
@@ -983,11 +921,6 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     </td>
                     <td>
                       Routed as an HST
-                    </td>
-                    <td>
-                      <p>
-                        Decision makers agreed that a Technology Appraisal (TA) would not be appropriate for the subject technology due to the commissioning arrangements in the existing NHS England policy cobicistat-policy.pdf (england.nhs.uk).
-                      </p>
                     </td>
                     <td>
                       <time

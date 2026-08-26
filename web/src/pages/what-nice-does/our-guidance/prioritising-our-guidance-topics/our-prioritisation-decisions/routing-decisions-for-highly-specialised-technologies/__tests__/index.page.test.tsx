@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/routing.json";
-import { getByRole, render, screen, within } from "@/test-utils/rendering";
+import { render, screen, within } from "@/test-utils/rendering";
 import { formatDateStr } from "@/utils/datetime";
 
 import IndexPage from "../index.page";
@@ -47,8 +47,8 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				["Meeting date", 1],
 				["Topic title and rationale", 2],
 				["Routing decision", 3],
-				["Rationale", 4],
-				["Decision publication date", 5],
+				// ["Rationale", 4],
+				["Decision publication date", 4],
 			])(
 				"should set column header '%s' at column %i",
 				(headingText, columnIndex) => {
@@ -81,7 +81,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				prioritisationBoardMeetingDate,
 				title,
 				routingDecision,
-				rationale,
+				// rationale,
 				prioritisationBoardDecisionDate,
 			} = sampleData.documents[0];
 
@@ -89,7 +89,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 				[formatDateStr(String(prioritisationBoardMeetingDate))],
 				[title],
 				[routingDecision],
-				[rationale.replace(/<[^>]*>/g, "").trim()], // remove html in string
+				// [rationale.replace(/<[^>]*>/g, "").trim()], // remove html in string
 				[formatDateStr(String(prioritisationBoardDecisionDate))],
 			])("should set data cell to '%s'", (text) => {
 				const row = screen.getAllByRole("row")[1];

@@ -23,7 +23,6 @@ const tableBodyRender = (documents: Document[]) => (
 				<th scope="col">Meeting date</th>
 				<th scope="col">Topic title and rationale</th>
 				<th scope="col">Routing decision</th>
-				<th scope="col">Rationale</th>
 				<th scope="col">Decision publication date</th>
 			</tr>
 		</thead>
@@ -35,7 +34,6 @@ const tableBodyRender = (documents: Document[]) => (
 					pathAndQuery,
 					title,
 					routingDecision,
-					rationale,
 					prioritisationBoardDecisionDate,
 				}) => {
 					return (
@@ -56,15 +54,6 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{routingDecision}</td>
-							{rationale ? (
-								<td
-									dangerouslySetInnerHTML={{
-										__html: rationale,
-									}}
-								></td>
-							) : (
-								<td>No rationaleText</td>
-							)}
 							<td>
 								<ResponsiveDate
 									isoDateTime={String(prioritisationBoardDecisionDate)}
