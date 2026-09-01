@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`feeds/inDev getAllConsultations should load raw feed data with empty cache 1`] = `
-{
+Object {
   "allowedRole": "CHTETeam",
-  "areasOfInterestList": [],
+  "areasOfInterestList": Array [],
   "consultationId": 1229,
   "consultationName": "Draft guidance",
   "consultationType": "Draft guidance",
@@ -14,9 +14,9 @@ exports[`feeds/inDev getAllConsultations should load raw feed data with empty ca
   "firstConvertedDocumentId": null,
   "hasDocumentsWhichAllowConsultationComments": true,
   "isChte": true,
-  "links": {
-    "self": [
-      {
+  "links": Object {
+    "self": Array [
+      Object {
         "href": "/guidance/GID-MT553/consultation/html-content",
       },
     ],
@@ -36,8 +36,8 @@ exports[`feeds/inDev getAllConsultations should load raw feed data with empty ca
 `;
 
 exports[`feeds/inDev getAllProjects should load raw feed data with empty cache 1`] = `
-{
-  "areasOfInterestList": [],
+Object {
+  "areasOfInterestList": Array [],
   "createdDate": "2014-07-16T13:14:34",
   "developedAs": null,
   "eTag": "01000000-0000-001B-0000-000000005402",
@@ -45,9 +45,9 @@ exports[`feeds/inDev getAllProjects should load raw feed data with empty cache 1
   "firstGoLiveDate": null,
   "idNumber": null,
   "lastModifiedDate": "2014-07-16T13:14:34",
-  "links": {
-    "self": [
-      {
+  "links": Object {
+    "self": Array [
+      Object {
         "href": "/project/GID-TAG377",
       },
     ],

@@ -155,17 +155,17 @@ describe("getServerSideProps", () => {
 		it("should return props when resource and part HTML exist", async () => {
 			expect(await getServerSideProps(getServerSidePropsContext))
 				.toMatchInlineSnapshot(`
-			{
-			  "props": {
-			    "chapterSections": [],
-			    "chapters": [],
+			Object {
+			  "props": Object {
+			    "chapterSections": Array [],
+			    "chapters": Array [],
 			    "hasEvidenceResources": true,
 			    "hasHistory": true,
 			    "hasInfoForPublicResources": true,
 			    "hasToolsAndResources": true,
 			    "htmlBody": "<p>Some body content</p>",
 			    "lastUpdated": "2018-07-11T00:05:07.4294909",
-			    "product": {
+			    "product": Object {
 			      "alert": undefined,
 			      "id": "NG100",
 			      "lastMajorModificationDate": "2020-10-12T00:00:00",
@@ -179,7 +179,7 @@ describe("getServerSideProps", () => {
 			    "resourceDownloadPath": "/guidance/ng100/downloads/NG100-resource-impact-statement-3784329-4904490349.pdf",
 			    "resourceDownloadSizeBytes": 40258,
 			    "resourceTypeSlug": "resources",
-			    "taxonomyBreadcrumb": [],
+			    "taxonomyBreadcrumb": Array [],
 			    "title": "Resource impact statement",
 			  },
 			}

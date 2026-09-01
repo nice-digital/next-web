@@ -567,13 +567,13 @@ exports[`Publication tools and resources page ToolsAndResourcesListPage should m
 `;
 
 exports[`Publication tools and resources page getServerSideProps should return props 1`] = `
-{
-  "props": {
+Object {
+  "props": Object {
     "hasEvidenceResources": true,
     "hasHistory": true,
     "hasInfoForPublicResources": true,
     "hasToolsAndResources": true,
-    "product": {
+    "product": Object {
       "alert": undefined,
       "id": "NG100",
       "lastMajorModificationDate": "2020-10-12T00:00:00",
@@ -582,12 +582,12 @@ exports[`Publication tools and resources page getServerSideProps should return p
       "title": "Rheumatoid arthritis in adults: management",
     },
     "productPath": "/guidance/ng100",
-    "resourceGroups": [
-      {
-        "subGroups": [
-          {
-            "resourceLinks": [
-              {
+    "resourceGroups": Array [
+      Object {
+        "subGroups": Array [
+          Object {
+            "resourceLinks": Array [
+              Object {
                 "date": "2021-10-12T00:00:00",
                 "fileSize": 47753,
                 "fileTypeName": "Excel",
@@ -601,21 +601,21 @@ exports[`Publication tools and resources page getServerSideProps should return p
         ],
         "title": "Audit and service improvement",
       },
-      {
-        "subGroups": [
-          {
-            "resourceLinks": [
-              {
+      Object {
+        "subGroups": Array [
+          Object {
+            "resourceLinks": Array [
+              Object {
                 "href": "/guidance/ng100/resources/endorsed-resource-non-pharmacological-management-of-rheumatoid-arthritis-in-adults-a-visual-guide-for-allied-health-professionals-5185549-6720471469",
                 "title": "Endorsed resource – Non-pharmacological management of rheumatoid arthritis in adults – a visual guide for allied health professionals",
                 "type": "Implementation support",
               },
-              {
+              Object {
                 "href": "/guidance/ng100/resources/endorsed-resource-core-skills-in-musculoskeletal-care-5324265-6900247405",
                 "title": "Endorsed resource - Core skills in musculoskeletal care",
                 "type": "Implementation support",
               },
-              {
+              Object {
                 "href": "/guidance/ng100/resources/endorsed-resource-core-skills-in-musculoskeletal-care-e-learning-module-2-osteoarthritis-inflammatory-arthritis-and-spine-back-and-neck-pain-5330665-6908541805",
                 "title": "Endorsed resource – Core Skills in Musculoskeletal Care e-learning Module 2 Osteoarthritis, Inflammatory arthritis and Spine (back and neck pain) ",
                 "type": "Implementation support",
@@ -626,11 +626,11 @@ exports[`Publication tools and resources page getServerSideProps should return p
         ],
         "title": "Implementation support",
       },
-      {
-        "subGroups": [
-          {
-            "resourceLinks": [
-              {
+      Object {
+        "subGroups": Array [
+          Object {
+            "resourceLinks": Array [
+              Object {
                 "href": "/guidance/ng100/resources/resource-impact-statement-3784329-4904490349",
                 "title": "Resource impact statement",
                 "type": "Resource impact",
@@ -641,11 +641,11 @@ exports[`Publication tools and resources page getServerSideProps should return p
         ],
         "title": "Resource impact",
       },
-      {
-        "subGroups": [
-          {
-            "resourceLinks": [
-              {
+      Object {
+        "subGroups": Array [
+          Object {
+            "resourceLinks": Array [
+              Object {
                 "date": "2019-02-20T00:00:00",
                 "fileSize": 189451,
                 "fileTypeName": "PDF",
@@ -653,7 +653,7 @@ exports[`Publication tools and resources page getServerSideProps should return p
                 "title": "Rheumatoid arthritis: management and monitoring algorithm",
                 "type": "Summary versions",
               },
-              {
+              Object {
                 "date": "2019-02-13T00:00:00",
                 "fileSize": 192376,
                 "fileTypeName": "PDF",

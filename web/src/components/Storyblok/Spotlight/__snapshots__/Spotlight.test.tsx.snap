@@ -28,26 +28,16 @@ exports[`Spotlight component should match snapshot 1`] = `
               href="https://i.ytimg.com/vi_webp/wwSzpaTHyS8/hqdefault.webp"
               rel="prefetch"
             />
-            <noscript />
             <article
-              aria-label="(video) Test Youtube title - YouTube video preview"
               class="youtubeWrapper "
               data-title="(video) Test Youtube title"
-              role="img"
               style="background-image: url(https://i.ytimg.com/vi_webp/wwSzpaTHyS8/hqdefault.webp); --aspect-ratio: 56.25%;"
             >
               <button
                 aria-label="Watch (video) Test Youtube title"
                 class="youtubePlayButton"
-                tabindex="0"
                 type="button"
-              >
-                <span
-                  class="lty-visually-hidden"
-                >
-                  Watch
-                </span>
-              </button>
+              />
             </article>
             <figcaption
               class="caption"

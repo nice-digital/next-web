@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`publications getAllAreasOfInterest should load raw feed data with empty cache 1`] = `
-{
+Object {
   "enabled": true,
   "identifierPrefix": "AMP",
   "lastModified": "2021-02-23T00:00:00",
@@ -11,7 +11,7 @@ exports[`publications getAllAreasOfInterest should load raw feed data with empty
 `;
 
 exports[`publications getAllProductTypes should load raw feed data with empty cache 1`] = `
-{
+Object {
   "enabled": true,
   "group": "Advice",
   "identifierPrefix": "APA",
@@ -23,19 +23,19 @@ exports[`publications getAllProductTypes should load raw feed data with empty ca
 `;
 
 exports[`publications getAllProducts should load raw feed data with empty cache 1`] = `
-{
-  "areasOfInterestList": [],
+Object {
+  "areasOfInterestList": Array [],
   "developedAs": null,
   "id": "CG1",
-  "indicatorSubTypeList": [],
+  "indicatorSubTypeList": Array [],
   "lastMajorModificationDate": "2002-12-01T00:00:00",
   "lastModified": "2020-09-02T08:58:37.35792Z",
   "productGroup": "Guideline",
   "productStatus": "Withdrawn",
   "productType": "CG",
   "publishedDate": "2002-12-01T00:00:00",
-  "relevantTo": [],
-  "taxonomySubjectList": [],
+  "relevantTo": Array [],
+  "taxonomySubjectList": Array [],
   "title": "Schizophrenia",
   "url": "/newfeeds/product/CG1",
 }
