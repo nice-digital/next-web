@@ -26,9 +26,7 @@ describe("StoryblokYoutubeEmbed", () => {
 	it("should render the StoryblokYoutubeEmbed component", () => {
 		render(<StoryblokYoutubeEmbed blok={mockYoutubeEmbedProps.blok} />);
 
-		const wrapper = screen.getByRole("img", {
-			name: /YouTube video preview/,
-		});
+		const wrapper = screen.getByRole("article");
 		expect(wrapper).toBeInTheDocument();
 
 		const button = screen.getByRole("button");

@@ -9,7 +9,7 @@ export const config: WebdriverIO.Config = {
 	runner: "local",
 	hostname: "localhost",
 	port: 4444,
-	maxInstances: isInDocker ? 3 : 1,
+	maxInstances: isInDocker ? 5 : 1,
 	path: "/wd/hub",
 
 	specs: ["./features/**/*.feature"],
@@ -25,7 +25,7 @@ export const config: WebdriverIO.Config = {
 		{
 			acceptInsecureCerts: true, // Because of self-signed cert inside Docker
 			// acceptSslCerts: true,
-			maxInstances: 3,
+			maxInstances: 1,
 			browserName: "chrome",
 			// "goog:chromeOptions": {
 			// 	args: [
