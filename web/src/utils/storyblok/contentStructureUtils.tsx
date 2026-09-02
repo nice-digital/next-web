@@ -114,6 +114,12 @@ export const buildTree = async (
 	return tree;
 };
 
-export function sectionNavIsPopulated(tree: ExtendedSBLink[]): boolean {
+export function treeHasItems(tree: ExtendedSBLink[]): boolean {
 	return (tree ?? []).length > 0;
 }
+
+export const getSectionTitle = (
+	tree: ExtendedSBLink[]
+): ExtendedSBLink | null => {
+	return treeHasItems(tree) ? tree[0] : null;
+};
