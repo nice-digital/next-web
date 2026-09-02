@@ -30,7 +30,7 @@ module.exports = {
 		"/sitemap-storyblok.xml",
 		"/status",
 		"/terms-and-conditions",
-		"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/prioritisation-board-decisions",
+		"/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prioritisation-decisions/",
 	],
 	transform: (config, loc) => ({
 		// Strip out changefreq, priority, lastmod etc:
