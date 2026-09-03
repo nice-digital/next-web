@@ -194,9 +194,15 @@ export const validateRouteParams = async ({
 		expectedPathSegments = productPath.split("/");
 
 	const status = product.productStatus,
-		retiredOrTerminated = [Status.Retired, Status.Terminated],
-		statusIsRetiredOrTerminated = retiredOrTerminated.includes(status),
-		retiredOrTerminatedInUrl = actualPathSegments[2] === status.toLowerCase(); // must be same status
+		retiredArchivedOrTerminated = [
+			Status.Retired,
+			Status.Archived,
+			Status.Terminated,
+		],
+		statusIsRetiredArchivedOrTerminated =
+			retiredArchivedOrTerminated.includes(status),
+		retiredArchivedOrTerminatedInUrl =
+			actualPathSegments[2] === status.toLowerCase(); // must be same status
 
 	if (!query.productRoot || Array.isArray(query.productRoot))
 		throw Error(
@@ -246,8 +252,10 @@ export const validateRouteParams = async ({
 	// So by replacing the slug (2nd) segment we can support redirects to pages at any level
 	// For example from "/indicators/ind1-wrong-title/anything/here" to /indicators/ind1-correct-title/anything/here
 
-	if (statusIsRetiredOrTerminated !== retiredOrTerminatedInUrl) {
-		if (statusIsRetiredOrTerminated) {
+	if (
+		statusIsRetiredArchivedOrTerminated !== retiredArchivedOrTerminatedInUrl
+	) {
+		if (statusIsRetiredArchivedOrTerminated) {
 			actualPathSegments.splice(2, 0, status.toLowerCase());
 			actualPathSegments.splice(4);
 		} else {
