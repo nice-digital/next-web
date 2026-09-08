@@ -95,7 +95,7 @@ exports[`/indicators/archived/[slug]/index.page ArchivedDetailPage should match 
           <time
             datetime="2025-08-05"
           >
-
+             
             5 August 2025
           </time>
         </li>
@@ -119,7 +119,7 @@ exports[`/indicators/archived/[slug]/index.page ArchivedDetailPage should match 
           href="/indicators/archived/ind1112-indicator-master-accordion-panels-test/IND1112-20251209.pdf"
           target="_blank"
         >
-          Download
+          Download 
           archived indicator
            (PDF)
         </a>
