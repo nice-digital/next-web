@@ -3,7 +3,6 @@ import { type GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
 import { FeedPath } from "@/feeds/publications/types";
-import { logger } from "@/logger";
 import ind999 from "@/mockData/publications/newfeeds/product/ind999.json";
 import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
