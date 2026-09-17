@@ -52,17 +52,11 @@ export default getProductListPage({
 	metaDescription: "",
 	listNavType: () => null,
 	breadcrumbTrail: [
-		<Breadcrumb to="/about" key="About">
-			About
+		<Breadcrumb to="/what-nice-does" key="What NICE does">
+			What NICE does
 		</Breadcrumb>,
-		<Breadcrumb to="/about/what-we-do" key="What we do">
-			What we do
-		</Breadcrumb>,
-		<Breadcrumb
-			to="/about/what-we-do/research-and-development"
-			key="Research and development"
-		>
-			Research and development
+		<Breadcrumb to="/what-nice-does/our-research-work" key="Our research work">
+			Our research work
 		</Breadcrumb>,
 	],
 	currentBreadcrumb: "Research recommendations",
