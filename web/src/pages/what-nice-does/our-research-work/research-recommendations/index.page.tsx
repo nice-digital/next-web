@@ -67,14 +67,26 @@ export default getProductListPage({
 			As we develop guidance, we identify gaps and uncertainties in the evidence
 			base which could benefit from further research. The most important
 			unanswered questions are developed into research recommendations. Read our{" "}
-			<a href="https://www.nice.org.uk/process/pmg45">
+			<a
+				href="https://www.nice.org.uk/process/pmg45"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Process and methods guide (opens in a new window)"
+				title="Process and methods guide (opens in a new window)"
+			>
 				process and methods guide
 			</a>
 			.
 			<br />
 			<br />
 			Browse the list to find a topic of interest and check out the{" "}
-			<a href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180">
+			<a
+				href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="National Institute for Health and Care Research call for research studies addressing NICE recommendations for research (opens in a new window)"
+				title="National Institute for Health and Care Research call for research studies addressing NICE recommendations for research (opens in a new window)"
+			>
 				National Institute for Health and Care Research (NIHR) call for research
 				studies addressing NICE recommendations for research
 			</a>
@@ -82,7 +94,13 @@ export default getProductListPage({
 			<br />
 			<br />
 			For further information email{" "}
-			<a href="mailto:research@nice.org.uk">research@nice.org.uk</a>.
+			<a
+				href="mailto:research@nice.org.uk"
+				aria-label="Email the NICE research team at research@nice.org.uk"
+			>
+				research@nice.org.uk
+			</a>
+			.
 		</>
 	),
 	title: "Research recommendations | NICE",
