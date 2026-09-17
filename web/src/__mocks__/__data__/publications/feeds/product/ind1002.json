@@ -1,0 +1,454 @@
+{
+  "_links": { "self": [{}] },
+  "_embedded": {
+    "nice.publications:accreditation-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:endorsement-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:supporting-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    },
+    "nice.publications:content-part-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:upload-and-convert-content-part": {
+          "_links": { "self": [{}] },
+          "_embedded": {
+            "nice.publications:html-content": {
+              "_links": {
+                "self": [{ "href": "/feeds/product/IND1002/content/1/html" }]
+              },
+              "_embedded": {
+                "nice.publications:html-chapter-content-info": [
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/IND1002/part/1/chapter/indicator-nm182"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Title": "Indicator NM182",
+                    "Reference": "IND1002",
+                    "PartId": 1,
+                    "ChapterSlug": "indicator-nm182"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/IND1002/part/1/chapter/indicator-type"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Title": "Indicator type",
+                    "Reference": "IND1002",
+                    "PartId": 1,
+                    "ChapterSlug": "indicator-type"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/IND1002/part/1/chapter/introduction"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Title": "Introduction",
+                    "Reference": "IND1002",
+                    "PartId": 1,
+                    "ChapterSlug": "introduction"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/IND1002/part/1/chapter/rationale"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Title": "Rationale",
+                    "Reference": "IND1002",
+                    "PartId": 1,
+                    "ChapterSlug": "rationale"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/IND1002/part/1/chapter/source-guidance"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Title": "Source guidance",
+                    "Reference": "IND1002",
+                    "PartId": 1,
+                    "ChapterSlug": "source-guidance"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/IND1002/part/1/chapter/specification"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Title": "Specification",
+                    "Reference": "IND1002",
+                    "PartId": 1,
+                    "ChapterSlug": "specification"
+                  },
+                  {
+                    "_links": {
+                      "self": [
+                        {
+                          "href": "/feeds/product/IND1002/part/1/chapter/further-information"
+                        }
+                      ]
+                    },
+                    "ETag": null,
+                    "Title": "Further information",
+                    "Reference": "IND1002",
+                    "PartId": 1,
+                    "ChapterSlug": "further-information"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Reference": "IND1002",
+              "PartId": 1
+            },
+            "nice.publications:pdf-file": {
+              "_links": {
+                "self": [
+                  {
+                    "href": "/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Uid": 68183483719102405,
+              "Id": "737585a0-dad7-4a37-875b-b30b09c3fdc3",
+              "MimeType": "application/pdf",
+              "FileName": "NM182-indicator-guidance.pdf",
+              "Length": 62820,
+              "Hash": "12068B7F3BC68E44C03311FEA89DC1F614E46305",
+              "Name": "default"
+            },
+            "nice.publications:mobi-file": {
+              "_links": {
+                "self": [
+                  {
+                    "href": "/feeds/downloads/32fc492a-03d1-4af9-9dd6-76c24e434d9a"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Uid": 68183483719102402,
+              "Id": "32fc492a-03d1-4af9-9dd6-76c24e434d9a",
+              "MimeType": "application/x-mobipocket-ebook",
+              "FileName": "NM182-indicator-guidance.mobi",
+              "Length": 208531,
+              "Hash": "5D745926DFB8E719A0F6EF321C84ACF25958A402",
+              "Name": "default"
+            },
+            "nice.publications:epub-file": {
+              "_links": {
+                "self": [
+                  {
+                    "href": "/feeds/downloads/1c76cf69-69f0-47f9-aeba-f49286c26dbf"
+                  }
+                ]
+              },
+              "ETag": null,
+              "Uid": 68183483719102394,
+              "Id": "1c76cf69-69f0-47f9-aeba-f49286c26dbf",
+              "MimeType": "application/epub+zip",
+              "FileName": "NM182-indicator-guidance.epub",
+              "Length": 131087,
+              "Hash": "286396D9EF9CFAA604320E1BB6630936132138AA",
+              "Name": "default"
+            }
+          },
+          "ETag": null,
+          "Title": "Test terminated indicator IND1002: The percentage of patients with diabetes who have received a foot examination",
+          "Type": "UploadAndConvertContentPart",
+          "Uid": 52610712746222,
+          "LegacyId": null
+        }
+      },
+      "ETag": null
+    },
+    "nice.publications:content-part-list2": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:content-parts": [
+            {
+              "_links": { "self": [{}] },
+              "_embedded": {
+              "nice.publications:html-content": {
+                "_links": {
+                "self": [{ "href": "/feeds/product/IND1002/content/1/html" }]
+                },
+                "_embedded": {
+                "nice.publications:html-chapter-content-info": [
+                  {
+                  "_links": {
+                    "self": [
+                    {
+                      "href": "/feeds/product/IND1002/part/1/chapter/indicator-nm182"
+                    }
+                    ]
+                  },
+                  "ETag": null,
+                  "Title": "Indicator NM182",
+                  "Reference": "IND1002",
+                  "PartId": 1,
+                  "ChapterSlug": "indicator-nm182"
+                  },
+                  {
+                  "_links": {
+                    "self": [
+                    {
+                      "href": "/feeds/product/IND1002/part/1/chapter/indicator-type"
+                    }
+                    ]
+                  },
+                  "ETag": null,
+                  "Title": "Indicator type",
+                  "Reference": "IND1002",
+                  "PartId": 1,
+                  "ChapterSlug": "indicator-type"
+                  },
+                  {
+                  "_links": {
+                    "self": [
+                    {
+                      "href": "/feeds/product/IND1002/part/1/chapter/introduction"
+                    }
+                    ]
+                  },
+                  "ETag": null,
+                  "Title": "Introduction",
+                  "Reference": "IND1002",
+                  "PartId": 1,
+                  "ChapterSlug": "introduction"
+                  },
+                  {
+                  "_links": {
+                    "self": [
+                    {
+                      "href": "/feeds/product/IND1002/part/1/chapter/rationale"
+                    }
+                    ]
+                  },
+                  "ETag": null,
+                  "Title": "Rationale",
+                  "Reference": "IND1002",
+                  "PartId": 1,
+                  "ChapterSlug": "rationale"
+                  },
+                  {
+                  "_links": {
+                    "self": [
+                    {
+                      "href": "/feeds/product/IND1002/part/1/chapter/source-guidance"
+                    }
+                    ]
+                  },
+                  "ETag": null,
+                  "Title": "Source guidance",
+                  "Reference": "IND1002",
+                  "PartId": 1,
+                  "ChapterSlug": "source-guidance"
+                  },
+                  {
+                  "_links": {
+                    "self": [
+                    {
+                      "href": "/feeds/product/IND1002/part/1/chapter/specification"
+                    }
+                    ]
+                  },
+                  "ETag": null,
+                  "Title": "Specification",
+                  "Reference": "IND1002",
+                  "PartId": 1,
+                  "ChapterSlug": "specification"
+                  },
+                  {
+                  "_links": {
+                    "self": [
+                    {
+                      "href": "/feeds/product/IND1002/part/1/chapter/further-information"
+                    }
+                    ]
+                  },
+                  "ETag": null,
+                  "Title": "Further information",
+                  "Reference": "IND1002",
+                  "PartId": 1,
+                  "ChapterSlug": "further-information"
+                  }
+                ]
+                },
+                "ETag": null,
+                "Reference": "IND1002",
+                "PartId": 1
+              },
+              "nice.publications:pdf-file": {
+                "_links": {
+                "self": [
+                  {
+                  "href": "/feeds/downloads/737585a0-dad7-4a37-875b-b30b09c3fdc3"
+                  }
+                ]
+                },
+                "ETag": null,
+                "Uid": 68183483719102405,
+                "Id": "737585a0-dad7-4a37-875b-b30b09c3fdc3",
+                "MimeType": "application/pdf",
+                "FileName": "NM182-indicator-guidance.pdf",
+                "Length": 62820,
+                "Hash": "12068B7F3BC68E44C03311FEA89DC1F614E46305",
+                "Name": "default"
+              },
+              "nice.publications:mobi-file": {
+                "_links": {
+                "self": [
+                  {
+                  "href": "/feeds/downloads/32fc492a-03d1-4af9-9dd6-76c24e434d9a"
+                  }
+                ]
+                },
+                "ETag": null,
+                "Uid": 68183483719102402,
+                "Id": "32fc492a-03d1-4af9-9dd6-76c24e434d9a",
+                "MimeType": "application/x-mobipocket-ebook",
+                "FileName": "NM182-indicator-guidance.mobi",
+                "Length": 208531,
+                "Hash": "5D745926DFB8E719A0F6EF321C84ACF25958A402",
+                "Name": "default"
+              },
+              "nice.publications:epub-file": {
+                "_links": {
+                "self": [
+                  {
+                  "href": "/feeds/downloads/1c76cf69-69f0-47f9-aeba-f49286c26dbf"
+                  }
+                ]
+                },
+                "ETag": null,
+                "Uid": 68183483719102394,
+                "Id": "1c76cf69-69f0-47f9-aeba-f49286c26dbf",
+                "MimeType": "application/epub+zip",
+                "FileName": "NM182-indicator-guidance.epub",
+                "Length": 131087,
+                "Hash": "286396D9EF9CFAA604320E1BB6630936132138AA",
+                "Name": "default"
+              }
+              },
+              "ETag": null,
+              "Title": "Test terminated indicator IND1002: The percentage of patients with diabetes who have received a foot examination",
+              "Type": "UploadAndConvertContentPart",
+              "Uid": 52610712746222,
+              "LegacyId": null
+            }
+          ]
+        },
+        "ETag": null
+    },
+    "nice.publications:related-resource-list": {
+      "_links": { "self": [{}] },
+      "_embedded": {
+        "nice.publications:related-resource": {
+          "_links": {
+            "self": [{ "href": "/feeds/resource/55394" }, {}],
+            "nice.publications:related-resource-uri": [
+              { "href": "/feeds/resource/55394" }
+            ]
+          },
+          "_embedded": {
+            "nice.publications:resource-group-list": {
+              "_links": { "self": [{}] },
+              "_embedded": {
+                "nice.publications:resource-group": {
+                  "_links": { "self": [{}] },
+                  "ETag": null,
+                  "Name": "Evidence"
+                }
+              },
+              "ETag": null
+            }
+          },
+          "ETag": null,
+          "Title": "Test resource for front end",
+          "ResourceType": "EvidenceStatement",
+          "Status": "Published",
+          "Language": "English",
+          "Uid": 8635576
+        }
+      },
+      "ETag": null
+    },
+    "nice.publications:related-product-list": {
+      "_links": { "self": [{}] },
+      "ETag": null
+    }
+  },
+  "ETag": "01000000-0000-003E-0000-000000000011",
+  "Id": "IND1002",
+  "LastModified": "2023-01-15T10:30:00.0000000Z",
+  "ProductType": "IND",
+  "Title": "Test terminated indicator IND1002: The percentage of patients with diabetes who have received a foot examination",
+  "ShortTitle": null,
+  "InDevReference": null,
+  "MetaDescription": "The percentage of patients with diabetes who have received a foot examination",
+  "Summary": "<p class=\"lead\">The percentage of patients with diabetes who have received a foot examination.</p>",
+  "ProductStatus": "Terminated",
+  "VersionNumber": 2,
+  "PublishedDate": "2022-09-08T14:19:12.8893126",
+  "LastMajorModificationDate": "2022-09-08T14:19:12.8893126",
+  "MajorChangeDate": null,
+  "NextReviewDate": null,
+  "CollectionTypesList": [],
+  "AuthorList": ["National Institute for Health and Care Excellence (NICE)"],
+  "PublisherList": ["National Institute for Health and Care Excellence (NICE)"],
+  "AudienceList": [],
+  "EstimatedSavings": "",
+  "EstimatedSavingsDescription": "",
+  "EstimatedSavingsImpact": null,
+  "DevelopedAs": null,
+  "RelevantTo": [],
+  "TerminatedAppraisal": null,
+  "AreasOfInterestList": [],
+  "IndicatorSubTypeList": ["CCG", "GPIQ"],
+  "IndicatorOldCode": "NM182",
+  "IndicatorOldUrl": "https://www.nice.org.uk/standards-and-indicators/qofindicators/the-percentage-of-patients-with-diabetes-who-have-received-a-foot-examination",
+  "IPSV": "Health, well-being and care",
+  "ChapterHeadings": [
+    { "Title": "Indicator NM182", "Url": "/IND1002/chapter/Indicator-NM182" },
+    { "Title": "Indicator type", "Url": "/IND1002/chapter/Indicator-type" },
+    { "Title": "Introduction", "Url": "/IND1002/chapter/Introduction" },
+    { "Title": "Rationale", "Url": "/IND1002/chapter/Rationale" },
+    { "Title": "Source guidance", "Url": "/IND1002/chapter/Source-guidance" },
+    { "Title": "Specification", "Url": "/IND1002/chapter/Specification" },
+    {
+      "Title": "Further information",
+      "Url": "/IND1002/chapter/Further-information"
+    }
+  ],
+  "ProductTypeName": "NICE indicator",
+  "ProductTypeNamePlural": "NICE indicators"
+}
