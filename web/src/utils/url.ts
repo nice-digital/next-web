@@ -134,8 +134,14 @@ export const getProductPath = (
 	>
 ): string => {
 	const { productGroup, productStatus, productType } = product;
-	const retiredOrTerminated = [ProductStatus.Retired, ProductStatus.Terminated];
-	const retiredOrTerminatedPath = retiredOrTerminated.includes(productStatus)
+	const retiredArchivedOrTerminated = [
+		ProductStatus.Retired,
+		ProductStatus.Archived,
+		ProductStatus.Terminated,
+	];
+	const retiredArchivedOrTerminatedPath = retiredArchivedOrTerminated.includes(
+		productStatus
+	)
 		? `${productStatus.toLowerCase()}/`
 		: "";
 	let rootPath: string;
@@ -165,7 +171,9 @@ export const getProductPath = (
 			)}`;
 	}
 
-	return `/${rootPath}/${retiredOrTerminatedPath}${getProductSlug(product)}`;
+	return `/${rootPath}/${retiredArchivedOrTerminatedPath}${getProductSlug(
+		product
+	)}`;
 };
 
 export const getPublicationPdfDownloadPath = (
@@ -176,13 +184,17 @@ export const getPublicationPdfDownloadPath = (
 	if (!product.contentPartsList) return null;
 
 	const { contentPartsList, id, productStatus } = product;
-	const isRetiredProduct = productStatus === ProductStatus.Retired;
+	const isRetiredOrArchivedProduct =
+		productStatus === ProductStatus.Retired ||
+		productStatus === ProductStatus.Archived;
 
 	const uploadAndConvertContentPart = fetchAndMapContentParts<
 		UploadAndConvertContentPart | UploadContentPart
 	>(
 		contentPartsList,
-		isRetiredProduct ? "UploadContentPart" : "UploadAndConvertContentPart"
+		isRetiredOrArchivedProduct
+			? "UploadContentPart"
+			: "UploadAndConvertContentPart"
 	);
 
 	if (!uploadAndConvertContentPart) {
