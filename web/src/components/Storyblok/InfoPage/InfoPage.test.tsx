@@ -1,3 +1,4 @@
+import { StoryblokComponent } from "@storyblok/react";
 import { screen } from "@testing-library/react";
 
 import sampleDataHeroInPageNav from "@/mockData/storyblok/infoPageWithHeroAndInPageNav.json";
@@ -5,6 +6,7 @@ import sampleDataNoNav from "@/mockData/storyblok/infoPageWithNoNav.json";
 import sampleDataPageHeaderSectionNav from "@/mockData/storyblok/infoPageWithPageHeaderAndSectionNav.json";
 import { render } from "@/test-utils/rendering";
 import { InfoPageStoryblok } from "@/types/storyblok";
+import * as contentStructureUtils from "@/utils/storyblok/contentStructureUtils";
 
 import { InfoPage, type InfoPageBlokProps } from "./InfoPage";
 
@@ -34,7 +36,16 @@ const mockPropsWithNoNav: InfoPageBlokProps = {
 	slug: sampleDataNoNav.slug,
 };
 
+jest.mock("@storyblok/react", () => ({
+	StoryblokComponent: jest.fn(() => null),
+}));
+
+const mockedStoryblokComponent = StoryblokComponent as unknown as jest.Mock;
+
 describe("InfoPage", () => {
+	beforeAll(() => {
+		jest.spyOn(contentStructureUtils, "treeHasItems");
+	});
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
@@ -113,5 +124,120 @@ describe("InfoPage", () => {
 		expect(
 			screen.queryByTestId("info-page-nav-wrapper")
 		).not.toBeInTheDocument();
+	});
+	it("passes preheading when section nav is populated and title differs", () => {
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
+
+		render(<InfoPage {...mockPropsWithPageHeaderAndSectionNav} />);
+
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: "Info Page with Hero and In Page Nav",
+			}),
+			{}
+		);
+	});
+	it("passes preheading when section nav is hidden", () => {
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
+		const mockPropsWithSectionNav = {
+			...mockPropsWithPageHeaderAndSectionNav,
+			hideSectionNav: "true",
+		};
+		render(<InfoPage {...mockPropsWithSectionNav} />);
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: "Info Page with Hero and In Page Nav",
+			}),
+			{}
+		);
+	});
+	it("passes empty preheading when section name matches header title", () => {
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
+
+		const mockPropsWithSameTitleandPreheading = {
+			...mockPropsWithPageHeaderAndSectionNav,
+			tree: [
+				{
+					id: 681214537,
+					uuid: "e5cfb560-56ac-45a6-9dec-b421837e7692",
+					slug: "unit-test-data/info-page-hero-in-page-nav",
+					path: null,
+					parent_id: 659520607,
+					name: "Info Page with Page Header and Section Nav",
+					is_folder: false,
+					published: true,
+					is_startpage: false,
+					position: -30,
+					real_path: "/unit-test-data/info-page-hero-in-page-nav",
+					childLinks: [],
+				},
+			],
+			blok: {
+				...mockPropsWithPageHeaderAndSectionNav.blok,
+				header: [
+					{
+						...mockPropsWithPageHeaderAndSectionNav.blok.header[0],
+						title: "Info Page with Page Header and Section Nav",
+					},
+				],
+			},
+		};
+
+		render(<InfoPage {...mockPropsWithSameTitleandPreheading} />);
+
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: "",
+			}),
+			{}
+		);
+	});
+	it("passes empty preheading when pageHeader is missing", () => {
+		(contentStructureUtils.treeHasItems as jest.Mock).mockReturnValue(true);
+		render(<InfoPage {...mockPropsWithHeroAndInPageNav} />);
+
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: "",
+			}),
+			{}
+		);
+	});
+	it("returns undefined preheading when hidePreHeader is 'true'", () => {
+		const mockProps = {
+			...mockPropsWithPageHeaderAndSectionNav,
+			blok: {
+				...mockPropsWithPageHeaderAndSectionNav.blok,
+				hidePreHeader: "true" as "true" | "false",
+			},
+		};
+
+		render(<InfoPage {...mockProps} />);
+
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: undefined,
+			}),
+			{}
+		);
+	});
+
+	it("calls getPreheading when hidePreHeader is not 'true'", () => {
+		const mockProps = {
+			...mockPropsWithPageHeaderAndSectionNav,
+			blok: {
+				...mockPropsWithPageHeaderAndSectionNav.blok,
+				hidePreHeader: "false" as "true" | "false",
+			},
+		};
+
+		render(<InfoPage {...mockProps} />);
+
+		expect(mockedStoryblokComponent).toHaveBeenCalledWith(
+			expect.objectContaining({
+				preheading: expect.any(String),
+			}),
+			{}
+		);
 	});
 });
