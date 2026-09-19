@@ -22,6 +22,99 @@ import { ActiveModifier, ProductListPageProps } from "../ProductListPageProps";
 
 export const defaultPageSize = 10;
 
+/**
+ * The results-per-page options in ProductListPage's UI. They live here, rather
+ * than in the component, so the query sanitisation below can't drift from the
+ * sizes the UI actually offers.
+ */
+export const resultsPerPage = [
+	{ count: 10, label: "10" },
+	{ count: 25, label: "25" },
+	{ count: 50, label: "50" },
+	{ count: 9999, label: "All" },
+];
+
+const allowedPageSizes = resultsPerPage.map(({ count }) => count);
+
+// Elastic's index.max_result_window
+const maxResultWindow = 10000;
+
+// Expensive search params the list page UI never emits
+const strippedParams = new Set(["sa", "aggsonly", "fc", "co", "sm", "pt"]);
+
+/**
+ * Clamps the query string of a list page URL to values the UI can actually
+ * produce, so uncapped ps/pa/sa params can't turn cheap requests into
+ * expensive uncacheable search queries. Returns the URL unchanged when
+ * nothing needed clamping, so organic UI-generated URLs never redirect.
+ */
+export const sanitiseListPageQuery = (resolvedUrl: string): string => {
+	const [path, queryString = ""] = resolvedUrl.split("?"),
+		params = new URLSearchParams(queryString);
+
+	let changed = false;
+
+	const keys: string[] = [];
+	params.forEach((_value, key) => keys.push(key));
+	for (const key of keys)
+		if (strippedParams.has(key.toLowerCase())) {
+			params.delete(key);
+			changed = true;
+		}
+
+	// The checks below only read the first value of each param, so collapse
+	// duplicates: otherwise ?ps=25&ps=9999 sneaks an unclamped value through
+	for (const key of ["ps", "pa"]) {
+		const values = params.getAll(key);
+		if (values.length > 1) {
+			params.set(key, values[0]);
+			changed = true;
+		}
+	}
+
+	const psRaw = params.get("ps");
+	let pageSize = defaultPageSize;
+	if (psRaw !== null) {
+		// Round down to the largest allowed size, never up, so junk like ps=40
+		// can't be clamped into a more expensive query than the one requested
+		const ps = Number(psRaw),
+			clamped = Number.isFinite(ps)
+				? allowedPageSizes.reduce(
+						(best, size) => (size <= ps && size > best ? size : best),
+						defaultPageSize
+				  )
+				: defaultPageSize;
+
+		if (clamped === defaultPageSize) {
+			params.delete("ps");
+			changed = true;
+		} else {
+			pageSize = clamped;
+			if (String(clamped) !== psRaw) {
+				params.set("ps", String(clamped));
+				changed = true;
+			}
+		}
+	}
+
+	const paRaw = params.get("pa");
+	if (paRaw !== null) {
+		const pa = Number(paRaw);
+		if (!Number.isInteger(pa) || pa < 1 || pa * pageSize > maxResultWindow) {
+			params.delete("pa");
+			changed = true;
+		} else if (String(pa) !== paRaw) {
+			params.set("pa", String(pa));
+			changed = true;
+		}
+	}
+
+	if (!changed) return resolvedUrl;
+
+	const sanitisedQueryString = params.toString();
+	return sanitisedQueryString ? `${path}?${sanitisedQueryString}` : path;
+};
+
 export interface GetGetServerSidePropsOptions {
 	/** Pre-filter for the guidance status type (gst) 'or modifier' that gets passed to search */
 	gstPreFilter?:
@@ -54,6 +147,11 @@ export const getGetServerSidePropsFunc =
 		if (redirectUrl)
 			return { redirect: { destination: redirectUrl, permanent: true } };
 
+		// 302 not 301: don't let junk URLs poison permanent redirect caches
+		const canonicalUrl = sanitiseListPageQuery(context.resolvedUrl);
+		if (canonicalUrl !== context.resolvedUrl)
+			return { redirect: { destination: canonicalUrl, permanent: false } };
+
 		initSearchClient({
 			baseURL: publicRuntimeConfig.search.baseURL,
 			index: index,
@@ -66,7 +164,7 @@ export const getGetServerSidePropsFunc =
 				defaultSortOrder,
 				defaultPageSize,
 				usePrettyUrls: true,
-				orModifierPreFilter: { gst: [gstPreFilter] },
+				orModifierPreFilter: gstPreFilter ? { gst: [gstPreFilter] } : undefined,
 			}),
 			searchEndTime = process.hrtime.bigint();
 
@@ -79,8 +177,8 @@ export const getGetServerSidePropsFunc =
 
 		if (results.failed) {
 			logger.error(
-				`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-				results.debug?.rawResponse
+				{ rawResponse: results.debug?.rawResponse },
+				`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`
 			);
 
 			context.res.statusCode = 500;
