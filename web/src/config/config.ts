@@ -71,6 +71,8 @@ export interface PublicConfig {
  * Config for object cache
  */
 export interface CacheConfig {
+	/** in section navigation */
+	readonly sectionNavCacheTTL?: number;
 	/** The prefix for cache keys */
 	readonly keyPrefix: string;
 
