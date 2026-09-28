@@ -1,12 +1,17 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
-import { ProductPageHeading } from "@/components/ProductPageHeading/ProductPageHeading";
+import {
+	ProductPageHeading,
+	type ProductPageHeadingProps,
+} from "@/components/ProductPageHeading/ProductPageHeading";
 import { getConvertedDocumentHTML } from "@/feeds/inDev/inDev";
 import {
 	IndevFile,
@@ -21,14 +26,7 @@ import { type ResourceLinkViewModel } from "@/utils/resource";
 
 export type HistoryChapterHTMLPageProps = {
 	lastUpdated: string;
-	product: Pick<
-		ProductDetail,
-		| "id"
-		| "title"
-		| "productTypeName"
-		| "publishedDate"
-		| "lastMajorModificationDate"
-	>;
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	productHorizontalNav: {
 		hasEvidenceResources: boolean;
 		hasHistory: boolean;
@@ -71,6 +69,8 @@ export default function HistoryChaperHTMLPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -168,12 +168,6 @@ export const getServerSideProps: GetServerSideProps<
 
 					const resourceIndevFile =
 						embedded.niceIndevGeneratedPdf || ({} as IndevFile);
-					const resourceIsGeneratedPdf = Object.hasOwn(
-						embedded,
-						"niceIndevGeneratedPdf"
-					);
-
-					if (!resourceIsGeneratedPdf) return false;
 
 					const href = `${productPath}/history/downloads/${product.id}-${
 						resourceIndevFile.resourceTitleId
@@ -207,6 +201,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName: product.productTypeName,
 				publishedDate: product.publishedDate,
 				lastMajorModificationDate: product.lastMajorModificationDate,
+				alert: product.alert,
 			},
 			productHorizontalNav: {
 				hasEvidenceResources,

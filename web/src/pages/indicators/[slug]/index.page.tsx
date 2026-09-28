@@ -1,6 +1,8 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
@@ -44,6 +46,7 @@ export type IndicatorsDetailsPageProps = {
 			| "accreditationList"
 			| "productTypeName"
 			| "relatedProductList"
+			| "alert"
 		>;
 	indicatorSubTypes: IndicatorSubType[];
 	pdfDownloadPath: string | null;
@@ -129,6 +132,8 @@ export default function IndicatorsDetailsPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -268,6 +273,7 @@ export const getServerSideProps: GetServerSideProps<
 				authorList: product.authorList,
 				accreditationList: product.accreditationList,
 				relatedProductList: product.relatedProductList,
+				alert: product.alert,
 			},
 			indicatorSubTypes,
 			pdfDownloadPath,

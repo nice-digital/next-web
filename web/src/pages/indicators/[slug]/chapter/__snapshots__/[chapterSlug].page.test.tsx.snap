@@ -660,6 +660,7 @@ Object {
     "hasToolsAndResources": true,
     "pdfDownloadPath": "/guidance/ng100/NG100-20220530.pdf",
     "product": Object {
+      "alert": undefined,
       "id": "NG100",
       "indicatorSubTypeList": Array [],
       "lastMajorModificationDate": "2020-10-12T00:00:00",

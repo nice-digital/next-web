@@ -1,6 +1,7 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
 
 - [Functional tests for Next Web](#functional-tests-for-next-web)
   - [Table of contents](#table-of-contents)
@@ -32,23 +33,23 @@
 ## Table of contents
 
 - [Functional tests for Next Web](#functional-tests-for-next-web)
-	- [Table of contents](#table-of-contents)
-	- [Stack](#stack)
-		- [Software](#software)
-	- [:rocket: Set up](#rocket-set-up)
-		- [Install Java JDK](#install-java-jdk)
-		- [Run the tests](#run-the-tests)
-		- [Using VSCode](#using-vscode)
-		- [Using npm](#using-npm)
-			- [Different URLs](#different-urls)
-		- [Docker](#docker)
-		- [Steps to Run NextWeb in Docker with Teamcity built image](#steps-to-run-nextweb-in-docker-with-teamcity-built-image)
-			- [Development mode](#development-mode)
-	- [Excluding tests](#excluding-tests)
-	- [Running single features](#running-single-features)
-	- [Troubleshooting](#troubleshooting)
-		- [session not created: This version of ChromeDriver only supports Chrome version xx](#session-not-created-this-version-of-chromedriver-only-supports-chrome-version-xx)
-		- [Port 4444 is already in use](#port-4444-is-already-in-use)
+  - [Table of contents](#table-of-contents)
+  - [Stack](#stack)
+    - [Software](#software)
+  - [:rocket: Set up](#rocket-set-up)
+    - [Install Java JDK](#install-java-jdk)
+    - [Run the tests](#run-the-tests)
+    - [Using VSCode](#using-vscode)
+    - [Using npm](#using-npm)
+      - [Different URLs](#different-urls)
+    - [Docker](#docker)
+    - [Steps to Run NextWeb in Docker with Teamcity built image](#steps-to-run-nextweb-in-docker-with-teamcity-built-image)
+      - [Development mode](#development-mode)
+  - [Excluding tests](#excluding-tests)
+  - [Running single features](#running-single-features)
+  - [Troubleshooting](#troubleshooting)
+    - [session not created: This version of ChromeDriver only supports Chrome version xx](#session-not-created-this-version-of-chromedriver-only-supports-chrome-version-xx)
+    - [Port 4444 is already in use](#port-4444-is-already-in-use)
 
 ## Stack
 
@@ -67,7 +68,7 @@
 
 ### Install Java JDK
 
-WebDriverIO uses selenium under the hood to run the automated browser tests. Selenium in turn uses Java so you will need the Java JDK (Java Development Kit) before you can run tests. Check the _C:\Program Files\Java_ folder and look for _jdk*_ sub folders: this will indicate the JDK installed. In theory you can run `javac -version` on a terminal instead although it doesn't always seem to work so manually checking the folder is a safer option.
+WebDriverIO uses selenium under the hood to run the automated browser tests. Selenium in turn uses Java so you will need the Java JDK (Java Development Kit) before you can run tests. Check the _C:\Program Files\Java_ folder and look for _jdk\*_ sub folders: this will indicate the JDK installed. In theory you can run `javac -version` on a terminal instead although it doesn't always seem to work so manually checking the folder is a safer option.
 
 At the time of writing JDK 16 is the latest version, but that had issues with WDIO (see [troubleshooting](#troubleshooting)), so using JDK 8 (e.g. 8u301) is the best option.
 
@@ -83,22 +84,22 @@ The easiest way is via VSCode:
 
 Using VSCode to run the tests will launch browsers on your local machine to run the tests. This is useful for watching and debugging the test runs to diagnose any failing tests.
 
-This runs the tests against the [NextJS web app](../web/) running on http://localhost:3000.
+This runs the tests against the [NextJS web app](../web/) running on <http://localhost:3000>.
 
 1. Install [Volta](https://volta.sh/) to use the version of Node specified in package.json. Or install Node LTS if you're not using Volta.
 2. Install Chrome (and Firefox if you're going to test against multiple browsers)
 3. Clone this repository
 4. Open the root of the repository in VS Code
-   1. use Ubuntu wsl terminal 
+   1. use Ubuntu wsl terminal
 5. Install dependencies from npm:
    1. Run 'npm: Install Dependencies' from the VS Code command palette (_Ctrl+Shift+P_) and choose the functional-tests folder from the next dropdown (or just install all)
    2. Or run `cd functional-tests && npm ci` on the command line
-6. Run `npm run build` & `npm start` from the _web_ folder to run the NextJS web app on http://localhost:3000
+6. Run `npm run build` & `npm start` from the _web_ folder to run the NextJS web app on <http://localhost:3000>
 7. You will need the environment variable file 'local-production.yml' on your local machine
 8. Run 'Run Test Task' from the command palette (_Ctrl+Shift+P_) and choose 'Functional tests - all'
    1. Or run 'Functional tests - current feature' to run just the currently opened feature file.
 
-Depending on your use case, you can run the tests against [different URLs](#different-urls) instead of http://localhost:3000.
+Depending on your use case, you can run the tests against [different URLs](#different-urls) instead of <http://localhost:3000>.
 
 ### Using npm
 
@@ -118,7 +119,7 @@ npm test -- -b https://test.nice.org.uk/
 
 ### Docker
 
-We run the tests in Docker on TeamCity because it allows us to spin up a self-contained application, and selenium grid with both Chrome and Firefox. The Teamcity steps have been configured to build and test the actual production image before it is sent to AWS ECR. If the tests fail then the image won't be copied to ECR. 
+We run the tests in Docker on TeamCity because it allows us to spin up a self-contained application, and selenium grid with both Chrome and Firefox. The Teamcity steps have been configured to build and test the actual production image before it is sent to AWS ECR. If the tests fail then the image won't be copied to ECR.
 
 You can run this same stack locally inside Docker.
 
@@ -139,68 +140,84 @@ It can be harder to debug tests running inside Docker as you can't watch the tes
    1. This builds the docker network, runs the tests and copies outputs in the _docker-output_ folder.
 
 > View the [docker-compose.yml](docker-compose.yml) file to understand the structure of the Docker network and the links between containers.
->
-> 
 
 ### Steps to Run NextWeb in Docker with Teamcity built image
 
 1. **Verify AWS CLI Installation**
+
    - Run `aws sts get-caller-identity` to confirm the AWS CLI is installed and configured correctly. You should see your username/account information.
 
 1. **Login to AWS ECR**
+
    - Use the command below to log into AWS ECR. Replace `xxxxxxxxxxxxxx` with your AWS account details:
+
      ```bash
      aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin xxxxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com
      ```
 
 1. **Check Docker in WSL**
+
    - Confirm Docker is working in WSL by running:
+
      ```bash
      docker run hello-world
      ```
 
 1. **Pull NextWeb Image**
+
    - Obtain the 4-digit build number from Teamcity, then pull the NextWeb image:
+
      ```bash
      docker pull .dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
      ```
+
    - Replace `nnnn` with the build number.
 
 1. **Navigate to the Functional Tests Directory**
+
    - Change to the directory containing the `docker-compose.yml` file:
+
      ```bash
      cd /functional-tests
      ```
 
 1. **Update Docker Compose File**
+
    - Edit the `docker-compose.yml` file to specify the correct image for the "next-web" container. Replace `xxxx` with the build number from Step 4:
+
      ```yaml
      xxxxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:xxxx
      ```
 
 1. **Redirect NextWeb Error Logs (Optional)**
+
    - To send logs to the local console instead of pino-mq and the RELK stack, uncomment the following line in the `docker-compose.yml` file:
+
      ```yaml
-     command: ["npm", "run", "host-console-logging"]
+     command: ['npm', 'run', 'host-console-logging']
      ```
 
 1. **Start Docker Containers**
+
    - Bring up all containers defined in the `docker-compose.yml` file:
+
      ```bash
      docker-compose up
      ```
 
 1. **Verify Running Containers**
+
    - Ensure all containers are running using either:
      - `docker container ls`
      - Docker Desktop UI
 
 1. **Run Test Suite**
-    - Once satisfied that the containers are running, execute the test container:
-      ```bash
-      docker-compose run -T nxt-test-runner npm run wait-then-test
-      ```
 
+   - Once satisfied that the containers are running, execute the test container:
+
+     ```bash
+     docker-compose run -T nxt-test-runner npm run wait-then-test
+     ```
 
 #### Development mode
 
@@ -212,7 +229,7 @@ Instead, we can run the following command:
 docker-compose up -d && docker-compose run test-runner bash
 ```
 
-This runs the docker network in 'detached' mode, which leaves the containers running. It then runs bash against the test runner container. This allows us to then run the tests from within the Docker network, but the NextJS web app runs on http://next-web-tests.nice.org.uk:8092 inside Docker so we have a simple npm alias command to run the tests within Docker:
+This runs the docker network in 'detached' mode, which leaves the containers running. It then runs bash against the test runner container. This allows us to then run the tests from within the Docker network, but the NextJS web app runs on <http://next-web-tests.nice.org.uk:8092> inside Docker so we have a simple npm alias command to run the tests within Docker:
 
 ```sh
 npm run test:docker
@@ -223,8 +240,6 @@ Examine the scripts within [package.json](package.json) to see how the URL is be
 The whole functional-tests folder is mounted as a volume in the test-runner container. This means any screenshots generated in the case of an error are saved into the screenshots folder, and these are available on the host machine.
 
 > Note: run `exit` to escape from bash inside the test-runner container, and run `docker-compose down` to stop the Docker network.
-
-
 
 ## Excluding tests
 
@@ -260,8 +275,6 @@ npm test -- --suite homepage
 
 See [organizing test suites](https://webdriver.io/docs/organizingsuites/) in the WebdriverIO docs for more info.
 
-
-
 ## Troubleshooting
 
 ### session not created: This version of ChromeDriver only supports Chrome version xx
@@ -272,4 +285,6 @@ This usually occurrs after updating Chrome on your PC. When you run `npm ci` (or
 
 This occurs when the Selenium server isn't shutdown properly after a test run. We found this with JDK 16 so make sure you have JDK 8 instead.
 
+## Developer note on pinned axios version
 
+As of 31/03/2026 we've had to pin the version of axios in `search-client` to `v0.30.3` due to [a known vulnerability with axios](https://www.stepsecurity.io/blog/axios-compromised-on-npm-malicious-versions-drop-remote-access-trojan) versions `0.30.4` and `1.14.1`. We will need to review once we have a clear path to upgrade to non vulnerable versions.

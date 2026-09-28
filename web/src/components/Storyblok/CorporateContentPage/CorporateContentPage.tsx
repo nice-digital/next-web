@@ -29,6 +29,7 @@ export const CorporateContentPage = (
 	const { story: storyData, breadcrumbs, tree, slug } = props;
 
 	const title = storyData?.name;
+
 	return (
 		<>
 			<NextSeo

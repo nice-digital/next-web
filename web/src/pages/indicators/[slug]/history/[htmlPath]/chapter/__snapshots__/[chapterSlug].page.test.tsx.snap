@@ -838,6 +838,7 @@ Object {
   "props": Object {
     "lastUpdated": "2025-08-19T13:04:00",
     "product": Object {
+      "alert": undefined,
       "id": "IND999",
       "lastMajorModificationDate": "2025-08-19T00:00:00",
       "productTypeName": "NICE indicator",

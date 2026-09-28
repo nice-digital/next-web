@@ -1,7 +1,9 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
@@ -28,7 +30,7 @@ export type DocumentsChapterHTMLPageProps = {
 	lastUpdated: string;
 	project: Pick<
 		ProjectDetail,
-		"projectType" | "reference" | "title" | "status"
+		"projectType" | "reference" | "title" | "status" | "alert"
 	>;
 	projectPath: string;
 	resource: {
@@ -89,6 +91,8 @@ export default function DocumentsChapterHTMLPage({
 				indevScheduleItems={indevScheduleItems}
 				indevStakeholderRegistration={indevStakeholderRegistration}
 			/>
+
+			{project.alert ? <Alert type="info">{parse(project.alert)}</Alert> : null}
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
@@ -207,6 +211,7 @@ export const getServerSideProps: GetServerSideProps<
 				reference,
 				status,
 				title,
+				alert: project.alert,
 			},
 			resource: {
 				chapters: resourceFileHTML.chapters || [],

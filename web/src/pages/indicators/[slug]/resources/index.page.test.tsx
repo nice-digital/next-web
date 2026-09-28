@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
 
@@ -103,14 +103,44 @@ describe("Publication tools and resources page", () => {
 	});
 
 	describe("ToolsAndResourcesListPage", () => {
+		let props: ToolsAndResourcesListPageProps;
+		beforeEach(async () => {
+			props = (
+				(await getServerSideProps(getServerSidePropsContext)) as {
+					props: ToolsAndResourcesListPageProps;
+				}
+			).props;
+		});
+
 		it("should match snapshot", async () => {
-			const { props } = (await getServerSideProps(
-				getServerSidePropsContext
-			)) as { props: ToolsAndResourcesListPageProps };
-
 			const { container } = render(<ToolsAndResourcesListPage {...props} />);
-
 			expect(container).toMatchSnapshot();
+		});
+
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<ToolsAndResourcesListPage {...propsWithoutAlert} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: "Info alert",
+					},
+				};
+				render(<ToolsAndResourcesListPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
+			});
 		});
 	});
 });

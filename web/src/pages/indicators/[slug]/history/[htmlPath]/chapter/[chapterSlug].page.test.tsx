@@ -150,6 +150,32 @@ describe("/indicators/[slug]/history/[htmlPath]/chapter/[chapterSlug].page", () 
 			});
 		});
 
+		describe("InfoAlert", () => {
+			it("should not appear when alert is null or undefined", () => {
+				const propsWithoutAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: null,
+					},
+				};
+				render(<HistoryChapterHTMLPage {...propsWithoutAlert} />);
+				expect(screen.queryByText("Info alert")).not.toBeInTheDocument();
+			});
+
+			it("should appear when we have an alert", () => {
+				const propsWithAlert = {
+					...props,
+					product: {
+						...props.product,
+						alert: "Info alert",
+					},
+				};
+				render(<HistoryChapterHTMLPage {...propsWithAlert} />);
+				expect(screen.getByText("Info alert")).toBeInTheDocument();
+			});
+		});
+
 		// describe("ConvertedDocument", () => {
 		// const convertedDocumentSlug = "ind999-indicator-history-tab-html-conversion",
 		// 	convertedDocumentHtmlPath = "html-conversion",

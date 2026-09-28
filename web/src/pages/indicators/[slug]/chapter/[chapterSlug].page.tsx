@@ -1,6 +1,8 @@
+import parse from "html-react-parser";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
@@ -21,6 +23,7 @@ import {
 	getChapterContent,
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
+import { ProductDetail } from "@/feeds/publications/types";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
 import {
@@ -33,7 +36,7 @@ import styles from "./[chapterSlug].page.module.scss";
 
 export type IndicatorChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"];
+	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
 	chapterHTML: string;
 	chapterTitle: string;
 	pdfDownloadPath: string | null;
@@ -73,6 +76,8 @@ export default function IndicatorChapterPage({
 			</Breadcrumbs>
 
 			<ProductPageHeading product={product} />
+
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -202,6 +207,7 @@ export const getServerSideProps: GetServerSideProps<
 				productTypeName,
 				publishedDate,
 				title,
+				alert: product.alert,
 			},
 			chapters,
 			chapterHTML: chapterContent.content,

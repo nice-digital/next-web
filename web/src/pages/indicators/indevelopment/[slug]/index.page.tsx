@@ -1,6 +1,8 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 
@@ -72,7 +74,11 @@ export type InDevelopmentPageProps = {
 	technologyType: string | null;
 	title: string;
 	content: string | null;
+	topicSelectionDecision: string | null;
 	topicSelectionReason: string | null;
+	prioritisationRouting: string | null;
+	prioritisationRoutingDecision: string | null;
+	topicSelectionDecisionDate: string | null;
 	topicSelectionFurtherInfo: string | null;
 };
 
@@ -135,12 +141,7 @@ export default function InDevelopmentPage(
 
 			<ProjectPageHeading {...props} />
 
-			{alert && (
-				<div
-					className="alert-message"
-					dangerouslySetInnerHTML={{ __html: alert }}
-				/>
-			)}
+			{alert ? <Alert type="info">{parse(alert)}</Alert> : null}
 
 			<ProjectHorizontalNav
 				projectPath={projectPath}
@@ -314,8 +315,12 @@ export const getServerSideProps: GetServerSideProps<
 		technologyType,
 		title,
 		content,
-		topicSelectionFurtherInfo,
+		topicSelectionDecision,
 		topicSelectionReason,
+		prioritisationRouting,
+		prioritisationRoutingDecision,
+		topicSelectionDecisionDate,
+		topicSelectionFurtherInfo,
 	} = project;
 
 	const indevStakeholderRegistration = arrayify(
@@ -444,8 +449,12 @@ export const getServerSideProps: GetServerSideProps<
 			technologyType,
 			title,
 			content,
-			topicSelectionFurtherInfo,
+			topicSelectionDecision,
 			topicSelectionReason,
+			prioritisationRouting,
+			prioritisationRoutingDecision,
+			topicSelectionDecisionDate,
+			topicSelectionFurtherInfo,
 		},
 	};
 };

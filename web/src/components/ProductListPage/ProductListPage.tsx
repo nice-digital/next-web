@@ -4,8 +4,8 @@ import pluralize from "pluralize";
 import {
 	ElementType,
 	FC,
-	ReactChild,
 	ReactElement,
+	ReactNode,
 	useEffect,
 	useMemo,
 	useState,
@@ -21,6 +21,7 @@ import { PageHeader } from "@nice-digital/nds-page-header";
 import { Table } from "@nice-digital/nds-table";
 import {
 	Document,
+	KnownOrModifierKeys,
 	removeQueryParam,
 	SearchResultsSuccess,
 	SortOrder,
@@ -51,12 +52,13 @@ const resultsPerPage = [
 
 export type GetProductListPageOptions = {
 	metaDescription: string;
-	listNavType: ElementType;
+	listNavType?: ElementType;
 	breadcrumbTrail: ReactElement<BreadcrumbsProps>[];
 	currentBreadcrumb: string;
-	preheading: ReactChild;
-	heading: ReactChild;
-	intro?: ReactChild;
+	preheading: ReactNode;
+	heading: ReactNode;
+	intro?: ReactNode;
+	description?: ReactNode;
 	title: string;
 	defaultSort: {
 		order: SortOrder;
@@ -72,9 +74,12 @@ export type GetProductListPageOptions = {
 	textFilterLabel?: string;
 	textFilterHeading?: string;
 	useFutureDates?: boolean;
-	navigatorShortNamesToExclude?: string;
+	navigatorsOrder?: KnownOrModifierKeys[];
+	navigatorsToCollapse?: KnownOrModifierKeys[];
 	tableBodyRender: (documents: Document[]) => JSX.Element;
 	searchInputPlaceholder: string;
+	variant?: boolean;
+	filterSummaryDescription?: ReactNode;
 } & (
 	| {
 			showDateFilter: true;
@@ -99,6 +104,7 @@ export const getProductListPage =
 		preheading,
 		heading,
 		intro,
+		description,
 		title,
 		defaultSort,
 		secondarySort,
@@ -106,9 +112,12 @@ export const getProductListPage =
 		dateFilterLabel,
 		textFilterHeading,
 		useFutureDates,
-		navigatorShortNamesToExclude,
+		navigatorsOrder = ["nai", "tt", "tsd", "ndt", "ngt", "nat", "rty", "sub"],
+		navigatorsToCollapse = ["ngt", "nat"],
 		tableBodyRender,
 		searchInputPlaceholder,
+		variant = false,
+		filterSummaryDescription,
 	}: GetProductListPageOptions): FC<ProductListPageProps> =>
 	({
 		results,
@@ -166,6 +175,16 @@ export const getProductListPage =
 				</>
 			);
 
+		const variantProps = variant
+			? ({
+					variant: "fullWidthLight",
+					verticalPadding: "loose",
+					breadcrumbs,
+			  } as const)
+			: {
+					className: `page-header ${styles.pageHeader}`,
+			  };
+
 		return (
 			<>
 				<NextSeo
@@ -176,13 +195,12 @@ export const getProductListPage =
 
 				<Announcer announcement={announcement} />
 
-				{breadcrumbs}
+				{!variant && breadcrumbs}
 
 				<PageHeader
 					preheading={preheading}
 					heading={heading}
 					id="content-start"
-					className={`page-header ${styles.pageHeader}`}
 					data-testid="content-start"
 					lead={
 						<>
@@ -191,9 +209,11 @@ export const getProductListPage =
 							{intro}
 						</>
 					}
+					description={description}
+					{...variantProps}
 				/>
 
-				<ListNavType />
+				{ListNavType && <ListNavType />}
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem
@@ -212,22 +232,13 @@ export const getProductListPage =
 							queryText={q}
 							from={from}
 							to={to}
-							navigatorShortNamesToExclude={`gst,${navigatorShortNamesToExclude}`}
 							showDateFilter={showDateFilter}
 							showTextFilter={true}
 							dateFilterLabel={dateFilterLabel}
 							textFilterHeading={textFilterHeading}
 							useFutureDates={useFutureDates}
-							navigatorsOrder={[
-								"nai",
-								"tt",
-								"tsd",
-								"ndt",
-								"ngt",
-								"nat",
-								"rty",
-								"sub",
-							]}
+							navigatorsOrder={navigatorsOrder}
+							navigatorsToCollapse={navigatorsToCollapse}
 							searchInputPlaceholder={searchInputPlaceholder}
 						/>
 					</GridItem>
@@ -246,6 +257,10 @@ export const getProductListPage =
 							defaultSort={defaultSort}
 							secondarySort={secondarySort}
 						/>
+
+						{filterSummaryDescription ? (
+							<p>{filterSummaryDescription}</p>
+						) : null}
 
 						{documents.length === 0 ? (
 							<div id="results">

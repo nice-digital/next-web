@@ -1,0 +1,122 @@
+{
+  "_links": {
+    "self": [
+      {
+        "href": "/project/GID-TA12552"
+      }
+    ]
+  },
+  "_embedded": {
+    "nice.indev:provisional-schedule-list": {
+      "_links": {
+        "self": [{}]
+      },
+      "_embedded": {
+        "nice.indev:provisional-schedule": {
+          "_links": {
+            "self": [{}]
+          },
+          "ETag": null,
+          "AdditionalInfoLabel": null,
+          "AdditionalInfo": null,
+          "Hidden": false,
+          "Column1": "Consultation on suggested remit, draft scope and provisional stakeholder list of consultees and commentators",
+          "Column2": "11 August 2026 - 25 August 2026"
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:timeline-list": {
+      "_links": {
+        "self": [{}]
+      },
+      "_embedded": {
+        "nice.indev:timeline": {
+          "_links": {
+            "self": [{}]
+          },
+          "ETag": null,
+          "AdditionalInfoLabel": "Link text",
+          "AdditionalInfo": null,
+          "Hidden": false,
+          "Column1": "20 July 2026",
+          "Column2": "In progress. In scoping"
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:process-homepage": {
+      "_links": {
+        "self": [
+          {
+            "href": "https://www.nice.org.uk/what-nice-does/our-guidance/about-technology-appraisal-guidance"
+          },
+          {}
+        ]
+      },
+      "ETag": null,
+      "Description": "For further information on our processes and methods, please see our",
+      "LinkText": "CHTE processes and methods manual"
+    },
+    "nice.indev:email-enquiry-list": {
+      "_links": {
+        "self": [{}]
+      },
+      "_embedded": {
+        "nice.indev:email-enquiry": {
+          "_links": {
+            "self": [{}]
+          },
+          "ETag": null,
+          "Item": "HealthTech2@nice.org.uk"
+        }
+      },
+      "ETag": null
+    },
+    "nice.indev:panel-list": {
+      "_links": {
+        "self": [{}]
+      },
+      "ETag": null
+    }
+  },
+  "ETag": "01000000-0000-000B-0000-00000000E9F1",
+  "Summary": null,
+  "Description": null,
+  "ReferralDate": null,
+  "SuspendDiscontinuedReason": null,
+  "SuspendDiscontinuedUrl": null,
+  "SuspendDiscontinuedUrlText": null,
+  "LegacyModel": false,
+  "ProductReference": null,
+  "EvidenceAssessmentGroup": null,
+  "Alert": "",
+  "Content": "",
+  "Reference": "GID-TA12552",
+  "ProjectType": "TA",
+  "TechnologyType": "Diagnostic",
+  "ProductTypeName": "Technology appraisal guidance",
+  "Process": "MTA Standard",
+  "Title": "Rapid MT-RNR1 testing for detecting a genetic variant to guide antibiotic use and prevent hearing loss in babies (provisional title)",
+  "Status": "InProgress",
+  "ProjectGroup": "Guidance",
+  "PublishedDate": null,
+  "LastModifiedDate": "2026-08-07T12:02:40.8745893",
+  "FirstGoLiveDate": "2026-07-28T15:29:37.9903998",
+  "CreatedDate": "2026-07-21T16:20:00.3394705",
+  "Approach": [],
+  "DevelopedAs": null,
+  "RelevantTo": null,
+  "IdNumber": "12552",
+  "DeferredId": null,
+  "AreasOfInterestList": [],
+  "TopicSelectionDecision": "Prioritised",
+  "TopicSelectionReason": null,
+  "PrioritisationRouting": "HealthTech",
+  "PrioritisationRoutingDecision": "Routed as a TA",
+  "TopicSelectionDecisionDate": "2026-07-21T00:00:00",
+  "TopicSelectionFurtherInfo": "\u003Cp\u003ETo be updated\u003C/p\u003E",
+  "SuspendDiscontinuedDate": null,
+  "IndicatorSubTypes": [],
+  "TaxonomySubjectList": []
+}

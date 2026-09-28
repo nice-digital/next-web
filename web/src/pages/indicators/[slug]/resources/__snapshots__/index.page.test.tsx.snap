@@ -574,6 +574,7 @@ Object {
     "hasInfoForPublicResources": true,
     "hasToolsAndResources": true,
     "product": Object {
+      "alert": undefined,
       "id": "NG100",
       "lastMajorModificationDate": "2020-10-12T00:00:00",
       "productTypeName": "NICE guideline",

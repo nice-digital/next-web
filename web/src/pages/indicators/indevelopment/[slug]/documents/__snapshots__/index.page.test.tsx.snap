@@ -1128,6 +1128,7 @@ Object {
       },
     ],
     "project": Object {
+      "alert": undefined,
       "groups": Array [
         Object {
           "subGroups": Array [
@@ -2064,6 +2065,7 @@ Object {
       },
     ],
     "project": Object {
+      "alert": null,
       "groups": Array [
         Object {
           "subGroups": Array [

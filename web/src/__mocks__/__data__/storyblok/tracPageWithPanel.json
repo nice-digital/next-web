@@ -1,0 +1,110 @@
+{
+  "story": {
+    "name": "testracpage",
+    "created_at": "2026-04-13T10:05:10.211Z",
+    "published_at": "2026-04-13T12:55:11.598Z",
+    "updated_at": "2026-04-13T12:55:11.613Z",
+    "id": 165417411455612,
+    "uuid": "e10b1295-0865-4963-bb04-4e63a2b63ba3",
+    "content": {
+      "_uid": "1f201419-3c8c-42fb-9770-b419b3ce0de7",
+      "panel": [
+        {
+          "_uid": "7265784b-aa05-4cad-b219-84276569c9b7",
+          "content": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": null },
+                "content": [{ "text": "Tets panel content", "type": "text" }]
+              }
+            ]
+          },
+          "heading": "Test Panel",
+          "variant": "supporting",
+          "component": "panel",
+          "headingLevel": "2"
+        }
+      ],
+      "header": [
+        {
+          "cta": [],
+          "_uid": "b20469d1-378a-4858-beca-ae9cbf6aaeef",
+          "theme": "",
+          "title": "Test trac embed in page",
+          "summary": "some test content summary",
+          "component": "pageHeader",
+          "description": "some test content description"
+        }
+      ],
+      "content": [
+        {
+          "_uid": "6672cc37-8cdf-4388-95d9-15690940695d",
+          "richText": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": null },
+                "content": [
+                  { "text": "some text content before embed ", "type": "text" }
+                ]
+              }
+            ]
+          },
+          "component": "nestedRichText"
+        },
+        {
+          "_uid": "92136be1-9ebe-4632-aedb-891058c3b2d3",
+          "component": "tracEmbed",
+          "jobBoardID": "101965"
+        },
+        {
+          "_uid": "2f2d0481-b777-41a6-89fe-f4257bd6c431",
+          "richText": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "attrs": { "textAlign": null },
+                "content": [
+                  { "text": "test rich text after embed", "type": "text" }
+                ]
+              }
+            ]
+          },
+          "component": "nestedRichText"
+        }
+      ],
+      "metadata": [
+        {
+          "_uid": "9fe5d2e0-6b07-4a1c-a767-0350c58e6257",
+          "creator": "dale-nice",
+          "component": "metadata",
+          "description": "trac embed test"
+        }
+      ],
+      "component": "tracPage"
+    },
+    "slug": "testracpage",
+    "full_slug": "test-folder/dale-test/testracpage",
+    "sort_by_date": null,
+    "position": -20,
+    "tag_list": [],
+    "is_startpage": false,
+    "parent_id": 104282239261687,
+    "meta_data": null,
+    "group_id": "00204deb-c3a5-4ed7-9231-20864a5121f1",
+    "first_published_at": "2026-04-13T10:39:21.761Z",
+    "release_id": null,
+    "lang": "default",
+    "path": null,
+    "alternates": [],
+    "default_full_slug": null,
+    "translated_slugs": null
+  },
+  "cv": 1776084912,
+  "rels": [],
+  "links": []
+}

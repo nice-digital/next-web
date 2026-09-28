@@ -130,9 +130,9 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/:productRoot(indicators|guidance)/:statusSlug(retired)/:path*",
+					"/:productRoot(indicators|guidance)/:statusSlug(retired|archived|terminated)/:path*",
 				destination:
-					"/indicators/retired/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
+					"/indicators/:statusSlug/:path*?productRoot=:productRoot&statusSlug=:statusSlug",
 			},
 			{
 				source:
@@ -532,13 +532,6 @@ const nextConfig = {
 			},
 			{
 				source:
-					"/about/what-we-do/our-programmes/nice-guidance/medical-technologies-guidance/register-as-a-stakeholder",
-				destination:
-					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-medical-technologies",
-				permanent: true,
-			},
-			{
-				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/using-nice-guidelines-to-make-decisions",
 				destination:
 					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
@@ -556,13 +549,6 @@ const nextConfig = {
 					"/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/making-decisions-using-nice-guidelines",
 				destination:
 					"/what-nice-does/our-guidance/about-nice-guidelines/making-decisions-using-nice-guidelines",
-				permanent: true,
-			},
-			{
-				source:
-					"/about/what-we-do/our-programmes/nice-guidance/nice-diagnostics-guidance/dt-stakeholder-registration",
-				destination:
-					"/get-involved/register-your-organisation-as-a-stakeholder/stakeholder-registration-diagnostic-technologies",
 				permanent: true,
 			},
 			{
@@ -2811,6 +2797,13 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				permanent: true,
+			},
+			{
 				source: "/about/who-we-are/our-vision",
 				destination: "/about-us",
 				permanent: true,
@@ -3121,7 +3114,7 @@ const nextConfig = {
 			{
 				source: "/forms/candidates-for-modular-updates",
 				destination:
-					"/what-nice-does/our-guidance/candidates-for-modular-updates",
+					"/what-nice-does/our-guidance/modular-updates/candidates-for-modular-updates",
 				permanent: true,
 			},
 			{
@@ -3247,6 +3240,27 @@ const nextConfig = {
 				destination: "/reusing-our-content/use-of-nice-content-in-the-uk",
 				permanent: true,
 			},
+			// Healthtech campaign redirects 06/26
+			{
+				source:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives",
+				destination: "/what-nice-does/our-guidance/about-healthtech-guidance",
+				permanent: true,
+			},
+			{
+				source:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives/how-we-support-healthtech-commissioning",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-support-healthtech-commissioning",
+				permanent: true,
+			},
+			{
+				source:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/nice-backing-the-healthtech-that-changes-lives/how-we-support-healthtech-developers",
+				destination:
+					"/what-nice-does/our-guidance/about-healthtech-guidance/how-we-support-healthtech-developers",
+				permanent: true,
+			},
 			// Health Inequalities restructure 01/26
 			{
 				source:
@@ -3282,6 +3296,7 @@ const nextConfig = {
 				destination: "/implementing-nice-guidance/nice-and-health-inequalities",
 				permanent: true,
 			},
+			// Technology Appraisal
 		];
 	},
 	async headers() {

@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FilterSummary } from "@nice-digital/nds-filters";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
@@ -231,6 +231,7 @@ export function Search({
 								showDateFilter={false}
 								showTextFilter={false}
 								navigatorsOrder={["nai", "ndt", "gst", "drm", "ngt", "nat"]}
+								navigatorsToCollapse={["ngt", "nat"]}
 							/>
 						</GridItem>
 
