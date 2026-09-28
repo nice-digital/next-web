@@ -1,5 +1,5 @@
 {
-  "Id": "IND1111",
+  "Id": "IND1112",
   "LastModified": "2025-12-09T11:27:15.2944838Z",
   "ProductType": "IND",
   "Title": "Indicator - Master Accordion Panels Test",
@@ -8,7 +8,7 @@
   "MetaDescription": "Indicator Meta Description",
   "Summary": "\u003Cp\u003EIndicator Summary test on Master Accordions\u003C/p\u003E",
   "WithdrawnNotes": "",
-  "ProductStatus": "Retired",
+  "ProductStatus": "Archived",
   "VersionNumber": 6,
   "PublishedDate": "2025-08-05T00:00:00",
   "LastMajorModificationDate": "2025-08-05T00:00:00",
@@ -33,6 +33,7 @@
   "Approach": [],
   "DevelopedAs": null,
   "RelevantTo": [],
+  "TerminatedAppraisal": null,
   "AreasOfInterestList": [],
   "IndicatorSubTypeList": [
     "GPIQ"
@@ -63,7 +64,7 @@
         "Uid": 52610714472494,
         "Url": "/newfeeds/downloads/2487ee92-1296-4077-8736-5ff4f134ebdc"
       },
-      "Reference": "IND1111",
+      "Reference": "IND1112",
       "PartId": 2,
       "Title": "Indicator - Master Accordion Panels Test",
       "LegacyId": null,
