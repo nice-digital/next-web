@@ -10,22 +10,37 @@ import InDevelopmentPage, {
 	InDevelopmentPageProps,
 } from "./index.page";
 
-const productRoot = "guidance",
-	statusSlug = "indevelopment",
-	slug = "gid-ng10237",
-	resolvedUrl = `/${productRoot}/${statusSlug}/${slug}`,
-	getServerSidePropsContext = {
+const defaultSlug = "gid-ng10237";
+const defaultStatusSlug = "indevelopment";
+const defaultProductRoot = "guidance";
+const defaultResolvedUrl = `/${defaultProductRoot}/${defaultStatusSlug}/${defaultSlug}`;
+
+const makeContext = (
+	slug = defaultSlug,
+	statusSlug = defaultStatusSlug,
+	productRoot = defaultProductRoot
+): GetServerSidePropsContext<{ slug: string }> => {
+	return {
 		params: {
 			slug,
 		},
-		resolvedUrl,
-		query: { productRoot, statusSlug },
+		resolvedUrl: `/${productRoot}/${statusSlug}/${slug}`,
+		query: { productRoot: "guidance", statusSlug },
 	} as unknown as GetServerSidePropsContext<{ slug: string }>;
+};
+
+// const getServerSidePropsContext = {
+// 	params: {
+// 		slug: defaultSlug,
+// 	},
+// 	resolvedUrl: defaultResolvedUrl,
+// 	query: { productRoot: defaultProductRoot, statusSlug: defaultStatusSlug },
+// } as unknown as GetServerSidePropsContext<{ defaultSlug: string }>;
 
 describe("/indevelopment/[slug].page", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({
-			asPath: resolvedUrl,
+			asPath: defaultResolvedUrl,
 		}));
 	});
 
@@ -33,13 +48,27 @@ describe("/indevelopment/[slug].page", () => {
 		let props: InDevelopmentPageProps;
 		beforeEach(async () => {
 			props = (
-				(await getServerSideProps(getServerSidePropsContext)) as {
+				(await getServerSideProps(makeContext())) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
 		});
 
-		it("should match snapshot for main content", () => {
+		it("should match snapshot for ng project", () => {
+			render(<InDevelopmentPage {...props} />);
+			expect(document.body).toMatchSnapshot();
+		});
+
+		//////// NEW TEST
+		it("should match snapshot for ta project", async () => {
+			props = (
+				(await getServerSideProps(
+					makeContext("gid-ta12552", "indevelopment", "guidance")
+				)) as {
+					props: InDevelopmentPageProps;
+				}
+			).props;
+
 			render(<InDevelopmentPage {...props} />);
 			expect(document.body).toMatchSnapshot();
 		});
@@ -88,17 +117,26 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render related links", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "cg189-update-1",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/cg189-update-1",
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "cg189-update-1",
-					},
-					resolvedUrl: "/indicators/indevelopment/cg189-update-1",
-				})) as {
+				(await getServerSideProps(
+					makeContext("cg189-update-1", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 
 			expect(
@@ -118,17 +156,26 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render 'register an interest in this interventional procedure' link when projectType starts 'IPG' ", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-ip1046",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-ip1046",
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ip1046",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-ip1046",
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-ip1046", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 
 			const interventionLink = screen.getByRole("link", {
@@ -143,17 +190,26 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render further information links", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-tag383",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-tag383",
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-tag383",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-tag383",
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-tag383", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 
 			const furtherInfoLink = screen.getByRole("link", {
@@ -186,17 +242,26 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render topic areas", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-tag360",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-tag360",
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-tag360",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-tag360",
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-tag360", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 
 			expect(screen.getByText("Topic area:")).toBeInTheDocument();
@@ -209,17 +274,26 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render full update information links", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-qs10170",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-qs10170",
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-qs10170",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-qs10170",
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-qs10170", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 			expect(
 				screen.getByText("This guidance will fully update the following:")
@@ -232,17 +306,26 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render partial update information links", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-ng10364",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-ng10364",
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ng10364",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-ng10364",
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-ng10364", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 			const updateLink = screen.getByRole("link", {
 				name: "Atopic eczema in under 12s: diagnosis and management (CG57)",
@@ -255,18 +338,27 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render suspend discontinued reason", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-ip1153",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-ip1153",
+			// 		query: { productRoot, statusSlug: "discontinued" },
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ip1153",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-ip1153",
-					query: { productRoot, statusSlug: "discontinued" },
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-ip1153", "discontinued", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 			expect(screen.getByTestId("suspendDiscontinuedReason")).toHaveTextContent(
 				"Discontinued"
@@ -288,17 +380,26 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render provisional schedule", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-dg10049",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-dg10049",
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-dg10049",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-dg10049",
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-dg10049", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 
 			expect(
@@ -336,18 +437,27 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should render a link to the consultation overview page", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-ipg10305",
+			// 		},
+			// 		resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
+			// 		query: { productRoot, statusSlug },
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ipg10305",
-					},
-					resolvedUrl: "/indicators/indevelopment/gid-ipg10305",
-					query: { productRoot, statusSlug },
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-ipg10305", "indevelopment", "indicators")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 
 			const consultationLink = screen.getByRole("link", {
@@ -363,21 +473,30 @@ describe("/indevelopment/[slug].page", () => {
 		});
 
 		it("should not render a link to the consultation overview page when consultation content summary exists and there is no online commenting available (just PDF draft for commenting)", async () => {
+			// props = (
+			// 	(await getServerSideProps({
+			// 		...getServerSidePropsContext,
+			// 		params: {
+			// 			slug: "gid-ipg10307",
+			// 		},
+			// 		resolvedUrl: "/guidance/awaiting-development/gid-ipg10307",
+			// 		query: {
+			// 			productRoot: "guidance",
+			// 			statusSlug: "awaiting-development",
+			// 		},
+			// 	})) as {
+			// 		props: InDevelopmentPageProps;
+			// 	}
+			// ).props;
+
 			props = (
-				(await getServerSideProps({
-					...getServerSidePropsContext,
-					params: {
-						slug: "gid-ipg10307",
-					},
-					resolvedUrl: "/guidance/awaiting-development/gid-ipg10307",
-					query: {
-						productRoot: "guidance",
-						statusSlug: "awaiting-development",
-					},
-				})) as {
+				(await getServerSideProps(
+					makeContext("gid-ipg10307", "awaiting-development", "guidance")
+				)) as {
 					props: InDevelopmentPageProps;
 				}
 			).props;
+
 			render(<InDevelopmentPage {...props} />);
 
 			const consultationLink = screen.queryByRole("link", {
@@ -391,13 +510,13 @@ describe("/indevelopment/[slug].page", () => {
 	describe("getServerSideProps", () => {
 		it("should return a correct props when supplied with a valid slug", async () => {
 			await expect(
-				getServerSideProps(getServerSidePropsContext)
+				getServerSideProps(makeContext("gid-ng10237"))
 			).resolves.toMatchSnapshot();
 		});
 
 		describe("Redirects", () => {
 			it("should return not found if project doesn't exist", async () => {
-				const notFoundIdSlug = "abc123";
+				//const notFoundIdSlug = "abc123";
 
 				axiosJSONMock.reset();
 				axiosJSONMock.onGet(new RegExp(FeedPath.ProjectDetail)).reply(404, {
@@ -406,12 +525,12 @@ describe("/indevelopment/[slug].page", () => {
 				});
 				addDefaultJSONFeedMocks();
 
-				expect(
-					await getServerSideProps({
-						...getServerSidePropsContext,
-						params: { slug: notFoundIdSlug },
-					})
-				).toStrictEqual({
+				// {
+				// 	...getServerSidePropsContext,
+				// 	params: { slug: notFoundIdSlug },
+				// }
+
+				expect(await getServerSideProps(makeContext("abc123"))).toStrictEqual({
 					notFound: true,
 				});
 			});

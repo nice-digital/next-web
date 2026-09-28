@@ -74,7 +74,11 @@ export type InDevelopmentPageProps = {
 	technologyType: string | null;
 	title: string;
 	content: string | null;
+	topicSelectionDecision: string | null;
 	topicSelectionReason: string | null;
+	prioritisationRouting: string | null;
+	prioritisationRoutingDecision: string | null;
+	topicSelectionDecisionDate: string | null;
 	topicSelectionFurtherInfo: string | null;
 };
 
@@ -311,8 +315,12 @@ export const getServerSideProps: GetServerSideProps<
 		technologyType,
 		title,
 		content,
-		topicSelectionFurtherInfo,
+		topicSelectionDecision,
 		topicSelectionReason,
+		prioritisationRouting,
+		prioritisationRoutingDecision,
+		topicSelectionDecisionDate,
+		topicSelectionFurtherInfo,
 	} = project;
 
 	const indevStakeholderRegistration = arrayify(
@@ -441,8 +449,12 @@ export const getServerSideProps: GetServerSideProps<
 			technologyType,
 			title,
 			content,
-			topicSelectionFurtherInfo,
+			topicSelectionDecision,
 			topicSelectionReason,
+			prioritisationRouting,
+			prioritisationRoutingDecision,
+			topicSelectionDecisionDate,
+			topicSelectionFurtherInfo,
 		},
 	};
 };
