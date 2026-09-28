@@ -1,10 +1,11 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -76,7 +77,7 @@ export default function ConsultationHTMLPage({
 				indevStakeholderRegistration={indevStakeholderRegistration}
 				shouldUseNewConsultationComments={shouldUseNewConsultationComments}
 			/>
-			<InfoAlert alert={project.alert} />
+			{project.alert ? <Alert type="info">{parse(project.alert)}</Alert> : null}
 			<ProjectHorizontalNav
 				projectPath={projectPath}
 				hasDocuments

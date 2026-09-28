@@ -21,6 +21,53 @@ import { fetchAndMapContentParts } from "./contentparts";
 /** A custom exported version of @sindresorhus/slugify we use everywhere in case we introduce custom replacement */
 export const slugify = libSlugify;
 
+export const getStatusBreadcrumb = (
+	statusSlug: string,
+	type: string
+): { title: string; url: string; slug: string } | undefined => {
+	const statusBreadrcrumbs = {
+		published: {
+			title: "Published",
+			url: `/${type}/published`,
+			slug: "published",
+		},
+		terminated: {
+			title: "Terminated",
+			url: `/${type}/terminated`,
+			slug: "terminated",
+		},
+		inconsultation: {
+			title: "In consultation",
+			url: `/${type}/inconsultation`,
+			slug: "inconsultation",
+		},
+		indevelopment: {
+			title: "In development",
+			url: `/${type}/indevelopment`,
+			slug: "indevelopment",
+		},
+		deferred: {
+			title: "Deferred",
+			url: `/${type}/deferred`,
+			slug: "deferred",
+		},
+		awaitingDevelopment: {
+			title: "Awaiting development",
+			url: `/${type}/awaiting-development`,
+			slug: "awaiting-development",
+		},
+		topicPrioritisation: {
+			title: "Topic prioritisation",
+			url: `/${type}/prioritisation`,
+			slug: "prioritisation",
+		},
+	};
+
+	return Object.values(statusBreadrcrumbs).find(
+		(item) => item.slug === statusSlug
+	);
+};
+
 /**
  * Gets the path, relative to the root, of an indevelopment project overview page.
  *
@@ -87,8 +134,16 @@ export const getProductPath = (
 	>
 ): string => {
 	const { productGroup, productStatus, productType } = product;
-	const retiredProductPath =
-		productStatus === ProductStatus.Retired ? "retired/" : "";
+	const retiredArchivedOrTerminated = [
+		ProductStatus.Retired,
+		ProductStatus.Archived,
+		ProductStatus.Terminated,
+	];
+	const retiredArchivedOrTerminatedPath = retiredArchivedOrTerminated.includes(
+		productStatus
+	)
+		? `${productStatus.toLowerCase()}/`
+		: "";
 	let rootPath: string;
 
 	switch (productGroup) {
@@ -116,7 +171,9 @@ export const getProductPath = (
 			)}`;
 	}
 
-	return `/${rootPath}/${retiredProductPath}${getProductSlug(product)}`;
+	return `/${rootPath}/${retiredArchivedOrTerminatedPath}${getProductSlug(
+		product
+	)}`;
 };
 
 export const getPublicationPdfDownloadPath = (
@@ -127,13 +184,17 @@ export const getPublicationPdfDownloadPath = (
 	if (!product.contentPartsList) return null;
 
 	const { contentPartsList, id, productStatus } = product;
-	const isRetiredProduct = productStatus === ProductStatus.Retired;
+	const isRetiredOrArchivedProduct =
+		productStatus === ProductStatus.Retired ||
+		productStatus === ProductStatus.Archived;
 
 	const uploadAndConvertContentPart = fetchAndMapContentParts<
 		UploadAndConvertContentPart | UploadContentPart
 	>(
 		contentPartsList,
-		isRetiredProduct ? "UploadContentPart" : "UploadAndConvertContentPart"
+		isRetiredOrArchivedProduct
+			? "UploadContentPart"
+			: "UploadAndConvertContentPart"
 	);
 
 	if (!uploadAndConvertContentPart) {

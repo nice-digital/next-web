@@ -1,9 +1,10 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProjectHorizontalNav } from "@/components/ProjectHorizontalNav/ProjectHorizontalNav";
 import { ProjectPageHeading } from "@/components/ProjectPageHeading/ProjectPageHeading";
@@ -61,7 +62,9 @@ export default function DocumentsPage(props: DocumentsPageProps): JSX.Element {
 				indevScheduleItems={props.indevScheduleItems}
 				indevStakeholderRegistration={props.indevStakeholderRegistration}
 			/>
-			<InfoAlert alert={props.project.alert} />
+			{props.project.alert ? (
+				<Alert type="info">{parse(props.project.alert)}</Alert>
+			) : null}
 			<ProjectHorizontalNav
 				projectPath={props.projectPath}
 				hasDocuments

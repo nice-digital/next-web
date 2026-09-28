@@ -1,9 +1,10 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumb, Breadcrumbs } from "@nice-digital/nds-breadcrumbs";
 
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { Link } from "@/components/Link/Link";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
@@ -61,7 +62,7 @@ export default function EvidenceResourcesListPage({
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert alert={product.alert} />
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"

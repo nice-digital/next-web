@@ -1,6 +1,10 @@
 import React, { type FC } from "react";
 
-import { ProjectStatus, TopicSelectionReason } from "@/feeds/inDev/types";
+import {
+	ProjectStatus,
+	TopicSelectionReason,
+	TopicSelectionDecision,
+} from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
@@ -22,8 +26,12 @@ export type ProjectInformationProps = {
 	suspendDiscontinuedUrlText: string | null;
 	technologyType: string | null;
 	title: string;
+	topicSelectionDecision: string | null;
 	topicSelectionReason: string | null;
+	topicSelectionDecisionDate: string | null;
 	topicSelectionFurtherInfo: string | null;
+	prioritisationRouting: string | null;
+	prioritisationRoutingDecision: string | null;
 	isGuidanceHubPage: boolean;
 	content: string | null;
 	children?: never;
@@ -41,29 +49,34 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	suspendDiscontinuedUrl,
 	suspendDiscontinuedUrlText,
 	technologyType,
+	topicSelectionDecision,
 	topicSelectionReason,
+	topicSelectionDecisionDate,
 	topicSelectionFurtherInfo,
+	prioritisationRouting,
+	prioritisationRoutingDecision,
 	isGuidanceHubPage,
 	content,
 }) => {
-	let topicSelectionReasonText;
+	let topicSelectionReasonText = null;
+	let topicSelectionDecisionText = null;
 
-	switch (topicSelectionReason) {
-		case "Monitor":
-			topicSelectionReasonText = TopicSelectionReason.Monitor;
-			break;
-		case "Anticipate":
-			topicSelectionReasonText = TopicSelectionReason.Anticipate;
-			break;
-		case "NotEligible":
-			topicSelectionReasonText = TopicSelectionReason.NotEligible;
-			break;
-		case "FurtherDiscussion":
-			topicSelectionReasonText = TopicSelectionReason.FurtherDiscussion;
-			break;
-		default:
-			topicSelectionReasonText = null;
-			break;
+	if (topicSelectionReason) {
+		const tsReasonKey =
+			topicSelectionReason as keyof typeof TopicSelectionReason;
+		topicSelectionReasonText =
+			tsReasonKey in TopicSelectionReason
+				? TopicSelectionReason[tsReasonKey]
+				: null;
+	}
+
+	if (topicSelectionDecision) {
+		const tsDecisionKey =
+			topicSelectionDecision as keyof typeof TopicSelectionDecision;
+		topicSelectionDecisionText =
+			tsDecisionKey in TopicSelectionDecision
+				? TopicSelectionDecision[tsDecisionKey]
+				: null;
 	}
 
 	return (
@@ -105,6 +118,34 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 						{technologyType && (
 							<>
 								<dt>Technology type:</dt> <dd>{technologyType}</dd>
+							</>
+						)}
+						{topicSelectionDecisionText && (
+							<>
+								<dt>Decision:</dt>
+								<dd>{topicSelectionDecisionText}</dd>
+							</>
+						)}
+						{topicSelectionDecisionDate && (
+							<>
+								<dt>Decision publication date:</dt>{" "}
+								<dd>
+									<time dateTime={stripTime(topicSelectionDecisionDate)}>
+										{formatDateStr(topicSelectionDecisionDate)}
+									</time>
+								</dd>
+							</>
+						)}
+						{prioritisationRouting && (
+							<>
+								<dt>Prioritisation programme:</dt>{" "}
+								<dd>{prioritisationRouting}</dd>
+							</>
+						)}
+						{prioritisationRoutingDecision && (
+							<>
+								<dt>Prioritisation routing decision:</dt>{" "}
+								<dd>{prioritisationRoutingDecision}</dd>
 							</>
 						)}
 						{topicSelectionReasonText && (

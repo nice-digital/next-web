@@ -8,6 +8,7 @@ import {
 	UploadAndConvertContentPart,
 } from "@/feeds/publications/publications";
 import { ProductDetail } from "@/feeds/publications/types";
+import { TaxonomyBreadcrumb } from "@/feeds/taxonomy/types";
 import { logger } from "@/logger";
 import { arrayify } from "@/utils/array";
 import { fetchAndMapContentParts } from "@/utils/contentparts";
@@ -24,7 +25,9 @@ const resourcePathRegex =
 
 export type ProductResourceChapterPageProps = {
 	productPath: string;
-	product: ProductPageHeadingProps["product"] & Pick<ProductDetail, "alert">;
+	product: ProductPageHeadingProps["product"] &
+		Pick<ProductDetail, "alert" | "productStatus"> &
+		Partial<Pick<ProductDetail, "productType">>;
 	hasToolsAndResources: boolean;
 	hasInfoForPublicResources: boolean;
 	hasEvidenceResources: boolean;
@@ -35,15 +38,14 @@ export type ProductResourceChapterPageProps = {
 	title: string;
 	lastUpdated: string | null;
 	resourceTypeSlug: ResourceTypeSlug;
-	resourceTypeName: string;
 	resourceDownloadPath: string | null;
 	resourceDownloadSizeBytes: number | null;
+	taxonomyBreadcrumb: TaxonomyBreadcrumb[];
 };
 
 export const getGetServerSidePropsFunc =
 	(
-		resourceTypeSlug: ResourceTypeSlug,
-		resourceTypeName: string
+		resourceTypeSlug: ResourceTypeSlug
 	): GetServerSideProps<
 		ProductResourceChapterPageProps,
 		{ slug: string; partSlug: string; chapterSlug: string }
@@ -66,23 +68,29 @@ export const getGetServerSidePropsFunc =
 		}
 
 		const {
-				product,
-				productPath,
-				toolsAndResources,
-				hasToolsAndResources,
-				hasInfoForPublicResources,
-				infoForPublicResources,
-				hasEvidenceResources,
-				evidenceResources,
-				hasHistory,
-			} = result,
-			resources =
-				resourceTypeSlug === ResourceTypeSlug.ToolsAndResources
-					? toolsAndResources
-					: resourceTypeSlug === ResourceTypeSlug.Evidence
-					? evidenceResources
-					: infoForPublicResources,
-			{ partTitleSlug, resourceUID, partUID } = pathRegexMatch.groups,
+			product,
+			productPath,
+			toolsAndResources,
+			hasToolsAndResources,
+			hasInfoForPublicResources,
+			infoForPublicResources,
+			hasEvidenceResources,
+			evidenceResources,
+			hasHistory,
+			taxonomyBreadcrumb,
+		} = result;
+
+		let resources;
+
+		if (resourceTypeSlug === ResourceTypeSlug.ToolsAndResources) {
+			resources = toolsAndResources;
+		} else if (resourceTypeSlug === ResourceTypeSlug.Evidence) {
+			resources = evidenceResources;
+		} else {
+			resources = infoForPublicResources;
+		}
+
+		const { partTitleSlug, resourceUID, partUID } = pathRegexMatch.groups,
 			resource = resources.find(({ uid }) => uid === Number(resourceUID));
 
 		if (!resource) {
@@ -197,12 +205,14 @@ export const getGetServerSidePropsFunc =
 				hasHistory,
 				productPath,
 				product: {
+					alert: product.alert,
 					id: product.id,
 					lastMajorModificationDate: product.lastMajorModificationDate,
+					productStatus: product.productStatus,
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
+					terminatedDate: product.terminatedDate,
 					title: product.title,
-					alert: product.alert,
 				},
 				title,
 				htmlBody,
@@ -210,9 +220,9 @@ export const getGetServerSidePropsFunc =
 				chapterSections,
 				lastUpdated: fullResource.lastMajorModificationDate,
 				resourceTypeSlug,
-				resourceTypeName,
 				resourceDownloadPath,
 				resourceDownloadSizeBytes,
+				taxonomyBreadcrumb,
 			},
 		};
 	};

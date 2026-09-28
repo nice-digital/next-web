@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import React, { Fragment, type FC } from "react";
 
 import { Panel } from "@nice-digital/nds-panel";
 
@@ -21,14 +21,14 @@ export const ProjectConsultationDocumentsLink: FC<
 				progress
 			</h3>
 			{consultationUrls.map((url, index) => (
-				<>
+				<Fragment key={index}>
 					<Link to={url}>
 						{`Consultation ${
 							hasMultipleConsultations ? index + 1 : ""
 						} documents`}
 					</Link>
 					{index < consultationUrls.length - 1 && <hr className="mv--d" />}
-				</>
+				</Fragment>
 			))}
 		</Panel>
 	);

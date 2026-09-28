@@ -17,6 +17,16 @@ export enum TopicSelectionReason {
 	"FurtherDiscussion" = "Further discussion required at the Topic Selection Oversight Panel (TSOP)",
 }
 
+export enum TopicSelectionDecision {
+	"NoneSelected" = "None selected",
+	"AwaitingDecision" = "Awaiting decision",
+	"NotSelected" = "Not selected",
+	"FurtherInformationRequired" = "Further information required",
+	"Selected" = "Selected",
+	"Prioritised" = "Prioritised",
+	"NotPrioritised" = "Not prioritised",
+}
+
 export enum ProjectStatus {
 	"Complete" = "Complete",
 	"Discontinued" = "Discontinued",
@@ -626,6 +636,8 @@ export type ProjectDetail = {
 	areasOfInterestList: [];
 	topicSelectionDecision: string;
 	topicSelectionReason: string | null;
+	prioritisationRouting: string | null;
+	prioritisationRoutingDecision: string | null;
 	topicSelectionDecisionDate: string | null;
 	topicSelectionFurtherInfo: string | null;
 	indicatorSubTypes: [];

@@ -1,11 +1,12 @@
+import parse from "html-react-parser";
 import { type GetServerSideProps } from "next/types";
 import { NextSeo } from "next-seo";
 import React from "react";
 
+import { Alert } from "@nice-digital/nds-alert";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 
 import { ConvertedDocument } from "@/components/ConvertedDocument/ConvertedDocument";
-import { InfoAlert } from "@/components/InfoAlert/InfoAlert";
 import { ProductHorizontalNav } from "@/components/ProductHorizontalNav/ProductHorizontalNav";
 import {
 	ProductPageHeading,
@@ -69,7 +70,7 @@ export default function HistoryChaperHTMLPage({
 
 			<ProductPageHeading product={product} />
 
-			<InfoAlert alert={product.alert} />
+			{product.alert ? <Alert type="info">{parse(product.alert)}</Alert> : null}
 
 			<ProductHorizontalNav
 				productTypeName="Indicator"
@@ -167,12 +168,6 @@ export const getServerSideProps: GetServerSideProps<
 
 					const resourceIndevFile =
 						embedded.niceIndevGeneratedPdf || ({} as IndevFile);
-					const resourceIsGeneratedPdf = Object.hasOwn(
-						embedded,
-						"niceIndevGeneratedPdf"
-					);
-
-					if (!resourceIsGeneratedPdf) return false;
 
 					const href = `${productPath}/history/downloads/${product.id}-${
 						resourceIndevFile.resourceTitleId
