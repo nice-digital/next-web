@@ -13,6 +13,7 @@ export enum Status {
 	TemporarilyWithdrawn = "TemporarilyWithdrawn",
 	Retired = "Retired",
 	Terminated = "Terminated",
+	Archived = "Archived",
 }
 
 export type BreadcrumbStatus =
