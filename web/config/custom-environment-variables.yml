@@ -1,4 +1,6 @@
 public:
+  awsWaf:
+    scriptURL: AWS_WAF_SCRIPT_URL
   search:
     # The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/
     baseURL: SEARCH_BASE_URL
