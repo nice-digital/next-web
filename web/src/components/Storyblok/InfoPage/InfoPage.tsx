@@ -3,14 +3,15 @@ import { StoryblokComponent } from "@storyblok/react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { InPageNav } from "@nice-digital/nds-in-page-nav";
 
+import { getPreheading } from "@/components/Storyblok/StoryblokPageHeader/StoryblokPageHeader";
 import { StoryblokRichText } from "@/components/Storyblok/StoryblokRichText/StoryblokRichText";
 import { StoryblokSectionNav } from "@/components/Storyblok/StoryblokSectionNav/StoryblokSectionNav";
-import {
-	type ExtendedSBLink,
-	sectionNavIsPopulated,
-} from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { type Breadcrumb } from "@/types/Breadcrumb";
 import { type InfoPageStoryblok } from "@/types/storyblok";
+import {
+	type ExtendedSBLink,
+	treeHasItems,
+} from "@/utils/storyblok/contentStructureUtils";
 
 import styles from "./InfoPage.module.scss";
 
@@ -29,6 +30,8 @@ export const InfoPage = ({
 	slug,
 	pageType,
 }: InfoPageBlokProps): React.ReactElement => {
+	const preheading =
+		blok.hidePreHeader === "true" ? undefined : getPreheading(tree, blok);
 	return (
 		<div className={styles.infoPage}>
 			{blok.metadata &&
@@ -42,6 +45,7 @@ export const InfoPage = ({
 						blok={nestedBlok}
 						key={nestedBlok._uid}
 						breadcrumbs={breadcrumbs}
+						preheading={preheading}
 					/>
 				);
 			})}
@@ -49,12 +53,12 @@ export const InfoPage = ({
 			<Grid
 				gutter="loose"
 				className={
-					!sectionNavIsPopulated(tree) || blok.hideSectionNav === "true"
+					!treeHasItems(tree) || blok.hideSectionNav === "true"
 						? styles["infoPage--reverse-order"]
 						: undefined
 				}
 			>
-				{((blok.hideSectionNav !== "true" && sectionNavIsPopulated(tree)) ||
+				{((blok.hideSectionNav !== "true" && treeHasItems(tree)) ||
 					blok.hideInPageNav !== "true") && (
 					<GridItem
 						cols={12}

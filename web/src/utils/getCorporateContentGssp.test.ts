@@ -1,4 +1,3 @@
-import * as SectionNavUtils from "@/components/Storyblok/StoryblokSectionNav/utils/Utils";
 import { logger } from "@/logger";
 import {
 	getCorporateContentGssp,
@@ -11,13 +10,14 @@ import {
 	getStoryVersionFromQuery,
 	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
+import * as contentStructureUtils from "@/utils/storyblok/contentStructureUtils";
 
 import type { GetServerSidePropsContext } from "next";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
 //TODO do we need a better mock for the tree?
-jest.mock("@/components/Storyblok/StoryblokSectionNav/utils/Utils", () => ({
+jest.mock("@/utils/storyblok/contentStructureUtils", () => ({
 	buildTree: jest.fn(),
 }));
 
@@ -27,7 +27,7 @@ const mockGetSlugFromParams = getSlugFromParams as jest.Mock;
 const mockGetStoryVersionFromQuery = getStoryVersionFromQuery as jest.Mock;
 const mockLoggerError = logger.error as jest.Mock;
 
-const mockBuildTree = SectionNavUtils.buildTree as jest.Mock;
+const mockBuildTree = contentStructureUtils.buildTree as jest.Mock;
 
 describe("getCorporateContentGssp", () => {
 	const templateId = "test-template";
