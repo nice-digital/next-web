@@ -66,29 +66,33 @@ export default getProductListPage({
 		<>
 			As we develop guidance, we identify gaps and uncertainties in the evidence
 			base which could benefit from further research. The most important
-			unanswered questions are developed into research recommendations. Read our{" "}
+			unanswered questions are developed into research recommendations.
+		</>
+	),
+	description: (
+		<>
+			Browse the list below to identify research priorities across NICE
+			guidance. For more information about how NICE develops research
+			recommendations,{" "}
 			<a
 				href="https://www.nice.org.uk/process/pmg45"
 				target="_blank"
 				rel="noopener noreferrer"
-				aria-label="Process and methods guide (opens in a new window)"
-				title="Process and methods guide (opens in a new window)"
+				aria-label="read our process and methods guide (opens in a new window)"
+				title="read our process and methods guide (opens in a new window)"
 			>
-				process and methods guide
+				read our process and methods guide
 			</a>
-			.
-			<br />
-			<br />
-			Browse the list to find a topic of interest and check out the{" "}
+			. To learn more about funding opportunities available to address NICE
+			research recommendations, please visit the{" "}
 			<a
-				href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180"
+				href="https://www.nihr.ac.uk/nihr-nice-rolling-call-specification-document"
 				target="_blank"
 				rel="noopener noreferrer"
-				aria-label="National Institute for Health and Care Research call for research studies addressing NICE recommendations for research (opens in a new window)"
-				title="National Institute for Health and Care Research call for research studies addressing NICE recommendations for research (opens in a new window)"
+				aria-label="NIHR-NICE rolling call (opens in a new window)"
+				title="NIHR-NICE rolling call (opens in a new window)"
 			>
-				National Institute for Health and Care Research (NIHR) call for research
-				studies addressing NICE recommendations for research
+				NIHR-NICE rolling call
 			</a>
 			.
 			<br />
@@ -117,6 +121,7 @@ export default getProductListPage({
 	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
+	navigatorsOrder: ["ngt", "aty"],
 	searchInputPlaceholder: "E.g. 'diabetes' or 'CG100-1'",
 });
 
