@@ -121,7 +121,7 @@ export default getProductListPage({
 	dateFilterLabel,
 	textFilterHeading,
 	tableBodyRender,
-	navigatorsOrder: ["ngt", "aty"],
+	navigatorsOrder: ["ndt", "ngt", "aty"],
 	searchInputPlaceholder: "E.g. 'diabetes' or 'CG100-1'",
 });
 
