@@ -122,22 +122,32 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
             >
               Skip to results
             </a>
-            As we develop guidance, we identify gaps and uncertainties in the evidence base which could benefit from further research. The most important unanswered questions are developed into research recommendations. Read our
+            As we develop guidance, we identify gaps and uncertainties in the evidence base which could benefit from further research. The most important unanswered questions are developed into research recommendations.
+          </p>
+          <div
+            class="page-header__description"
+          >
+            Browse the list below to identify research priorities across NICE guidance. For more information about how NICE develops research recommendations,
              
             <a
+              aria-label="read our process and methods guide (opens in a new window)"
               href="https://www.nice.org.uk/process/pmg45"
+              rel="noopener noreferrer"
+              target="_blank"
+              title="read our process and methods guide (opens in a new window)"
             >
-              process and methods guide
+              read our process and methods guide
             </a>
-            .
-            <br />
-            <br />
-            Browse the list to find a topic of interest and check out the
+            . To learn more about funding opportunities available to address NICE research recommendations, please visit the
              
             <a
-              href="https://www.nihr.ac.uk/funding/nihr-nice-rolling-call/36180"
+              aria-label="NIHR-NICE rolling call (opens in a new window)"
+              href="https://www.nihr.ac.uk/nihr-nice-rolling-call-specification-document"
+              rel="noopener noreferrer"
+              target="_blank"
+              title="NIHR-NICE rolling call (opens in a new window)"
             >
-              National Institute for Health and Care Research (NIHR) call for research studies addressing NICE recommendations for research
+              NIHR-NICE rolling call
             </a>
             .
             <br />
@@ -145,12 +155,13 @@ exports[`/research-recommendations/index should match the snapshot 1`] = `
             For further information email
              
             <a
+              aria-label="Email the NICE research team at research@nice.org.uk"
               href="mailto:research@nice.org.uk"
             >
               research@nice.org.uk
             </a>
             .
-          </p>
+          </div>
         </div>
         <div
           class="grid grid--loose sectionWrapper"
