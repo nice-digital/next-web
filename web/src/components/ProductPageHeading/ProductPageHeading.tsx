@@ -14,7 +14,8 @@ export type ProductPageHeadingProps = {
 		| "publishedDate"
 		| "lastMajorModificationDate"
 	> &
-		Partial<Pick<ProductDetail, "terminatedDate">>;
+		Partial<Pick<ProductDetail, "terminatedDate">> &
+		Partial<Pick<ProductDetail, "archivedDate">>;
 	children?: never;
 };
 
@@ -25,6 +26,7 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 		productTypeName,
 		publishedDate,
 		terminatedDate,
+		archivedDate,
 		title,
 	},
 }) => {
@@ -36,6 +38,15 @@ export const ProductPageHeading: FC<ProductPageHeadingProps> = ({
 				Terminated:
 				<time dateTime={stripTime(terminatedDate)}>
 					&nbsp;{formatDateStr(terminatedDate)}
+				</time>
+			</>
+		);
+	} else if (archivedDate) {
+		dateArray.push(
+			<>
+				Archived:
+				<time dateTime={stripTime(archivedDate)}>
+					&nbsp;{formatDateStr(archivedDate)}
 				</time>
 			</>
 		);

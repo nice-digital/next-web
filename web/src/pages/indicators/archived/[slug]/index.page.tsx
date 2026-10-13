@@ -33,6 +33,7 @@ export type ArchivedDetailsPageProps = {
 			| "summary"
 			| "productStatus"
 			| "productType"
+			| "archivedDate"
 		>;
 	productPath: string;
 };
@@ -163,6 +164,7 @@ export const getServerSideProps: GetServerSideProps<
 				metaDescription: product.metaDescription,
 				summary: product.summary,
 				productStatus: product.productStatus,
+				archivedDate: product.archivedDate,
 				alert: product.alert,
 			},
 			productPath,
