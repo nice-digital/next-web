@@ -210,6 +210,7 @@ export const getGetServerSidePropsFunc =
 					productTypeName: product.productTypeName,
 					publishedDate: product.publishedDate,
 					terminatedDate: product.terminatedDate,
+					archivedDate: product.archivedDate,
 					title: product.title,
 				},
 				title,
