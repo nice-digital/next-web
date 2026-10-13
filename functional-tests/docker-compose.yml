@@ -16,7 +16,10 @@ services:
       - HUB_PORT=4444
 
   nxt-test-runner:
-    build: .
+    build:
+      context: .
+      args:
+        - NPM_TOKEN
     container_name: nxt-test-runner
     depends_on:
       - selenium-hub
@@ -35,7 +38,10 @@ services:
     # image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
     # command: ["npm", "run", "host-console-logging"]
     container_name: next-web
-    build: ./../web/
+    build:
+      context: ./../web/
+      args:
+        - NPM_TOKEN
     depends_on:
       - mock-search-api
       - mock-publications
