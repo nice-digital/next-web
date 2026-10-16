@@ -1,11 +1,10 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
-import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
-} from "@/components/ProductListPage/ProductListPage";
+	getListPage,
+} from "@/components/Guidance/ListPage/ListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
@@ -64,10 +63,9 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getProductListPage({
+export default getListPage({
 	metaDescription:
 		"View a complete list of all our guidance, NICE advice and quality standards currently in development",
-	listNavType: GuidanceListNav,
 	breadcrumbTrail: [
 		<Breadcrumb to="/guidance" key="NICE guidance">
 			NICE guidance
