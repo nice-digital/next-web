@@ -1,12 +1,11 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
-import { Link } from "@/components/Link/Link";
-import { IndicatorListNav } from "@/components/ProductListNav/IndicatorListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
-} from "@/components/ProductListPage/ProductListPage";
+	getListPage,
+} from "@/components/Guidance/ListPage/ListPage";
+import { Link } from "@/components/Link/Link";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,
@@ -68,10 +67,9 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getProductListPage({
+export default getListPage({
 	metaDescription:
 		"View a complete list of indicators currently being developed. Our indicators measure outcomes that reflect the quality of care or processes.",
-	listNavType: IndicatorListNav,
 	breadcrumbTrail: [
 		<Breadcrumb
 			to="/standards-and-indicators/indicators"

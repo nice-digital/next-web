@@ -3,8 +3,8 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
-} from "@/components/ProductListPage/ProductListPage";
+	getListPage,
+} from "@/components/Guidance/ListPage/ListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
@@ -48,9 +48,8 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getProductListPage({
+export default getListPage({
 	metaDescription: "",
-	listNavType: () => null,
 	breadcrumbTrail: [
 		<Breadcrumb to="/about" key="About">
 			About

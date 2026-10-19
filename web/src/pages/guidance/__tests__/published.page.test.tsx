@@ -28,6 +28,7 @@ describe("/guidance/published", () => {
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
+				index="guidance"
 			/>
 		).container;
 	});

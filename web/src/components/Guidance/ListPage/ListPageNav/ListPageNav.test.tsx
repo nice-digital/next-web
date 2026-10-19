@@ -1,17 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
 
-import { GuidanceListNav } from "./GuidanceListNav";
+import { ListPageNav } from "./ListPageNav";
 
-describe("GuidanceListNav", () => {
+describe("ListPageNav", () => {
 	beforeEach(() => {
 		(useRouter as jest.Mock).mockImplementation(() => ({}));
 	});
 
 	it("should render ARIA label on wrapping nav element", () => {
-		render(<GuidanceListNav />);
+		render(<ListPageNav index="indicators" />);
 		expect(screen.getByRole("navigation")).toHaveAccessibleName(
-			"Stages of guidance development"
+			"Stages of indicator development"
 		);
 	});
 
@@ -21,7 +21,7 @@ describe("GuidanceListNav", () => {
 		["In development"],
 		["Awaiting development"],
 	])("should render link for %s", (linkText) => {
-		render(<GuidanceListNav />);
+		render(<ListPageNav index="guidance" />);
 		const link = screen.getByText(linkText);
 		expect(link).toBeInTheDocument();
 		expect(link).toHaveAttribute("aria-current", "false");
@@ -34,7 +34,7 @@ describe("GuidanceListNav", () => {
 		["Awaiting development", "/guidance/awaiting-development"],
 	])("should highlight %s when current path is %s", (linkText, pathname) => {
 		(useRouter as jest.Mock).mockImplementation(() => ({ pathname }));
-		render(<GuidanceListNav />);
+		render(<ListPageNav index="guidance" />);
 		expect(screen.getByText(linkText)).toHaveAttribute("aria-current", "true");
 	});
 
@@ -48,7 +48,7 @@ describe("GuidanceListNav", () => {
 				pa: "2",
 			},
 		}));
-		render(<GuidanceListNav />);
+		render(<ListPageNav index="guidance" />);
 		expect(screen.getByText("Awaiting development")).toHaveAttribute(
 			"href",
 			"/guidance/awaiting-development?ndt=Guidance&nai=Antimicrobial%20prescribing"
@@ -62,7 +62,7 @@ describe("GuidanceListNav", () => {
 				ndt: "Guidance",
 			},
 		}));
-		render(<GuidanceListNav />);
+		render(<ListPageNav index="guidance" />);
 		expect(screen.getByText("Published")).toHaveAttribute(
 			"href",
 			"/guidance/published"

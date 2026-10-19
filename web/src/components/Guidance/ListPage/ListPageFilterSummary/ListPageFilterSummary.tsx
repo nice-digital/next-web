@@ -12,7 +12,7 @@ export interface ActiveModifier {
 	toggleUrl: string;
 }
 
-export interface ProductListFilterSummaryProps {
+export interface ListPageFilterSummaryProps {
 	results: SearchResultsSuccess;
 	activeModifiers: ActiveModifier[];
 	currentSortOrder?: string;
@@ -26,7 +26,7 @@ export interface ProductListFilterSummaryProps {
 	};
 }
 
-export const ProductListFilterSummary: FC<ProductListFilterSummaryProps> = ({
+export const ListPageFilterSummary: FC<ListPageFilterSummaryProps> = ({
 	results: { firstResult, lastResult, resultCount },
 	activeModifiers,
 	currentSortOrder,

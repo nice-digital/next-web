@@ -36,12 +36,13 @@ import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilt
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
-import { ProductListFilterSummary } from "./ProductListFilterSummary/ProductListFilterSummary";
-import { defaultPageSize } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
-import styles from "./ProductListPage.module.scss";
-import { ProductListPageProps } from "./ProductListPageProps";
+import styles from "./ListPage.module.scss";
+import { ListPageFilterSummary } from "./ListPageFilterSummary/ListPageFilterSummary";
+import { defaultPageSize } from "./ListPageGetServerSideProps/ListPageGetServerSideProps";
+import { ListPageNav as ListPageNavNoOverride } from "./ListPageNav/ListPageNav";
+import { ListPageProps } from "./ListPageProps";
 
-export { getGetServerSidePropsFunc } from "./ProductListGetServerSideProps/ProductListGetServerSideProps";
+export { getGetServerSidePropsFunc } from "./ListPageGetServerSideProps/ListPageGetServerSideProps";
 
 const resultsPerPage = [
 	{ count: 10, label: "10" },
@@ -50,9 +51,9 @@ const resultsPerPage = [
 	{ count: 9999, label: "All" },
 ];
 
-export type GetProductListPageOptions = {
+export type GetListPageOptions = {
 	metaDescription: string;
-	listNavType?: ElementType;
+	listPageNavOverride?: ElementType;
 	breadcrumbTrail: ReactElement<BreadcrumbsProps>[];
 	currentBreadcrumb: string;
 	preheading: ReactNode;
@@ -95,10 +96,10 @@ export type GetProductListPageOptions = {
  *
  * @returns A guidance or indicator list page component
  */
-export const getProductListPage =
+export const getListPage =
 	({
 		metaDescription,
-		listNavType: ListNavType,
+		listPageNavOverride: ListPageNavOverride,
 		breadcrumbTrail,
 		currentBreadcrumb,
 		preheading,
@@ -118,11 +119,12 @@ export const getProductListPage =
 		searchInputPlaceholder,
 		variant = false,
 		filterSummaryDescription,
-	}: GetProductListPageOptions): FC<ProductListPageProps> =>
+	}: GetListPageOptions): FC<ListPageProps> =>
 	({
 		results,
 		searchUrl: { q, s, from, to, ps = defaultPageSize },
 		activeModifiers,
+		index,
 	}) => {
 		const { asPath, pathname } = useRouter();
 		// Announcement text, used for giving audible notifications to screen readers when results have changed
@@ -185,6 +187,12 @@ export const getProductListPage =
 					className: `page-header ${styles.pageHeader}`,
 			  };
 
+		const listPageNav = ListPageNavOverride ? (
+			<ListPageNavOverride />
+		) : (
+			<ListPageNavNoOverride index={index} />
+		);
+
 		return (
 			<>
 				<NextSeo
@@ -213,7 +221,7 @@ export const getProductListPage =
 					{...variantProps}
 				/>
 
-				{ListNavType && <ListNavType />}
+				{listPageNav}
 
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem
@@ -250,7 +258,7 @@ export const getProductListPage =
 						elementType="section"
 						aria-labelledby="filter-summary"
 					>
-						<ProductListFilterSummary
+						<ListPageFilterSummary
 							results={results as SearchResultsSuccess}
 							activeModifiers={activeModifiers}
 							currentSortOrder={s}

@@ -3,8 +3,8 @@ import { Document, SortOrder } from "@nice-digital/search-client";
 
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
-} from "@/components/ProductListPage/ProductListPage";
+	getListPage,
+} from "@/components/Guidance/ListPage/ListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
@@ -67,7 +67,7 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getProductListPage({
+export default getListPage({
 	metaDescription:
 		"Technologies will be considered eligible for routing to the HST Programme if the NICE prioritisation board agrees that all 4 routing criteria have been met.",
 	breadcrumbTrail: [
