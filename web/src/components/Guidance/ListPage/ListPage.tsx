@@ -36,12 +36,11 @@ import { SearchListFilters } from "@/components/SearchListFilters/SearchListFilt
 import { SearchPagination } from "@/components/SearchPagination/SearchPagination";
 import { SkipLink } from "@/components/SkipLink/SkipLink";
 
-import { ListPageFilterSummary } from "./ListPageFilterSummary/ListPageFilterSummary";
-import { ListPageNav as ListPageNavNoOverride } from "./ListPageNav/ListPageNav";
-import { defaultPageSize } from "./ListPageGetServerSideProps/ListPageGetServerSideProps";
-import { ListPageProps } from "./ListPageProps";
-
 import styles from "./ListPage.module.scss";
+import { ListPageFilterSummary } from "./ListPageFilterSummary/ListPageFilterSummary";
+import { defaultPageSize } from "./ListPageGetServerSideProps/ListPageGetServerSideProps";
+import { ListPageNav as ListPageNavNoOverride } from "./ListPageNav/ListPageNav";
+import { ListPageProps } from "./ListPageProps";
 
 export { getGetServerSidePropsFunc } from "./ListPageGetServerSideProps/ListPageGetServerSideProps";
 
@@ -188,7 +187,11 @@ export const getListPage =
 					className: `page-header ${styles.pageHeader}`,
 			  };
 
-		const listPageNav = ListPageNavOverride ?  <ListPageNavOverride /> : <ListPageNavNoOverride index={index} />;
+		const listPageNav = ListPageNavOverride ? (
+			<ListPageNavOverride />
+		) : (
+			<ListPageNavNoOverride index={index} />
+		);
 
 		return (
 			<>
@@ -219,7 +222,7 @@ export const getListPage =
 				/>
 
 				{listPageNav}
-				
+
 				<Grid gutter="loose" className={styles.sectionWrapper}>
 					<GridItem
 						cols={12}
@@ -271,7 +274,7 @@ export const getListPage =
 							<div id="results">
 								<h2>No results found</h2>
 								<p>
-									Sorry, we haven't found any results for you. You could try:
+									Sorry, we haven’t found any results for you. You could try:
 								</p>
 
 								<ul>

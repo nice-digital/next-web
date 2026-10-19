@@ -1,11 +1,11 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
-import { Link } from "@/components/Link/Link";
 import {
 	getGetServerSidePropsFunc,
 	getListPage,
 } from "@/components/Guidance/ListPage/ListPage";
+import { Link } from "@/components/Link/Link";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 
 const defaultSortOrder = SortOrder.dateDescending,

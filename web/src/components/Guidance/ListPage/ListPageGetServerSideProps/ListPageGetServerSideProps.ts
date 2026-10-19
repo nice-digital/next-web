@@ -13,12 +13,14 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
+import {
+	ActiveModifier,
+	ListPageProps,
+} from "@/components/Guidance/ListPage/ListPageProps";
 import { getRedirectUrl } from "@/components/Guidance/ListPage/redirects";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
-
-import { ActiveModifier, ListPageProps } from "@/components/Guidance/ListPage/ListPageProps";
 
 export const defaultPageSize = 10;
 

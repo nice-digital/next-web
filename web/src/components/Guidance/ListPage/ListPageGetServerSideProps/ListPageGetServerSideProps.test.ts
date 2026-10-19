@@ -4,10 +4,9 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
+import { ListPageProps } from "@/components/Guidance/ListPage/ListPageProps";
 import { logger } from "@/logger";
 import sampleData from "@/mockData/search/guidance-published.json";
-
-import { ListPageProps } from "@/components/Guidance/ListPage/ListPageProps";
 
 import { getGetServerSidePropsFunc } from "./ListPageGetServerSideProps";
 
