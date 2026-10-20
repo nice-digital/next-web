@@ -2,8 +2,8 @@ import React, { type FC } from "react";
 
 import {
 	ProjectStatus,
-	TopicSelectionReason,
-	TopicSelectionDecision,
+	PrioritisationReason,
+	PrioritisationDecision,
 } from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
@@ -26,12 +26,14 @@ export type ProjectInformationProps = {
 	suspendDiscontinuedUrlText: string | null;
 	technologyType: string | null;
 	title: string;
-	topicSelectionDecision: string | null;
-	topicSelectionReason: string | null;
-	topicSelectionDecisionDate: string | null;
-	topicSelectionFurtherInfo: string | null;
-	prioritisationRouting: string | null;
-	prioritisationRoutingDecision: string | null;
+	routingDecision: string | null;
+	routingDecisionPublicationDate: string | null;
+	routingDecisionRationale: string | null;
+	prioritisationDecision: string | null;
+	prioritisationReason: string | null;
+	prioritisationProgramme: string | null;
+	prioritisationBoardDecisionDate: string | null;
+	prioritisationRationale: string | null;
 	isGuidanceHubPage: boolean;
 	content: string | null;
 	children?: never;
@@ -49,33 +51,35 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	suspendDiscontinuedUrl,
 	suspendDiscontinuedUrlText,
 	technologyType,
-	topicSelectionDecision,
-	topicSelectionReason,
-	topicSelectionDecisionDate,
-	topicSelectionFurtherInfo,
-	prioritisationRouting,
-	prioritisationRoutingDecision,
+	routingDecision,
+	routingDecisionPublicationDate,
+	routingDecisionRationale,
+	prioritisationDecision,
+	prioritisationReason,
+	prioritisationProgramme,
+	prioritisationBoardDecisionDate,
+	prioritisationRationale,
 	isGuidanceHubPage,
 	content,
 }) => {
-	let topicSelectionReasonText = null;
-	let topicSelectionDecisionText = null;
+	let prioritisationReasonText = null;
+	let prioritisationDecisionText = null;
 
-	if (topicSelectionReason) {
+	if (prioritisationReason) {
 		const tsReasonKey =
-			topicSelectionReason as keyof typeof TopicSelectionReason;
-		topicSelectionReasonText =
-			tsReasonKey in TopicSelectionReason
-				? TopicSelectionReason[tsReasonKey]
+			prioritisationReason as keyof typeof PrioritisationReason;
+		prioritisationReasonText =
+			tsReasonKey in PrioritisationReason
+				? PrioritisationReason[tsReasonKey]
 				: null;
 	}
 
-	if (topicSelectionDecision) {
+	if (prioritisationDecisionText) {
 		const tsDecisionKey =
-			topicSelectionDecision as keyof typeof TopicSelectionDecision;
-		topicSelectionDecisionText =
-			tsDecisionKey in TopicSelectionDecision
-				? TopicSelectionDecision[tsDecisionKey]
+			prioritisationDecision as keyof typeof PrioritisationDecision;
+		prioritisationDecisionText =
+			tsDecisionKey in PrioritisationDecision
+				? PrioritisationDecision[tsDecisionKey]
 				: null;
 	}
 
@@ -120,44 +124,59 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 								<dt>Technology type:</dt> <dd>{technologyType}</dd>
 							</>
 						)}
-						{topicSelectionDecisionText && (
+						{routingDecision && (
 							<>
-								<dt>Decision:</dt>
-								<dd>{topicSelectionDecisionText}</dd>
+								<dt>Routing decision:</dt> <dd>{routingDecision}</dd>
 							</>
 						)}
-						{topicSelectionDecisionDate && (
+						{routingDecisionPublicationDate && (
 							<>
-								<dt>Decision publication date:</dt>{" "}
+								<dt>Routing decision publication date:</dt>{" "}
 								<dd>
-									<time dateTime={stripTime(topicSelectionDecisionDate)}>
-										{formatDateStr(topicSelectionDecisionDate)}
+									<time dateTime={stripTime(routingDecisionPublicationDate)}>
+										{formatDateStr(routingDecisionPublicationDate)}
 									</time>
 								</dd>
 							</>
 						)}
-						{prioritisationRouting && (
+						{routingDecisionRationale && (
+							<>
+								<dt>Routing decision rationale:</dt>{" "}
+								<dd>{routingDecisionRationale}</dd>
+							</>
+						)}
+						{prioritisationDecisionText && (
+							<>
+								<dt>Prioritisation decision:</dt>
+								<dd>{prioritisationDecisionText}</dd>
+							</>
+						)}
+						{prioritisationBoardDecisionDate && (
+							<>
+								<dt>Prioritisation decision publication date:</dt>{" "}
+								<dd>
+									<time dateTime={stripTime(prioritisationBoardDecisionDate)}>
+										{formatDateStr(prioritisationBoardDecisionDate)}
+									</time>
+								</dd>
+							</>
+						)}
+						{prioritisationProgramme && (
 							<>
 								<dt>Prioritisation programme:</dt>{" "}
-								<dd>{prioritisationRouting}</dd>
+								<dd>{prioritisationProgramme}</dd>
 							</>
 						)}
-						{prioritisationRoutingDecision && (
+						{prioritisationReasonText && (
 							<>
-								<dt>Prioritisation routing decision:</dt>{" "}
-								<dd>{prioritisationRoutingDecision}</dd>
+								<dt>Reason for prioritisation decision:</dt>{" "}
+								<dd>{prioritisationReasonText}</dd>
 							</>
 						)}
-						{topicSelectionReasonText && (
+						{prioritisationRationale && (
 							<>
-								<dt>Reason for decision:</dt>{" "}
-								<dd>{topicSelectionReasonText}</dd>
-							</>
-						)}
-						{topicSelectionFurtherInfo && (
-							<>
-								<dt>Further information:</dt>{" "}
-								<dd>{topicSelectionFurtherInfo}</dd>
+								<dt>Prioritisation decision rationale:</dt>{" "}
+								<dd>{prioritisationRationale}</dd>
 							</>
 						)}
 						{process && status !== ProjectStatus.TopicPrioritisation ? (
@@ -182,7 +201,6 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 								<dt>ID number:</dt> <dd>{idNumber}</dd>
 							</>
 						)}
-
 						{process == "MT" && referralDate ? (
 							<>
 								<dt>Notification date:</dt> <dd>{referralDate}</dd>

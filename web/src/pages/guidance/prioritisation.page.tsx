@@ -8,6 +8,7 @@ import {
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
+import { PrioritisationDecision } from "@/feeds/inDev/types";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Decision date",
@@ -32,9 +33,20 @@ const tableBodyRender = (documents: Document[]) => (
 					title,
 					pathAndQuery,
 					technologyType,
-					topicSelectionDecision,
-					topicSelectionDecisionDate,
+					prioritisationDecision,
+					prioritisationBoardDecisionDate,
 				}) => {
+					let prioritisationDecisionText = null;
+
+					if (prioritisationDecisionText) {
+						const tsDecisionKey =
+							prioritisationDecision as keyof typeof PrioritisationDecision;
+						prioritisationDecisionText =
+							tsDecisionKey in PrioritisationDecision
+								? PrioritisationDecision[tsDecisionKey]
+								: null;
+					}
+
 					return (
 						<tr key={id}>
 							<td>
@@ -44,10 +56,12 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{technologyType}</td>
-							<td>{topicSelectionDecision || "n/a"}</td>
+							<td>{prioritisationDecisionText || "n/a"}</td>
 							<td>
-								{topicSelectionDecisionDate ? (
-									<ResponsiveDate isoDateTime={topicSelectionDecisionDate} />
+								{prioritisationBoardDecisionDate ? (
+									<ResponsiveDate
+										isoDateTime={prioritisationBoardDecisionDate}
+									/>
 								) : (
 									<abbr title="To be confirmed">TBC</abbr>
 								)}
