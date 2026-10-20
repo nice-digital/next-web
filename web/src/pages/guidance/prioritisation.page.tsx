@@ -38,7 +38,7 @@ const tableBodyRender = (documents: Document[]) => (
 				}) => {
 					let prioritisationDecisionText = null;
 
-					if (prioritisationDecisionText) {
+					if (prioritisationDecision) {
 						const tsDecisionKey =
 							prioritisationDecision as keyof typeof PrioritisationDecision;
 						prioritisationDecisionText =
@@ -56,7 +56,7 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{technologyType}</td>
-							<td>{prioritisationDecisionText || "n/a"}</td>
+							<td>{prioritisationDecisionText}</td>
 							<td>
 								{prioritisationBoardDecisionDate ? (
 									<ResponsiveDate
