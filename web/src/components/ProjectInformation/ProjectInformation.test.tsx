@@ -216,14 +216,14 @@ describe("ProjectInformation", () => {
 	it("should render routingDecisionPublicationDate if routingDecisionPublicationDate has content", async () => {
 		const mockProps = {
 			...props,
-			routingDecisionPublicationDate: "2026-07-21T00:00:00",
+			routingDecisionPublicationDate: "2026-10-21T00:00:00",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
 		const { getByText } = within(list);
 		expect(getByText("Routing decision publication date:").tagName).toBe("DT");
-		expect(getByText("21 July 2026").tagName).toBe("TIME");
+		expect(getByText("21 October 2026").tagName).toBe("TIME");
 	});
 
 	it("should not render routingDecisionRationale if routingDecisionRationale is null", async () => {
