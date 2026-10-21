@@ -7,7 +7,6 @@ import {
 } from "@/components/ProductListPage/ProductListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
-import { PrioritisationDecision } from "@/feeds/inDev/types";
 
 const defaultSortOrder = SortOrder.dateDescending,
 	dateFilterLabel = "Meeting date",
@@ -39,17 +38,6 @@ const tableBodyRender = (documents: Document[]) => (
 					prioritisationProgramme,
 					prioritisationBoardDecisionDate,
 				}) => {
-					let prioritisationDecisionText = null;
-
-					if (prioritisationDecision) {
-						const tsDecisionKey =
-							prioritisationDecision as keyof typeof PrioritisationDecision;
-						prioritisationDecisionText =
-							tsDecisionKey in PrioritisationDecision
-								? PrioritisationDecision[tsDecisionKey]
-								: null;
-					}
-
 					return (
 						<tr key={id}>
 							<td>
@@ -67,7 +55,7 @@ const tableBodyRender = (documents: Document[]) => (
 									dangerouslySetInnerHTML={{ __html: title }}
 								/>
 							</td>
-							<td>{prioritisationDecisionText}</td>
+							<td>{prioritisationDecision}</td>
 							<td>{prioritisationProgramme}</td>
 							<td>
 								<ResponsiveDate

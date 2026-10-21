@@ -168,13 +168,13 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               In progress
             </dd>
             <dt>
-              Decision:
+              Prioritisation decision:
             </dt>
             <dd>
               Selected
             </dd>
             <dt>
-              Decision publication date:
+              Prioritisation decision publication date:
             </dt>
              
             <dd>
@@ -192,7 +192,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               MedicinesEvaluation
             </dd>
             <dt>
-              Further information:
+              Prioritisation decision rationale:
             </dt>
              
             <dd>
@@ -505,14 +505,15 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dd>
               Diagnostic
             </dd>
+
             <dt>
-              Decision:
+              Prioritisation decision:
             </dt>
             <dd>
               Prioritised
             </dd>
             <dt>
-              Decision publication date:
+              Prioritisation decision publication date:
             </dt>
              
             <dd>
@@ -525,7 +526,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Prioritisation programme:
             </dt>
-             
+
             <dd>
               HealthTech
             </dd>
