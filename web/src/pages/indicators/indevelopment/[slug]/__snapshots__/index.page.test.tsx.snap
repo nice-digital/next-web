@@ -505,7 +505,13 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dd>
               Diagnostic
             </dd>
-
+            <dt>
+              Routing decision:
+            </dt>
+             
+            <dd>
+              Routed as a TA
+            </dd>
             <dt>
               Prioritisation decision:
             </dt>
@@ -526,19 +532,12 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Prioritisation programme:
             </dt>
-
+             
             <dd>
               HealthTech
             </dd>
             <dt>
-              Prioritisation routing decision:
-            </dt>
-             
-            <dd>
-              Routed as a TA
-            </dd>
-            <dt>
-              Further information:
+              Prioritisation decision rationale:
             </dt>
              
             <dd>
@@ -826,13 +825,19 @@ Object {
     "indevTopicItems": Array [],
     "isGuidanceHubPage": false,
     "partialUpdates": Array [],
-    "prioritisationRouting": "MedicinesEvaluation",
-    "prioritisationRoutingDecision": null,
+    "prioritisationBoardDecisionDate": "2026-07-01T00:00:00",
+    "prioritisationDecision": "Selected",
+    "prioritisationProgramme": "MedicinesEvaluation",
+    "prioritisationRationale": "Further info",
+    "prioritisationReason": null,
     "process": "CG",
     "projectPath": "/guidance/indevelopment/gid-ng10237",
     "projectType": "NG",
     "reference": "GID-NG10237",
     "referralDate": null,
+    "routingDecision": null,
+    "routingDecisionPublicationDate": null,
+    "routingDecisionRationale": null,
     "status": "In progress",
     "summary": null,
     "suspendDiscontinuedReason": null,
@@ -840,10 +845,6 @@ Object {
     "suspendDiscontinuedUrlText": null,
     "technologyType": null,
     "title": "Adrenal insufficiency: acute and long-term management",
-    "topicSelectionDecision": "Selected",
-    "topicSelectionDecisionDate": "2026-07-01T00:00:00",
-    "topicSelectionFurtherInfo": "Further info",
-    "topicSelectionReason": null,
   },
 }
 `;
