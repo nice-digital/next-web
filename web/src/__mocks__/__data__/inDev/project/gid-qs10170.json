@@ -233,7 +233,6 @@
   "IdNumber": null,
   "AreasOfInterestList": [],
   "PrioritisationDecision": "AwaitingDecision",
-  "PrioritisationReason": null,
   "PrioritisationBoardDecisionDate": null,
   "PrioritisationRationale": null,
   "IndicatorSubTypes": []

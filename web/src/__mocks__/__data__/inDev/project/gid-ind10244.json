@@ -260,7 +260,6 @@
   "RoutingDecisionPublicationDate": null,
   "RoutingDecisionRationale": null,
   "PrioritisationDecision": "AwaitingDecision",
-  "PrioritisationReason": null,
   "PrioritisationBoardDecisionDate": null,
   "PrioritisationRationale": null,
   "IndicatorSubTypes": ["CCG", "GPIQ", "GPINQ", "NLQ"]

@@ -79,7 +79,6 @@ export type InDevelopmentPageProps = {
 	routingDecisionPublicationDate: string | null;
 	routingDecisionRationale: string | null;
 	prioritisationDecision: string | null;
-	prioritisationReason: string | null;
 	prioritisationProgramme: string | null;
 	prioritisationBoardDecisionDate: string | null;
 	prioritisationRationale: string | null;
@@ -322,7 +321,6 @@ export const getServerSideProps: GetServerSideProps<
 		routingDecisionPublicationDate,
 		routingDecisionRationale,
 		prioritisationDecision,
-		prioritisationReason,
 		prioritisationProgramme,
 		prioritisationBoardDecisionDate,
 		prioritisationRationale,
@@ -458,7 +456,6 @@ export const getServerSideProps: GetServerSideProps<
 			routingDecisionPublicationDate,
 			routingDecisionRationale,
 			prioritisationDecision,
-			prioritisationReason,
 			prioritisationProgramme,
 			prioritisationBoardDecisionDate,
 			prioritisationRationale,

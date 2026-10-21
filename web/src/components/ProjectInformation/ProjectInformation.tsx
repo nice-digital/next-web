@@ -1,10 +1,6 @@
 import React, { type FC } from "react";
 
-import {
-	ProjectStatus,
-	PrioritisationReason,
-	PrioritisationDecision,
-} from "@/feeds/inDev/types";
+import { ProjectStatus, PrioritisationDecision } from "@/feeds/inDev/types";
 import { ProductTypeAcronym } from "@/feeds/publications/types";
 import { formatDateStr, stripTime } from "@/utils/datetime";
 
@@ -30,7 +26,6 @@ export type ProjectInformationProps = {
 	routingDecisionPublicationDate: string | null;
 	routingDecisionRationale: string | null;
 	prioritisationDecision: string | null;
-	prioritisationReason: string | null;
 	prioritisationProgramme: string | null;
 	prioritisationBoardDecisionDate: string | null;
 	prioritisationRationale: string | null;
@@ -55,24 +50,13 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 	routingDecisionPublicationDate,
 	routingDecisionRationale,
 	prioritisationDecision,
-	prioritisationReason,
 	prioritisationProgramme,
 	prioritisationBoardDecisionDate,
 	prioritisationRationale,
 	isGuidanceHubPage,
 	content,
 }) => {
-	let prioritisationReasonText = null;
 	let prioritisationDecisionText = null;
-
-	if (prioritisationReason) {
-		const tsReasonKey =
-			prioritisationReason as keyof typeof PrioritisationReason;
-		prioritisationReasonText =
-			tsReasonKey in PrioritisationReason
-				? PrioritisationReason[tsReasonKey]
-				: null;
-	}
 
 	if (prioritisationDecision) {
 		const tsDecisionKey =
@@ -165,12 +149,6 @@ export const ProjectInformation: FC<ProjectInformationProps> = ({
 							<>
 								<dt>Prioritisation programme:</dt>{" "}
 								<dd>{prioritisationProgramme}</dd>
-							</>
-						)}
-						{prioritisationReasonText && (
-							<>
-								<dt>Reason for prioritisation decision:</dt>{" "}
-								<dd>{prioritisationReasonText}</dd>
 							</>
 						)}
 						{prioritisationRationale && (

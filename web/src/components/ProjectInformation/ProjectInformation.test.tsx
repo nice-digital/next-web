@@ -1,7 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
 
-import { PrioritisationReason } from "@/feeds/inDev/types";
-
 import {
 	ProjectInformation,
 	ProjectInformationProps,
@@ -28,7 +26,6 @@ const props: ProjectInformationProps = {
 	routingDecisionPublicationDate: null,
 	routingDecisionRationale: null,
 	prioritisationDecision: "Prioritised",
-	prioritisationReason: "Prioritisation reason",
 	prioritisationProgramme: "HealthTech",
 	prioritisationBoardDecisionDate: "2026-07-21T00:00:00",
 	prioritisationRationale: "Prioritisation rationale",
@@ -56,26 +53,6 @@ describe("ProjectInformation", () => {
 		expect(getByText("ID number:").tagName).toBe("DT");
 		expect(getByText("42").tagName).toBe("DD");
 	});
-
-	it.each([
-		["Monitor", PrioritisationReason.Monitor],
-		["Anticipate", PrioritisationReason.Anticipate],
-		["NotEligible", PrioritisationReason.NotEligible],
-		["FurtherDiscussion", PrioritisationReason.FurtherDiscussion],
-	])(
-		"should render text when a topic selection reason %s exists, topic reason text: %s",
-		(prioritisationReason, prioritisationReasonText) => {
-			const mockProps = { ...props, prioritisationReason };
-			render(<ProjectInformation {...mockProps} />);
-
-			const list = screen.getByLabelText("Project information");
-			const { getByText } = within(list);
-			expect(getByText("Reason for prioritisation decision:").tagName).toBe(
-				"DT"
-			);
-			expect(getByText(`${prioritisationReasonText}`).tagName).toBe("DD");
-		}
-	);
 
 	it("should render 'Developed as: [Process]' when status != TopicSelection and ProjectType='NG' ", async () => {
 		const mockProps = { ...props, status: "InProgress", projectType: "NG" };
@@ -370,49 +347,6 @@ describe("ProjectInformation", () => {
 		const { getByText } = within(list);
 		expect(getByText("Prioritisation programme:").tagName).toBe("DT");
 		expect(getByText("HealthTech").tagName).toBe("DD");
-	});
-
-	it("should not render prioritisationReason if prioritisationReason is null", async () => {
-		const mockProps = {
-			...props,
-			prioritisationReason: null,
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		expect(
-			within(list).queryByText("Reason for prioritisation decision:")
-		).toBeNull();
-	});
-
-	it("should not render prioritisationReason if prioritisationReason is empty", async () => {
-		const mockProps = {
-			...props,
-			prioritisationReason: "",
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		expect(
-			within(list).queryByText("Reason for prioritisation decision:")
-		).toBeNull();
-	});
-
-	it("should render prioritisationReason if prioritisationReason has content", async () => {
-		const mockProps = {
-			...props,
-			prioritisationReason: "Monitor",
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		const { getByText } = within(list);
-		expect(getByText("Reason for prioritisation decision:").tagName).toBe("DT");
-		expect(
-			getByText(
-				"Monitor - awaiting publication of further literature or evidence"
-			).tagName
-		).toBe("DD");
 	});
 
 	it("should not render prioritisationRationale if prioritisationRationale is null", async () => {

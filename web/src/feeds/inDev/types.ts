@@ -10,13 +10,6 @@ export enum FeedPath {
 	ProjectDetail = "/project/",
 }
 
-export enum PrioritisationReason {
-	"Monitor" = "Monitor - awaiting publication of further literature or evidence",
-	"Anticipate" = "Anticipate the topic will be of importance to patients, carers, professionals, commissioners and the health of the public to ensure clinical benefit is realised, inequalities in use addressed, and help them make the best use of NHS resources",
-	"NotEligible" = "Not eligible for Health Technology Evaluation guidance",
-	"FurtherDiscussion" = "Further discussion required at the Topic Selection Oversight Panel (TSOP)",
-}
-
 export enum PrioritisationDecision {
 	"NoneSelected" = "None selected",
 	"AwaitingDecision" = "Awaiting decision",
@@ -638,7 +631,6 @@ export type ProjectDetail = {
 	routingDecisionPublicationDate: string | null;
 	routingDecisionRationale: string | null;
 	prioritisationDecision: string | null;
-	prioritisationReason: string | null;
 	prioritisationProgramme: string | null;
 	prioritisationBoardDecisionDate: string | null;
 	prioritisationRationale: string | null;

@@ -163,7 +163,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Status:
             </dt>
-             
+
             <dd>
               In progress
             </dd>
@@ -176,7 +176,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Prioritisation decision publication date:
             </dt>
-             
+
             <dd>
               <time
                 datetime="2026-07-01"
@@ -187,21 +187,21 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Prioritisation programme:
             </dt>
-             
+
             <dd>
               MedicinesEvaluation
             </dd>
             <dt>
               Prioritisation decision rationale:
             </dt>
-             
+
             <dd>
               Further info
             </dd>
             <dt>
               Developed as:
             </dt>
-             
+
             <dd>
               CG
             </dd>
@@ -243,7 +243,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </h3>
           <p>
             If you have any queries please email
-             
+
             <a
               href="mailto:hypoadrenalism@nice.org.uk"
             >
@@ -345,7 +345,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </table>
           <p>
             For further information on the guideline development process, please read
-             
+
             <a
               href="https://www.nice.org.uk/about/what-we-do/our-programmes/nice-guidance/nice-guidelines/how-we-develop-nice-guidelines"
             >
@@ -494,21 +494,21 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Status:
             </dt>
-             
+
             <dd>
               In progress
             </dd>
             <dt>
               Technology type:
             </dt>
-             
+
             <dd>
               Diagnostic
             </dd>
             <dt>
               Routing decision:
             </dt>
-             
+
             <dd>
               Routed as a TA
             </dd>
@@ -521,7 +521,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Prioritisation decision publication date:
             </dt>
-             
+
             <dd>
               <time
                 datetime="2026-07-21"
@@ -532,28 +532,28 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
             <dt>
               Prioritisation programme:
             </dt>
-             
+
             <dd>
               HealthTech
             </dd>
             <dt>
               Prioritisation decision rationale:
             </dt>
-             
+
             <dd>
               &lt;p&gt;To be updated&lt;/p&gt;
             </dd>
             <dt>
               Process:
             </dt>
-             
+
             <dd>
               MTA Standard
             </dd>
             <dt>
               ID number:
             </dt>
-             
+
             <dd>
               12552
             </dd>
@@ -579,7 +579,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </h3>
           <p>
             If you have any queries please email
-             
+
             <a
               href="mailto:HealthTech2@nice.org.uk"
             >
@@ -617,7 +617,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
           </table>
           <p>
             For further information on our processes and methods, please see our
-             
+
             <a
               href="https://www.nice.org.uk/what-nice-does/our-guidance/about-technology-appraisal-guidance"
             >
@@ -829,7 +829,6 @@ Object {
     "prioritisationDecision": "Selected",
     "prioritisationProgramme": "MedicinesEvaluation",
     "prioritisationRationale": "Further info",
-    "prioritisationReason": null,
     "process": "CG",
     "projectPath": "/guidance/indevelopment/gid-ng10237",
     "projectType": "NG",
