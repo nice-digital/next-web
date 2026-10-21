@@ -32,8 +32,8 @@ const tableBodyRender = (documents: Document[]) => (
 					title,
 					pathAndQuery,
 					technologyType,
-					topicSelectionDecision,
-					topicSelectionDecisionDate,
+					prioritisationDecision,
+					prioritisationBoardDecisionDate,
 				}) => {
 					return (
 						<tr key={id}>
@@ -44,10 +44,12 @@ const tableBodyRender = (documents: Document[]) => (
 								/>
 							</td>
 							<td>{technologyType}</td>
-							<td>{topicSelectionDecision || "n/a"}</td>
+							<td>{prioritisationDecision}</td>
 							<td>
-								{topicSelectionDecisionDate ? (
-									<ResponsiveDate isoDateTime={topicSelectionDecisionDate} />
+								{prioritisationBoardDecisionDate ? (
+									<ResponsiveDate
+										isoDateTime={prioritisationBoardDecisionDate}
+									/>
 								) : (
 									<abbr title="To be confirmed">TBC</abbr>
 								)}

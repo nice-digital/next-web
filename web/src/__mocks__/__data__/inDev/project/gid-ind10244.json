@@ -256,9 +256,11 @@
   "RelevantTo": null,
   "IdNumber": null,
   "AreasOfInterestList": [],
-  "TopicSelectionDecision": "AwaitingDecision",
-  "TopicSelectionReason": null,
-  "TopicSelectionDecisionDate": null,
-  "TopicSelectionFurtherInfo": null,
+  "RoutingDecision": null,
+  "RoutingDecisionPublicationDate": null,
+  "RoutingDecisionRationale": null,
+  "PrioritisationDecision": "AwaitingDecision",
+  "PrioritisationBoardDecisionDate": null,
+  "PrioritisationRationale": null,
   "IndicatorSubTypes": ["CCG", "GPIQ", "GPINQ", "NLQ"]
 }

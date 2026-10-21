@@ -25,6 +25,7 @@ import {
 	IndevProjectRelatedLink,
 	IndevTopic,
 	ProjectStatus,
+	PrioritisationDecision,
 	type IndevEmailEnquiry,
 	type IndevProcessHomepage,
 	type IndevProjectTeam,
@@ -74,12 +75,13 @@ export type InDevelopmentPageProps = {
 	technologyType: string | null;
 	title: string;
 	content: string | null;
-	topicSelectionDecision: string | null;
-	topicSelectionReason: string | null;
-	prioritisationRouting: string | null;
-	prioritisationRoutingDecision: string | null;
-	topicSelectionDecisionDate: string | null;
-	topicSelectionFurtherInfo: string | null;
+	routingDecision: string | null;
+	routingDecisionPublicationDate: string | null;
+	routingDecisionRationale: string | null;
+	prioritisationDecision: string | null;
+	prioritisationProgramme: string | null;
+	prioritisationBoardDecisionDate: string | null;
+	prioritisationRationale: string | null;
 };
 
 export default function InDevelopmentPage(
@@ -315,12 +317,13 @@ export const getServerSideProps: GetServerSideProps<
 		technologyType,
 		title,
 		content,
-		topicSelectionDecision,
-		topicSelectionReason,
-		prioritisationRouting,
-		prioritisationRoutingDecision,
-		topicSelectionDecisionDate,
-		topicSelectionFurtherInfo,
+		routingDecision,
+		routingDecisionPublicationDate,
+		routingDecisionRationale,
+		prioritisationDecision,
+		prioritisationProgramme,
+		prioritisationBoardDecisionDate,
+		prioritisationRationale,
 	} = project;
 
 	const indevStakeholderRegistration = arrayify(
@@ -449,12 +452,13 @@ export const getServerSideProps: GetServerSideProps<
 			technologyType,
 			title,
 			content,
-			topicSelectionDecision,
-			topicSelectionReason,
-			prioritisationRouting,
-			prioritisationRoutingDecision,
-			topicSelectionDecisionDate,
-			topicSelectionFurtherInfo,
+			routingDecision,
+			routingDecisionPublicationDate,
+			routingDecisionRationale,
+			prioritisationDecision,
+			prioritisationProgramme,
+			prioritisationBoardDecisionDate,
+			prioritisationRationale,
 		},
 	};
 };

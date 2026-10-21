@@ -1,7 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
 
-import { TopicSelectionReason } from "@/feeds/inDev/types";
-
 import {
 	ProjectInformation,
 	ProjectInformationProps,
@@ -24,14 +22,17 @@ const props: ProjectInformationProps = {
 	suspendDiscontinuedUrl: "suspend url",
 	suspendDiscontinuedUrlText: "suspend disontinued text",
 	technologyType: "tech type",
-	topicSelectionDecision: "Prioritised",
-	topicSelectionReason: "topic selection reason",
-	topicSelectionDecisionDate: "2026-07-21T00:00:00",
-	topicSelectionFurtherInfo: "topic selection further info",
-	prioritisationRouting: "",
-	prioritisationRoutingDecision: "",
+	routingDecision: null,
+	routingDecisionPublicationDate: null,
+	routingDecisionRationale: null,
+	prioritisationDecision: "Prioritised",
+	prioritisationProgramme: "HealthTech",
+	prioritisationBoardDecisionDate: "2026-07-21T00:00:00",
+	prioritisationRationale: "Prioritisation rationale",
 	reference: "",
 	title: "",
+	isGuidanceHubPage: false,
+	content: null,
 };
 
 describe("ProjectInformation", () => {
@@ -52,24 +53,6 @@ describe("ProjectInformation", () => {
 		expect(getByText("ID number:").tagName).toBe("DT");
 		expect(getByText("42").tagName).toBe("DD");
 	});
-
-	it.each([
-		["Monitor", TopicSelectionReason.Monitor],
-		["Anticipate", TopicSelectionReason.Anticipate],
-		["NotEligible", TopicSelectionReason.NotEligible],
-		["FurtherDiscussion", TopicSelectionReason.FurtherDiscussion],
-	])(
-		"should render text when a topic selection reason %s exists, topic reason text: %s",
-		(topicSelectionReason, topicSelectionReasonText) => {
-			const mockProps = { ...props, topicSelectionReason };
-			render(<ProjectInformation {...mockProps} />);
-
-			const list = screen.getByLabelText("Project information");
-			const { getByText } = within(list);
-			expect(getByText("Reason for decision:").tagName).toBe("DT");
-			expect(getByText(`${topicSelectionReasonText}`).tagName).toBe("DD");
-		}
-	);
 
 	it("should render 'Developed as: [Process]' when status != TopicSelection and ProjectType='NG' ", async () => {
 		const mockProps = { ...props, status: "InProgress", projectType: "NG" };
@@ -96,7 +79,7 @@ describe("ProjectInformation", () => {
 		expect(getByText("HST").tagName).toBe("DD");
 	});
 
-	it("should reder 'Notification date' when Process =='MT' ", async () => {
+	it("should render 'Notification date' when Process =='MT' ", async () => {
 		const mockProps = {
 			...props,
 			status: "InProgress",
@@ -146,82 +129,195 @@ describe("ProjectInformation", () => {
 		expect(getByText("Discontinued").tagName).toBe("DD");
 	});
 
-	it("should not render topicSelectionDecision if topicSelectionDecision is null", async () => {
+	it("should not render routingDecision if routingDecision is null", async () => {
 		const mockProps = {
 			...props,
-			topicSelectionDecision: null,
+			routingDecision: null,
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
-		expect(within(list).queryByText("Decision:")).toBeNull();
+		expect(within(list).queryByText("Routing decision:")).toBeNull();
 	});
 
-	it("should not render topicSelectionDecision if topicSelectionDecision is empty", async () => {
+	it("should not render routingDecision if routingDecision is empty", async () => {
 		const mockProps = {
 			...props,
-			topicSelectionDecision: "AwaitingDecision",
+			routingDecision: "",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(within(list).queryByText("Routing decision:")).toBeNull();
+	});
+
+	it("should render routingDecision if routingDecision has content", async () => {
+		const mockProps = {
+			...props,
+			routingDecision: "Routed as a TA",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
 		const { getByText } = within(list);
-		expect(getByText("Decision:").tagName).toBe("DT");
-		expect(getByText("Awaiting decision").tagName).toBe("DD");
+		expect(getByText("Routing decision:").tagName).toBe("DT");
+		expect(getByText("Routed as a TA").tagName).toBe("DD");
 	});
 
-	it("should render topicSelectionDecision if topicSelectionDecision has content", async () => {
+	it("should not render routingDecisionPublicationDate if routingDecisionPublicationDate is null", async () => {
 		const mockProps = {
 			...props,
-			topicSelectionDecision: "Prioritised",
+			routingDecisionPublicationDate: null,
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(
+			within(list).queryByText("Routing decision publication date:")
+		).toBeNull();
+	});
+
+	it("should not render routingDecisionPublicationDate if routingDecisionPublicationDate is empty", async () => {
+		const mockProps = {
+			...props,
+			routingDecisionPublicationDate: "",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(
+			within(list).queryByText("Routing decision publication date:")
+		).toBeNull();
+	});
+
+	it("should render routingDecisionPublicationDate if routingDecisionPublicationDate has content", async () => {
+		const mockProps = {
+			...props,
+			routingDecisionPublicationDate: "2026-10-21T00:00:00",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
 		const { getByText } = within(list);
-		expect(getByText("Decision:").tagName).toBe("DT");
-		expect(getByText("Prioritised").tagName).toBe("DD");
+		expect(getByText("Routing decision publication date:").tagName).toBe("DT");
+		expect(getByText("21 October 2026").tagName).toBe("TIME");
 	});
 
-	it("should not render topicSelectionDecisionDate if topicSelectionDecisionDate is null", async () => {
+	it("should not render routingDecisionRationale if routingDecisionRationale is null", async () => {
 		const mockProps = {
 			...props,
-			topicSelectionDecisionDate: null,
+			routingDecisionRationale: null,
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
-		expect(within(list).queryByText("Decision publication date:")).toBeNull();
+		expect(within(list).queryByText("Routing decision rationale:")).toBeNull();
 	});
 
-	it("should not render topicSelectionDecisionDate if topicSelectionDecisionDate is empty", async () => {
+	it("should not render routingDecisionRationale if routingDecisionRationale is empty", async () => {
 		const mockProps = {
 			...props,
-			topicSelectionDecisionDate: "",
+			routingDecisionRationale: "",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
-		expect(within(list).queryByText("Decision publication date:")).toBeNull();
+		expect(within(list).queryByText("Routing decision rationale:")).toBeNull();
 	});
 
-	it("should render topicSelectionDecisionDate if topicSelectionDecisionDate has content", async () => {
+	it("should render routingDecisionRationale if routingDecisionRationale has content", async () => {
 		const mockProps = {
 			...props,
-			topicSelectionDecisionDate: "2026-07-21T00:00:00",
+			routingDecisionRationale: "Routing decision rationale",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
 		const { getByText } = within(list);
-		expect(getByText("Decision publication date:").tagName).toBe("DT");
+		expect(getByText("Routing decision rationale:").tagName).toBe("DT");
+		expect(getByText("Routing decision rationale").tagName).toBe("DD");
+	});
+
+	it("should not render prioritisationDecision if prioritisationDecision is null", async () => {
+		const mockProps = {
+			...props,
+			prioritisationDecision: null,
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(within(list).queryByText("Prioritisation decision:")).toBeNull();
+	});
+
+	it("should not render prioritisationDecision if prioritisationDecision is empty", async () => {
+		const mockProps = {
+			...props,
+			prioritisationDecision: "",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(within(list).queryByText("Prioritisation decision:")).toBeNull();
+	});
+
+	it("should render prioritisationDecision if prioritisationDecision has content", async () => {
+		const mockProps = {
+			...props,
+			prioritisationDecision: "NotPrioritised",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		const { getByText } = within(list);
+		expect(getByText("Prioritisation decision:").tagName).toBe("DT");
+		expect(getByText("Not prioritised").tagName).toBe("DD");
+	});
+
+	it("should not render prioritisationBoardDecisionDate if prioritisationBoardDecisionDate is null", async () => {
+		const mockProps = {
+			...props,
+			prioritisationBoardDecisionDate: null,
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(
+			within(list).queryByText("Prioritisation decision publication date:")
+		).toBeNull();
+	});
+
+	it("should not render prioritisationBoardDecisionDate if prioritisationBoardDecisionDate is empty", async () => {
+		const mockProps = {
+			...props,
+			prioritisationBoardDecisionDate: "",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		expect(
+			within(list).queryByText("Prioritisation decision publication date:")
+		).toBeNull();
+	});
+
+	it("should render prioritisationBoardDecisionDate if prioritisationBoardDecisionDate has content", async () => {
+		const mockProps = {
+			...props,
+			prioritisationBoardDecisionDate: "2026-07-21T00:00:00",
+		};
+		render(<ProjectInformation {...mockProps} />);
+
+		const list = screen.getByLabelText("Project information");
+		const { getByText } = within(list);
+		expect(getByText("Prioritisation decision publication date:").tagName).toBe(
+			"DT"
+		);
 		expect(getByText("21 July 2026").tagName).toBe("TIME");
 	});
 
-	it("should not render prioritisationRouting if prioritisationRouting is null", async () => {
+	it("should not render prioritisationProgramme if prioritisationProgramme is null", async () => {
 		const mockProps = {
 			...props,
-			prioritisationRouting: null,
+			prioritisationProgramme: null,
 		};
 		render(<ProjectInformation {...mockProps} />);
 
@@ -229,10 +325,10 @@ describe("ProjectInformation", () => {
 		expect(within(list).queryByText("Prioritisation programme:")).toBeNull();
 	});
 
-	it("should not render prioritisationRouting if prioritisationRouting is empty", async () => {
+	it("should not render prioritisationProgramme if prioritisationProgramme is empty", async () => {
 		const mockProps = {
 			...props,
-			prioritisationRouting: "",
+			prioritisationProgramme: "",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
@@ -240,10 +336,10 @@ describe("ProjectInformation", () => {
 		expect(within(list).queryByText("Prioritisation programme:")).toBeNull();
 	});
 
-	it("should render prioritisationRouting if prioritisationRouting has content", async () => {
+	it("should render prioritisationProgramme if prioritisationProgramme has content", async () => {
 		const mockProps = {
 			...props,
-			prioritisationRouting: "HealthTech",
+			prioritisationProgramme: "HealthTech",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
@@ -253,119 +349,38 @@ describe("ProjectInformation", () => {
 		expect(getByText("HealthTech").tagName).toBe("DD");
 	});
 
-	it("should not render prioritisationRoutingDecision if prioritisationRoutingDecision is null", async () => {
+	it("should not render prioritisationRationale if prioritisationRationale is null", async () => {
 		const mockProps = {
 			...props,
-			prioritisationRoutingDecision: null,
+			prioritisationRationale: null,
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
-		expect(
-			within(list).queryByText("Prioritisation routing decision:")
-		).toBeNull();
+		expect(within(list).queryByText("Prioritisation rationale:")).toBeNull();
 	});
 
-	it("should not render prioritisationRoutingDecision if prioritisationRoutingDecision is empty", async () => {
+	it("should not render prioritisationRationale if prioritisationRationale is empty", async () => {
 		const mockProps = {
 			...props,
-			prioritisationRoutingDecision: "",
+			prioritisationRationale: "",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
-		expect(
-			within(list).queryByText("Prioritisation routing decision:")
-		).toBeNull();
+		expect(within(list).queryByText("Prioritisation rationale:")).toBeNull();
 	});
 
-	it("should render prioritisationRoutingDecision if prioritisationRoutingDecision has content", async () => {
+	it("should render prioritisationRationale if prioritisationRationale has content", async () => {
 		const mockProps = {
 			...props,
-			prioritisationRoutingDecision: "Routed as a TA",
+			prioritisationRationale: "Prioritisation rationale goes here",
 		};
 		render(<ProjectInformation {...mockProps} />);
 
 		const list = screen.getByLabelText("Project information");
 		const { getByText } = within(list);
-		expect(getByText("Prioritisation routing decision:").tagName).toBe("DT");
-		expect(getByText("Routed as a TA").tagName).toBe("DD");
-	});
-
-	it("should not render topicSelectionReason if topicSelectionReason is null", async () => {
-		const mockProps = {
-			...props,
-			topicSelectionReason: null,
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		expect(within(list).queryByText("Reason for decision:")).toBeNull();
-	});
-
-	it("should not render topicSelectionReason if topicSelectionReason is empty", async () => {
-		const mockProps = {
-			...props,
-			topicSelectionReason: "",
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		expect(within(list).queryByText("Reason for decision:")).toBeNull();
-	});
-
-	it("should render topicSelectionReason if topicSelectionReason has content", async () => {
-		const mockProps = {
-			...props,
-			topicSelectionReason: "Monitor",
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		const { getByText } = within(list);
-		expect(getByText("Reason for decision:").tagName).toBe("DT");
-		expect(
-			getByText(
-				"Monitor - awaiting publication of further literature or evidence"
-			).tagName
-		).toBe("DD");
-	});
-
-	it("should not render topicSelectionFurtherInfo if topicSelectionFurtherInfo is null", async () => {
-		const mockProps = {
-			...props,
-			topicSelectionFurtherInfo: null,
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		expect(within(list).queryByText("Further information:")).toBeNull();
-	});
-
-	it("should not render topicSelectionFurtherInfo if topicSelectionFurtherInfo is empty", async () => {
-		const mockProps = {
-			...props,
-			topicSelectionFurtherInfo: "",
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		expect(within(list).queryByText("Further information:")).toBeNull();
-	});
-
-	it("should render topicSelectionFurtherInfo if topicSelectionFurtherInfo has content", async () => {
-		const mockProps = {
-			...props,
-			topicSelectionFurtherInfo:
-				"Topic selection further information goes here",
-		};
-		render(<ProjectInformation {...mockProps} />);
-
-		const list = screen.getByLabelText("Project information");
-		const { getByText } = within(list);
-		expect(getByText("Further information:").tagName).toBe("DT");
-		expect(
-			getByText("Topic selection further information goes here").tagName
-		).toBe("DD");
+		expect(getByText("Prioritisation decision rationale:").tagName).toBe("DT");
+		expect(getByText("Prioritisation rationale goes here").tagName).toBe("DD");
 	});
 });
