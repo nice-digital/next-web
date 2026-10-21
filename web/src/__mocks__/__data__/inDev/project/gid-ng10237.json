@@ -903,7 +903,7 @@
   "RoutingDecisionRationale": null,
   "PrioritisationDecision": "Selected",
   "PrioritisationReason": null,
-  "PrioritisationProgramme": "MedicinesEvaluation",
+  "prioritisationProgramme": "MedicinesEvaluation",
   "PrioritisationBoardDecisionDate": "2026-07-01T00:00:00",
   "PrioritisationRationale": "Further info",
   "IndicatorSubTypes": []
