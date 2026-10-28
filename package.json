@@ -33,7 +33,7 @@
     "lint:scss": "stylelint \"**/*.scss\"",
     "lint:scss:fix": "npm run lint:scss -- --fix",
     "// TYPECHECKING": "",
-    "ts:check": "tsc -p web -p web-host -p functional-tests --noEmit",
+    "ts:check": "tsc -b web functional-tests --force",
     "ts:build": "tsc -b"
   },
   "repository": {
