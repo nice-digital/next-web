@@ -1,5 +1,10 @@
 import { serverRuntimeConfig } from "@/config";
 
+// Avoid real Storyblok calls: buildTree ultimately calls fetchLinks.
+jest.mock("@/utils/storyblok", () => ({
+	fetchLinks: jest.fn().mockResolvedValue([]),
+}));
+
 /**
  * Simple test to verify that the configuration is read correctly
  * This should show the value from local-production.yml: 900 seconds
@@ -21,18 +26,25 @@ describe("Configuration Reading Integration Test", () => {
 		// The actual value will depend on the environment configuration
 	});
 
-	it("should use the configuration value in getSectionNavCacheTTL_MS", async () => {
-		// Import the module that contains our functions
-		const memoisedBuildTreeModule = await import("./memoisedBuildTree");
+	it("should surface the configured TTL via the cache response header", async () => {
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
 
-		// Extract the TTL value by calling the function that gets it
-		const { sectionNavCacheTTL_MS } = memoisedBuildTreeModule;
+		const headers: Record<string, string> = {};
+		const res = {
+			setHeader: (key: string, value: string) => {
+				headers[key] = value;
+			},
+		} as unknown as import("http").ServerResponse;
 
-		// The TTL should be a positive number (either from config or the 21600 default)
-		expect(sectionNavCacheTTL_MS).toBeGreaterThan(0);
-		expect(typeof sectionNavCacheTTL_MS).toBe("number");
+		await buildTreeWithOptionalCache(1, "config-test", false, res);
 
-		console.log("Calculated TTL in milliseconds:", sectionNavCacheTTL_MS);
-		console.log("Calculated TTL in seconds:", sectionNavCacheTTL_MS / 1000);
+		const ttlHeader = headers["X-Section-Navigation-Cache-TTL"];
+		expect(ttlHeader).toMatch(/^\d+s$/);
+
+		const ttlSeconds = Number(ttlHeader.replace("s", ""));
+		expect(ttlSeconds).toBeGreaterThan(0);
+		expect(ttlSeconds).toBe(serverRuntimeConfig?.cache?.sectionNavCacheTTL);
+
+		console.log("Cache TTL reported in header (seconds):", ttlSeconds);
 	});
 });

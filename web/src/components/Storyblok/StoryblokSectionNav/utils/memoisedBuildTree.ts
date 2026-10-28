@@ -5,34 +5,43 @@ import { logger } from "@/logger";
 
 import { buildTree, ExtendedSBLink } from "./Utils";
 
+/** Fallback fresh TTL, in seconds (6 hours), used when config is absent. */
+const DEFAULT_TTL_SECONDS = 21600;
+
 /**
- * Get the section navigation cache TTL in milliseconds from runtime config
- * Falls back to 21600 seconds (6 hours) if not configured
+ * How long, as a multiple of the fresh TTL, a cached entry may be served stale
+ * (with a background refresh) after it expires. Scaling off the fresh TTL keeps
+ * the stale window proportional to configured freshness rather than a fixed
+ * duration that could dwarf a short TTL.
+ */
+const STALE_TTL_MULTIPLIER = 2;
+
+/**
+ * Get the section navigation cache TTL in milliseconds from runtime config.
+ * Read live on every call so config/test overrides take effect without
+ * depending on module import order. Falls back to 6 hours if not configured.
  */
 function getSectionNavCacheTTL_MS(): number {
-	const ttlSeconds = serverRuntimeConfig?.cache?.sectionNavCacheTTL ?? 21600;
+	const ttlSeconds =
+		serverRuntimeConfig?.cache?.sectionNavCacheTTL ?? DEFAULT_TTL_SECONDS;
 	return ttlSeconds * 1000;
 }
 
 /**
- * Get the fresh TTL (cache expiry time) in milliseconds
+ * Get the fresh TTL (cache expiry time) in milliseconds.
  */
 function getFreshTTL(): number {
 	return getSectionNavCacheTTL_MS();
 }
 
 /**
- * Get the stale TTL (stale-while-revalidate window) in milliseconds
- * Allows serving stale content for 6 hours after fresh TTL expires
+ * Get the stale TTL (stale-while-revalidate window) in milliseconds.
+ * The stale window scales with the fresh TTL so a short TTL does not end up
+ * serving stale content for a disproportionately long time.
  */
 function getStaleTTL(): number {
-	return getSectionNavCacheTTL_MS() + 6 * 60 * 60 * 1000; // 6 hours stale after fresh
+	return getFreshTTL() * STALE_TTL_MULTIPLIER;
 }
-
-// Export these for backwards compatibility and testing
-export const sectionNavCacheTTL_MS = getSectionNavCacheTTL_MS();
-export const FRESH_TTL = getFreshTTL();
-export const STALE_TTL = getStaleTTL();
 
 type CacheEntry<T> = {
 	data: T;
@@ -68,8 +77,11 @@ function cleanupExpiredEntries(): number {
 }
 
 /**
- * Start periodic cleanup of expired cache entries
- * Runs every hour to prevent memory leaks
+ * Start periodic cleanup of expired cache entries.
+ * Runs every hour to prevent unbounded growth of the in-process cache.
+ *
+ * The interval is unref'd so it never keeps the Node process (or a Jest
+ * worker) alive on its own; it only runs while the process is otherwise busy.
  */
 function startPeriodicCleanup(): NodeJS.Timeout {
 	const cleanupInterval = 60 * 60 * 1000; // 1 hour
@@ -77,16 +89,27 @@ function startPeriodicCleanup(): NodeJS.Timeout {
 		"Section navigation cache: starting periodic cleanup (every 1 hour)"
 	);
 
-	return setInterval(() => {
+	const timer = setInterval(() => {
 		cleanupExpiredEntries();
 	}, cleanupInterval);
+
+	// Don't let the cleanup timer hold the event loop open.
+	timer.unref?.();
+
+	return timer;
 }
 
-// Start the cleanup when module loads
+// Start cleanup lazily on first cache write (server-side only). Importing the
+// module - e.g. in a test or on the client - no longer schedules a timer.
 let cleanupTimer: NodeJS.Timeout | null = null;
-if (typeof global !== "undefined") {
-	// Only start cleanup in server environment
-	cleanupTimer = startPeriodicCleanup();
+
+/** Running server-side (not in the browser)? */
+const isServer = typeof window === "undefined";
+
+function ensurePeriodicCleanup(): void {
+	if (isServer && !cleanupTimer) {
+		cleanupTimer = startPeriodicCleanup();
+	}
 }
 
 /**
@@ -134,6 +157,7 @@ async function backgroundRefresh(
 	fetchFn()
 		.then((data) => {
 			cache.set(key, { data, lastFetched: Date.now() });
+			ensurePeriodicCleanup();
 			logger.warn(`Background refresh completed for ${key}`);
 		})
 		.catch((err) => {
@@ -201,11 +225,13 @@ export const buildTreeWithOptionalCache = async (
 				cache.delete(cacheKey); // Clean up expired entry
 				tree = await rawBuildTree(parentID, slug, isRootPage);
 				cache.set(cacheKey, { data: tree, lastFetched: now });
+				ensurePeriodicCleanup();
 			}
 		} else {
 			status = "MISS";
 			tree = await rawBuildTree(parentID, slug, isRootPage);
 			cache.set(cacheKey, { data: tree, lastFetched: now });
+			ensurePeriodicCleanup();
 		}
 	}
 

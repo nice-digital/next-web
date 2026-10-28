@@ -70,10 +70,10 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		await buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse);
 		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
-		// artificially advance time to between FRESH_TTL and STALE_TTL
-		// FRESH_TTL = 1 second (from mock config), STALE_TTL = 1 second + 60 seconds
+		// Advance time to between fresh TTL and stale TTL.
+		// Fresh TTL = 1s (mock config); stale TTL = fresh * 2 = 2s.
 		jest.useFakeTimers();
-		jest.setSystemTime(Date.now() + 1000 + 10); // Just past fresh TTL
+		jest.setSystemTime(Date.now() + 1000 + 10); // Just past fresh TTL, within stale window
 
 		const res2 = makeRes();
 		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
@@ -90,8 +90,8 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
 
 		jest.useFakeTimers();
-		// STALE_TTL = 1 second (fresh) + 6 hours (21600 seconds) = 21601 seconds
-		jest.setSystemTime(Date.now() + 21601000 + 10); // Just past stale TTL
+		// Fresh TTL = 1s, stale TTL = fresh * 2 = 2s. Advance well beyond the stale window.
+		jest.setSystemTime(Date.now() + 3000); // Past stale TTL
 
 		const res2 = makeRes();
 		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
@@ -168,9 +168,9 @@ describe("buildTreeWithOptionalCache SWR", () => {
 			);
 			expect(res3._headers["X-Section-Navigation-Cache"]).toBe("HIT");
 
-			// Advance time past STALE_TTL to expire entries
+			// Advance time past the stale TTL (fresh 1s * 2 = 2s) to expire entries
 			jest.useFakeTimers();
-			jest.setSystemTime(Date.now() + 21601000 + 1000); // Past stale TTL (1s fresh + 6h stale + buffer)
+			jest.setSystemTime(Date.now() + 3000); // Past stale TTL
 
 			// Manually trigger cleanup
 			const cleanedCount = manualCleanup();
@@ -237,9 +237,9 @@ describe("buildTreeWithOptionalCache SWR", () => {
 			);
 			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
 
-			// Advance time past STALE_TTL to expire entry
+			// Advance time past the stale TTL (fresh 1s * 2 = 2s) to expire the entry
 			jest.useFakeTimers();
-			jest.setSystemTime(Date.now() + 21601000 + 1000); // Past stale TTL (1s fresh + 6h stale + buffer)
+			jest.setSystemTime(Date.now() + 3000); // Past stale TTL
 
 			// Access expired entry (should refetch and clean up old entry)
 			const res3 = makeRes();
