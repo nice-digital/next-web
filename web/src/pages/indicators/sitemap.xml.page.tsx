@@ -56,6 +56,8 @@ const toSitemapURL = (document: Document): ISitemapField => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	initSearchClient({
 		baseURL: publicRuntimeConfig.search.baseURL,
+		// Config-driven; the client's own 5000ms default is too short for a server render. See ProductListGetServerSideProps.
+		timeout: publicRuntimeConfig.search.timeout,
 		index: "indicators",
 	});
 

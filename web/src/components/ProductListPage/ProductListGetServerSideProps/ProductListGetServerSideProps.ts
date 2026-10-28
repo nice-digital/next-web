@@ -56,6 +56,15 @@ export const getGetServerSidePropsFunc =
 
 		initSearchClient({
 			baseURL: publicRuntimeConfig.search.baseURL,
+			// Without this the search client falls back to its own 5000ms default, which is
+			// tuned for browser typeahead. On a server render a slow search API response is
+			// not retried: `results.failed` becomes a 500 error page with no filter summary.
+			// The functional tests currently run these list pages against the live alpha
+			// search API (SEARCH_BASE_URL on the TeamCity build, the mock-search-api has no
+			// guidance index), so alpha latency over 5s surfaced as the filterGalp
+			// "Showing 1 to 1 of 1" flake (build 9138). The longer timeout is correct for
+			// production regardless; the tests should move onto the mock.
+			timeout: publicRuntimeConfig.search.timeout,
 			index: index,
 		});
 
