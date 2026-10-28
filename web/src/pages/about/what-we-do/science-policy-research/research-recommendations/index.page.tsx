@@ -112,5 +112,5 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
-	index: "researchrecs",
+	index: "recommendations",
 });

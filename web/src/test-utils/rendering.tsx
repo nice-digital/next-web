@@ -6,7 +6,7 @@ import {
 import { HeadManagerContext } from "next/dist/shared/lib/head-manager-context.shared-runtime";
 import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
 import { NextRouter } from "next/router";
-import { ReactElement, useEffect } from "react";
+import { ReactElement, ReactNode, useEffect } from "react";
 import { renderToString } from "react-dom/server";
 
 import NextWebApp from "../pages/_app.page";
@@ -59,7 +59,7 @@ export const getMockRouter = (
 /**
  * Collect tags from next/head: https://edibleco.de/3Anu92S
  */
-const HeadProvider: React.FC = ({ children }) => {
+const HeadProvider: React.FC<{ children?: ReactNode }> = ({ children }) => {
 	let head: JSX.Element[];
 
 	useEffect(() => {
@@ -89,7 +89,7 @@ export type GetWrapperOptions = {
 };
 const getAppWrapper =
 	({ router, wrapper: Wrapper }: GetWrapperOptions) =>
-	({ children }: { children: ReactElement }) =>
+	({ children }: { children: ReactNode }) =>
 		(
 			<HeadProvider>
 				<RouterContext.Provider value={router}>

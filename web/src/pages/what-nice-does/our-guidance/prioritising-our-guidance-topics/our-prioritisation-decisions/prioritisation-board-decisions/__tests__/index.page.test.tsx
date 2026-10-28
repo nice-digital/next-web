@@ -91,7 +91,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 			])("should set data cell to '%s'", (text) => {
 				const row = screen.getAllByRole("row")[1];
 				expect(
-					within(row).getByRole("cell", { name: text })
+					within(row).getByRole("cell", { name: String(text) })
 				).toBeInTheDocument();
 			});
 		});

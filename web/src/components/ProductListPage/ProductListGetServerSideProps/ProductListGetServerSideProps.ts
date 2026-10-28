@@ -66,7 +66,11 @@ export const getGetServerSidePropsFunc =
 				defaultSortOrder,
 				defaultPageSize,
 				usePrettyUrls: true,
-				orModifierPreFilter: { gst: [gstPreFilter] },
+				// Only apply the gst pre-filter when one is configured; the gst
+				// 'or modifier' tuple must be exactly [string].
+				...(gstPreFilter
+					? { orModifierPreFilter: { gst: [gstPreFilter] as [string] } }
+					: {}),
 			}),
 			searchEndTime = process.hrtime.bigint();
 
@@ -80,7 +84,8 @@ export const getGetServerSidePropsFunc =
 		if (results.failed) {
 			logger.error(
 				`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-				results.debug?.rawResponse
+				// pino ignores extra args when the message has no printf placeholder; cast matches search.page.tsx
+				results.debug?.rawResponse as undefined
 			);
 
 			context.res.statusCode = 500;
