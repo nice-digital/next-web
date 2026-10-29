@@ -117,7 +117,7 @@ const promptOperation = () =>
 
 const promptSpace = (
 	/** @type {string} */ message,
-	/** @type {string | undefined} */ excludeValue
+	/** @type {string | undefined} */ excludeValue = undefined
 ) => {
 	const choices = options
 		.filter(({ value }) => value !== excludeValue)

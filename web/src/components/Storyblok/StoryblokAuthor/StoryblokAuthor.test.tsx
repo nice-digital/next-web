@@ -15,8 +15,8 @@ const blokContent: AuthorStoryblok = {
 			"https://local-host-test-nice-org.com/f/292509/2120x1414/dd56873afd/joe-bloggs.jpg",
 		alt: "Joe Bloggs",
 		fieldtype: "asset",
-		title: null,
-		focus: null,
+		title: undefined,
+		focus: undefined,
 	},
 	jobTitle: "test job title",
 };

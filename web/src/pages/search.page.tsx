@@ -336,6 +336,8 @@ export const getServerSideProps = async (
 ): Promise<GetServerSidePropsResult<SearchPageProps>> => {
 	initialise({
 		baseURL: publicRuntimeConfig.search.baseURL,
+		// Config-driven; the client's own 5000ms default is too short for a server render. See ProductListGetServerSideProps.
+		timeout: publicRuntimeConfig.search.timeout,
 		index: "nice",
 		usePrettyUrls: true,
 	});

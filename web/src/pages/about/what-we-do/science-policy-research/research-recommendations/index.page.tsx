@@ -1,5 +1,5 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Document, SortOrder } from "@nice-digital/search-client";
+import { Document, SearchIndex, SortOrder } from "@nice-digital/search-client";
 
 import {
 	getGetServerSidePropsFunc,
@@ -112,5 +112,9 @@ export const getServerSideProps = getGetServerSidePropsFunc({
 	defaultSortOrder,
 	dateFilterLabel,
 	textFilterLabel,
-	index: "researchrecs",
+	// "researchrecs" is the search API's research recommendations index. It is not in
+	// @nice-digital/search-client's SearchIndex union until the SRCH-780 client release
+	// lands, so the literal needs a cast; do not "fix" the type error by switching to
+	// "recommendations", which is a different index and breaks this page (FDR-10).
+	index: "researchrecs" as SearchIndex,
 });

@@ -56,6 +56,15 @@ export const getGetServerSidePropsFunc =
 
 		initSearchClient({
 			baseURL: publicRuntimeConfig.search.baseURL,
+			// Without this the search client falls back to its own 5000ms default, which is
+			// tuned for browser typeahead. On a server render a slow search API response is
+			// not retried: `results.failed` becomes a 500 error page with no filter summary.
+			// The functional tests currently run these list pages against the live alpha
+			// search API (SEARCH_BASE_URL on the TeamCity build, the mock-search-api has no
+			// guidance index), so alpha latency over 5s surfaced as the filterGalp
+			// "Showing 1 to 1 of 1" flake (build 9138). The longer timeout is correct for
+			// production regardless; the tests should move onto the mock.
+			timeout: publicRuntimeConfig.search.timeout,
 			index: index,
 		});
 
@@ -66,7 +75,11 @@ export const getGetServerSidePropsFunc =
 				defaultSortOrder,
 				defaultPageSize,
 				usePrettyUrls: true,
-				orModifierPreFilter: { gst: [gstPreFilter] },
+				// Only apply the gst pre-filter when one is configured; the gst
+				// 'or modifier' tuple must be exactly [string].
+				...(gstPreFilter
+					? { orModifierPreFilter: { gst: [gstPreFilter] as [string] } }
+					: {}),
 			}),
 			searchEndTime = process.hrtime.bigint();
 
@@ -80,7 +93,8 @@ export const getGetServerSidePropsFunc =
 		if (results.failed) {
 			logger.error(
 				`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-				results.debug?.rawResponse
+				// pino ignores extra args when the message has no printf placeholder; cast matches search.page.tsx
+				results.debug?.rawResponse as undefined
 			);
 
 			context.res.statusCode = 500;
