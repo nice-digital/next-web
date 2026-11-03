@@ -13,12 +13,14 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
-import { getRedirectUrl } from "@/components/ProductListPage/redirects";
+import {
+	ActiveModifier,
+	ListPageProps,
+} from "@/components/Guidance/ListPage/ListPageProps";
+import { getRedirectUrl } from "@/components/Guidance/ListPage/redirects";
 import { publicRuntimeConfig } from "@/config";
 import { logger } from "@/logger";
 import { dateFormatShort } from "@/utils/datetime";
-
-import { ActiveModifier, ProductListPageProps } from "../ProductListPageProps";
 
 export const defaultPageSize = 10;
 
@@ -48,7 +50,7 @@ export const getGetServerSidePropsFunc =
 	}: GetGetServerSidePropsOptions) =>
 	async (
 		context: GetServerSidePropsContext
-	): Promise<GetServerSidePropsResult<ProductListPageProps>> => {
+	): Promise<GetServerSidePropsResult<ListPageProps>> => {
 		const redirectUrl = getRedirectUrl(context);
 
 		if (redirectUrl)
@@ -90,6 +92,7 @@ export const getGetServerSidePropsFunc =
 					results,
 					activeModifiers: [],
 					searchUrl,
+					index,
 				},
 			};
 		}
@@ -131,6 +134,7 @@ export const getGetServerSidePropsFunc =
 				results,
 				activeModifiers,
 				searchUrl,
+				index,
 			},
 		};
 	};

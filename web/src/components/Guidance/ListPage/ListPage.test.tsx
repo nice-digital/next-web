@@ -11,9 +11,7 @@ import {
 import sampleData from "@/mockData/search/guidance-published.json";
 import { cleanup, render, screen, waitFor } from "@/test-utils/rendering";
 
-import { GuidanceListNav } from "../ProductListNav/GuidanceListNav";
-
-import { getProductListPage } from "./ProductListPage";
+import { getListPage } from "./ListPage";
 
 jest.mock("@/logger", () => ({
 	logger: { error: jest.fn(), info: jest.fn() },
@@ -21,9 +19,8 @@ jest.mock("@/logger", () => ({
 }));
 
 describe("/guidance/published", () => {
-	const ProductListPage = getProductListPage({
+	const ListPage = getListPage({
 		metaDescription: "A list of all published guidance",
-		listNavType: GuidanceListNav,
 		breadcrumbTrail: [
 			<Breadcrumb to="/guidance" key="NICE guidance">
 				NICE guidance
@@ -83,10 +80,11 @@ describe("/guidance/published", () => {
 
 		// eslint-disable-next-line testing-library/no-render-in-setup
 		render(
-			<ProductListPage
+			<ListPage
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "/guidance/published" } as SearchUrl}
+				index="guidance"
 			/>
 		);
 	});
@@ -125,12 +123,13 @@ describe("/guidance/published", () => {
 			cleanup();
 
 			render(
-				<ProductListPage
+				<ListPage
 					activeModifiers={[]}
 					results={
 						{ ...sampleData, documents: [] } as unknown as SearchResultsSuccess
 					}
 					searchUrl={{ route: "/guidance/published" } as SearchUrl}
+					index="guidance"
 				/>
 			);
 			expect(document.querySelector("meta[name='robots']")).toBeInTheDocument();

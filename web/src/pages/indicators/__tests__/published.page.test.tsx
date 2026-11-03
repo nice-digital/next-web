@@ -28,6 +28,7 @@ describe("/indicators/published", () => {
 				activeModifiers={[]}
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "/indicators/published" } as SearchUrl}
+				index="indicators"
 			/>
 		).container;
 	});
