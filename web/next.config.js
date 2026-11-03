@@ -293,6 +293,14 @@ const nextConfig = {
 					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
 				permanent: true,
 			},
+			// FDR-11 03.11.2026
+			{
+				source:
+					"/about/what-we-do/our-programmes/nice-guidance/technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				destination:
+					"/what-nice-does/our-guidance/about-technology-appraisal-guidance/technology-appraisal-submission-templates-and-supporting-documents",
+				permanent: true,
+			},
 			{
 				source:
 					"/about/what-we-do/our-programmes/nice-guidance/nice-highly-specialised-technologies-guidance/proposed-highly-specialised-technology-evaluations",
