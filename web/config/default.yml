@@ -17,6 +17,12 @@ public:
   baseURL: http://localhost:4000
   # URL of the cookie banner script. It's config driven so we can point to the alpha CDN on non-live environments or even use localhost
   cookieBannerScriptURL: https://cdn.nice.org.uk/cookie-banner/cookie-banner.min.js
+  # AWS WAF client application integration, used to mitigate DDoS attacks. See docs/aws-waf-ddos-mitigation.md
+  awsWaf:
+    # URL of the AWS WAF JavaScript SDK, copied from the 'Application integration' page of the WAF console.
+    # Loading it acquires an 'aws-waf-token' in the background, so real users never meet a challenge interstitial.
+    # Leave empty to switch the integration off e.g. locally, or on any environment with no web ACL in front of it
+    scriptURL: ''
   # The path to the public static assets once deployed: https://nextjs.org/docs/basic-features/static-file-serving.
   # Defaults to an empty string which means serving static files from the root. E.g. ./web/public/favicon.ico would be served from /favicon.ico
   publicBaseURL: ''
