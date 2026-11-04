@@ -47,7 +47,7 @@
             "lastUpdated": "1066-01-01T12:00:00",
             "expectedPublicationDate": null,
             "consultationEndDate": null,
-                  "topicSelectionDecisionDate": null,
+            "topicSelectionDecisionDate": null,
             "consultationType": null,
             "resourceType": [],
             "guidanceStatus": [
@@ -59,7 +59,7 @@
             "relatedLinks": null,
             "relatedLinkList": {},
             "technologyType": null,
-                  "topicSelectionDecision": null,
+            "topicSelectionDecision": null,
             "subject": null,
             "sourceName": "GuidanceAdviceListPageInDevAdvice",
             "sourceUrl": "https://www.nice.org.uk/not_a_real_url/gid-mib10315",
