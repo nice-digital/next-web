@@ -2792,9 +2792,11 @@
   "RelevantTo": null,
   "IdNumber": null,
   "AreasOfInterestList": [],
-  "TopicSelectionDecision": "Selected",
-  "TopicSelectionReason": null,
-  "TopicSelectionDecisionDate": null,
-  "TopicSelectionFurtherInfo": null,
+  "RoutingDecision": null,
+  "RoutingDecisionPublicationDate": null,
+  "RoutingDecisionRationale": null,
+  "PrioritisationDecision": "Selected",
+  "PrioritisationBoardDecisionDate": null,
+  "PrioritisationRationale": null,
   "IndicatorSubTypes": []
 }

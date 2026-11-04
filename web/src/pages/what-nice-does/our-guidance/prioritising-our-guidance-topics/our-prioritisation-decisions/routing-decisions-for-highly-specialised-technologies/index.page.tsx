@@ -34,7 +34,7 @@ const tableBodyRender = (documents: Document[]) => (
 					pathAndQuery,
 					title,
 					routingDecision,
-					prioritisationBoardDecisionDate,
+					routingDecisionPublicationDate,
 				}) => {
 					return (
 						<tr key={id}>
@@ -55,9 +55,13 @@ const tableBodyRender = (documents: Document[]) => (
 							</td>
 							<td>{routingDecision}</td>
 							<td>
-								<ResponsiveDate
-									isoDateTime={String(prioritisationBoardDecisionDate)}
-								/>
+								{routingDecisionPublicationDate ? (
+									<ResponsiveDate
+										isoDateTime={String(routingDecisionPublicationDate)}
+									/>
+								) : (
+									<span>Unknown</span>
+								)}
 							</td>
 						</tr>
 					);
