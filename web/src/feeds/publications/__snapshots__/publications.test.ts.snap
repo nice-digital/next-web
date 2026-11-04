@@ -24,6 +24,7 @@ Object {
 
 exports[`publications getAllProducts should load raw feed data with empty cache 1`] = `
 Object {
+  "archivedDate": null,
   "areasOfInterestList": Array [],
   "developedAs": null,
   "id": "CG1",
@@ -36,6 +37,7 @@ Object {
   "publishedDate": "2002-12-01T00:00:00",
   "relevantTo": Array [],
   "taxonomySubjectList": Array [],
+  "terminatedDate": null,
   "title": "Schizophrenia",
   "url": "/newfeeds/product/CG1",
 }

@@ -11,6 +11,8 @@
   "ProductStatus": "Retired",
   "VersionNumber": 6,
   "PublishedDate": "2025-08-05T00:00:00",
+  "TerminatedDate": null,
+  "ArchivedDate": null,
   "LastMajorModificationDate": "2025-08-05T00:00:00",
   "MajorChangeDate": null,
   "NextReviewDate": null,

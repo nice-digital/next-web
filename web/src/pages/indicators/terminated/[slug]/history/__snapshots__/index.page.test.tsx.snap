@@ -125,12 +125,12 @@ exports[`/indicators/terminated/[slug]/history HistoryPage should match snapshot
           IND999
         </li>
         <li>
-          Published:
+          Terminated:
           <time
-            datetime="2025-08-19"
+            datetime="2025-09-01"
           >
              
-            19 August 2025
+            1 September 2025
           </time>
         </li>
       </ul>
@@ -460,7 +460,7 @@ Object {
       "productType": "IND",
       "productTypeName": "NICE indicator",
       "publishedDate": "2025-08-19T00:00:00",
-      "terminatedDate": undefined,
+      "terminatedDate": "2025-09-01T00:00:00",
       "title": "INDICATOR HISTORY TAB HTML CONVERSION",
     },
     "productPath": "/indicators/terminated/ind999-indicator-history-tab-html-conversion",
