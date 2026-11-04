@@ -26,6 +26,7 @@ describe("/guidance/prioritisation", () => {
 					activeModifiers={[]}
 					results={sampleData as unknown as SearchResultsSuccess}
 					searchUrl={{ route: "/guidance/prioritisation" } as SearchUrl}
+					index="guidance"
 				/>
 			).container
 		).toMatchSnapshot();

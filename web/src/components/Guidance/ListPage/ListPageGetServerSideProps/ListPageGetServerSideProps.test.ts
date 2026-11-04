@@ -4,12 +4,11 @@ import {
 	SortOrder,
 } from "@nice-digital/search-client";
 
+import { ListPageProps } from "@/components/Guidance/ListPage/ListPageProps";
 import { logger } from "@/logger";
 import sampleData from "@/mockData/search/guidance-published.json";
 
-import { ProductListPageProps } from "../ProductListPageProps";
-
-import { getGetServerSidePropsFunc } from "./ProductListGetServerSideProps";
+import { getGetServerSidePropsFunc } from "./ListPageGetServerSideProps";
 
 import type { GetServerSidePropsContext, Redirect } from "next";
 import type { ParsedUrlQuery } from "querystring";
@@ -86,7 +85,7 @@ describe("getGetServerSidePropsFunc", () => {
 	});
 
 	describe("Success", () => {
-		let result: { props: ProductListPageProps };
+		let result: { props: ListPageProps };
 		const resolvedUrl =
 			"/guidance/published?q=test&ndt=Guidance&from=2020-07-28&to=2021-06-04";
 		const setHeader = jest.fn();
@@ -102,7 +101,7 @@ describe("getGetServerSidePropsFunc", () => {
 				},
 				resolvedUrl,
 			} as GetServerSidePropsContext)) as {
-				props: ProductListPageProps;
+				props: ListPageProps;
 			};
 		});
 
