@@ -26,6 +26,7 @@ describe("/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prio
 		container = render(
 			<IndexPage
 				activeModifiers={[]}
+				index="routing"
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={
 					{

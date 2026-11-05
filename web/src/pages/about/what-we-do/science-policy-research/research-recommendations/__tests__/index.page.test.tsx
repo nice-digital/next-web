@@ -1,7 +1,11 @@
 import mockDate from "mockdate";
 import { useRouter } from "next/router";
 
-import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
+import {
+	SearchResultsSuccess,
+	SearchUrl,
+	SearchIndex,
+} from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/researchrecs-published.json";
 import { render, screen, within } from "@/test-utils/rendering";
@@ -26,6 +30,7 @@ describe("/research-recommendations/index", () => {
 		container = render(
 			<PublishedPage
 				activeModifiers={[]}
+				index="researchrecs"
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "research-recommendations/index" } as SearchUrl}
 			/>

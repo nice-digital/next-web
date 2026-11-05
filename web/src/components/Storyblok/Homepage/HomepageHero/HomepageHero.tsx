@@ -17,7 +17,7 @@ export interface HomepageHeroBlokProps {
 
 export const HomepageHero = ({
 	blok,
-}: HomepageHeroBlokProps): React.ReactNode => {
+}: HomepageHeroBlokProps): React.ReactElement => {
 	const { title, images, description, cta } = blok;
 
 	const [randomImage, setRandomImage] = useState("");

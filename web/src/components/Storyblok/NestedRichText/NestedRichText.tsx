@@ -12,7 +12,7 @@ export const NestedRichText = ({
 	return (
 		<div
 			className="nested-rich-text"
-			dangerouslySetInnerHTML={{ __html: renderRichText(blok.richText) }}
+			dangerouslySetInnerHTML={{ __html: renderRichText(blok.richText) || "" }}
 		></div>
 	);
 };

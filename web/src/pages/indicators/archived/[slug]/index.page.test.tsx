@@ -145,10 +145,6 @@ describe("/indicators/archived/[slug]/index.page", () => {
 						}}
 						indicatorSubTypes={[
 							{
-								links: {
-									self: [{}],
-								},
-								eTag: null,
 								lastModified: "2022-07-12T00:00:00",
 								enabled: true,
 								name: "Clinical commissioning group indicator",
@@ -156,10 +152,6 @@ describe("/indicators/archived/[slug]/index.page", () => {
 								identifierPrefix: "CCG",
 							},
 							{
-								links: {
-									self: [{}],
-								},
-								eTag: null,
 								lastModified: "2022-07-12T00:00:00",
 								enabled: true,
 								name: "General practice indicator suitable for use in QOF",
