@@ -36,7 +36,10 @@ services:
     image: nextweb:latest
     ## Uncomment the two lines below to run with a specific image with a specific Teamcity build number
     # image: xxxxxxxxxxxx.dkr.ecr.eu-west-1.amazonaws.com/nextweb:nnnn
-    # command: ["npm", "run", "host-console-logging"]
+    # Log to the container stdout so docker-output/logs.txt captures next-web errors.
+    # The default "host" script pipes pino through pino-mq to a RabbitMQ that does not
+    # exist in this stack, so every application log line is silently dropped.
+    command: ["npm", "run", "host-console-logging"]
     container_name: next-web
     build:
       context: ./../web/
