@@ -83,7 +83,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 	const version = getStoryVersionFromQuery(query);
 
-	logger.info("Fetching news article from storyblok at path", params?.slug);
+	logger.info(
+		"Fetching news article from storyblok at path",
+		// pino ignores extra args when the message has no printf placeholder; cast matches search.page.tsx
+		params?.slug as undefined
+	);
 
 	try {
 		const pagePath = `news/articles/${slug}`;

@@ -42,8 +42,10 @@ export const StoryblokRichTextTable: React.FC<StoryblokRichTextTableProps> = ({
 	const { isFirstRowHeader, isFirstColumnHeader } = getTableHeaderConfig();
 	const headerCells = isFirstRowHeader ? firstRow.content : [];
 	const bodyRows = isFirstRowHeader ? rows.slice(1) : rows;
-	const isSummaryHidden =
-		hideSummaryText === true || hideSummaryText === "true";
+	// hideSummaryText is typed as the Storyblok boolean-as-string union
+	// ("" | "true" | "false"), so it can never be a real boolean; the previous
+	// `hideSummaryText === true` comparison was dead code and has been removed.
+	const isSummaryHidden = hideSummaryText === "true";
 
 	const summaryTextClassName = [
 		styles["table__summary"],
