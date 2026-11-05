@@ -80,6 +80,45 @@ export const fetchCurrentAndParentFolderItems = async (
 	};
 };
 
+export const getFoldersWithPublishedStartpage = async (
+	slug: string
+): Promise<Set<number>> => {
+	// Folders are returned by the links API whether or not they contain published content, and their published flag is always false.
+	// Unpublished stories are not returned, so a folder whose startpage appears here has a live landing page
+	const topSlug = slug.split("/")[0];
+	const sectionLinks = await fetchLinks({
+		starts_with: topSlug,
+	});
+
+	return new Set(
+		sectionLinks
+			.filter((link) => link.is_startpage && link.parent_id)
+			.map((link) => link.parent_id as number)
+	);
+};
+
+export const removeUnpublishedFolders = (
+	links: ExtendedSBLink[],
+	foldersWithPublishedStartpage: Set<number>
+): ExtendedSBLink[] => {
+	// Hide folders without a published startpage, so editors can prepare new folders ahead of publishing
+	return links
+		.filter(
+			(link) => !link.is_folder || foldersWithPublishedStartpage.has(link.id)
+		)
+		.map((link) =>
+			link.childLinks
+				? {
+						...link,
+						childLinks: removeUnpublishedFolders(
+							link.childLinks,
+							foldersWithPublishedStartpage
+						),
+				  }
+				: link
+		);
+};
+
 export const buildTree = async (
 	parentID: number,
 	slug: string,
@@ -111,7 +150,11 @@ export const buildTree = async (
 		);
 	}
 
-	return tree;
+	const foldersWithPublishedStartpage = await getFoldersWithPublishedStartpage(
+		slug
+	);
+
+	return removeUnpublishedFolders(tree, foldersWithPublishedStartpage);
 };
 
 export function sectionNavIsPopulated(tree: ExtendedSBLink[]): boolean {
