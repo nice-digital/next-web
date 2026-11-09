@@ -192,6 +192,9 @@ export const buildTreeWithOptionalCache = async (
 	const start = Date.now();
 	let status = "UNKNOWN";
 	let tree: ExtendedSBLink[];
+	// Age of the cache entry that was served, in ms. 0 whenever the tree was
+	// rebuilt on this request (MISS, REFETCH_AFTER_EXPIRY, BYPASSED).
+	let entryAgeMs = 0;
 
 	const cacheKey = `${parentID}_${slug}_${isRootPage ?? false}`;
 	const now = Date.now();
@@ -213,9 +216,11 @@ export const buildTreeWithOptionalCache = async (
 			if (age < freshTTL) {
 				status = "HIT";
 				tree = entry.data;
+				entryAgeMs = age;
 			} else if (age < staleTTL) {
 				status = "STALE";
 				tree = entry.data;
+				entryAgeMs = age;
 				// Trigger background refresh but don't block
 				backgroundRefresh(cacheKey, () =>
 					rawBuildTree(parentID, slug, isRootPage)
@@ -241,6 +246,13 @@ export const buildTreeWithOptionalCache = async (
 		res.setHeader("X-Section-Navigation-Cache", status);
 		res.setHeader("X-Section-Navigation-BuildTime", `${duration}ms`);
 		res.setHeader("X-Section-Navigation-Cache-TTL", `${currentTTL / 1000}s`);
+		// Seconds since the served entry was built, so testers can see where in
+		// the window a HIT/STALE is (remaining fresh time = TTL - Age). Same
+		// semantics as the standard Age header. Per container, like the others.
+		res.setHeader(
+			"X-Section-Navigation-Cache-Age",
+			`${Math.floor(entryAgeMs / 1000)}s`
+		);
 	}
 
 	return tree;

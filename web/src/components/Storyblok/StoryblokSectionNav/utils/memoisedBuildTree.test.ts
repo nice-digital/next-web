@@ -129,6 +129,30 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		expect(res._headers["X-Section-Navigation-BuildTime"]).toMatch(/ms$/);
 		expect(res._headers).toHaveProperty("X-Section-Navigation-Cache-TTL");
 		expect(res._headers["X-Section-Navigation-Cache-TTL"]).toMatch(/s$/);
+		expect(res._headers).toHaveProperty("X-Section-Navigation-Cache-Age");
+		expect(res._headers["X-Section-Navigation-Cache-Age"]).toMatch(/^\d+s$/);
+	});
+
+	it("reports Cache-Age as 0s on a rebuild and as the entry age on HIT and STALE", async () => {
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
+		const res1 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse);
+		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+		expect(res1._headers["X-Section-Navigation-Cache-Age"]).toBe("0s");
+
+		jest.useFakeTimers();
+		jest.setSystemTime(Date.now() + 500); // Within fresh TTL (1s in test config)
+		const res2 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
+		expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
+		expect(res2._headers["X-Section-Navigation-Cache-Age"]).toBe("0s");
+
+		jest.setSystemTime(Date.now() + 1000); // 1.5s old: past fresh TTL, within stale window
+		const res3 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res3 as ServerResponse);
+		expect(res3._headers["X-Section-Navigation-Cache"]).toBe("STALE");
+		expect(res3._headers["X-Section-Navigation-Cache-Age"]).toBe("1s");
+		jest.useRealTimers();
 	});
 
 	describe("Cache cleanup functionality", () => {
