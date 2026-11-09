@@ -155,6 +155,96 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		jest.useRealTimers();
 	});
 
+	describe("Storyblok failures", () => {
+		const flushPromises = () => new Promise((r) => setTimeout(r, 0));
+
+		it("does not cache a failed build: a MISS that throws surfaces the error and the next request is a MISS again", async () => {
+			const { buildTreeWithOptionalCache } = await import(
+				"./memoisedBuildTree"
+			);
+			const { fetchLinks } = await import("@/utils/storyblok");
+			(fetchLinks as jest.Mock).mockRejectedValueOnce(
+				new Error("503 error from Storyblok API")
+			);
+
+			const res1 = makeRes();
+			await expect(
+				buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse)
+			).rejects.toThrow("503 error from Storyblok API");
+
+			// Storyblok is back; nothing bad was stored so this is a fresh MISS, not a HIT
+			const res2 = makeRes();
+			const tree = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res2 as ServerResponse
+			);
+			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+			expect(tree).toHaveLength(1);
+		});
+
+		it("keeps serving the old nav when a STALE background refresh fails", async () => {
+			const { buildTreeWithOptionalCache } = await import(
+				"./memoisedBuildTree"
+			);
+			const { fetchLinks } = await import("@/utils/storyblok");
+			// resetModules gives the module under test its own logger instance; spy on that one
+			const { logger: moduleLogger } = await import("@/logger");
+			const errorSpy = jest
+				.spyOn(moduleLogger, "error")
+				.mockImplementation(() => jest.fn());
+
+			const res1 = makeRes();
+			const original = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res1 as ServerResponse
+			);
+			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+			// Into the stale window, with Storyblok failing for the background refresh
+			jest.useFakeTimers();
+			jest.setSystemTime(Date.now() + 1000 + 10);
+			(fetchLinks as jest.Mock).mockRejectedValueOnce(
+				new Error("503 error from Storyblok API")
+			);
+
+			const res2 = makeRes();
+			const served = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res2 as ServerResponse
+			);
+			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("STALE");
+			expect(served).toEqual(original);
+
+			// Let the failed refresh settle: it must log, not throw, and leave the entry in place
+			jest.useRealTimers();
+			await flushPromises();
+			expect(errorSpy).toHaveBeenCalledWith(
+				expect.stringContaining("Background refresh failed"),
+				expect.any(Error)
+			);
+
+			// Still in the stale window: the old nav is still served, no error page
+			jest.useFakeTimers();
+			jest.setSystemTime(Date.now() + 1000 + 10);
+			const res3 = makeRes();
+			const servedAgain = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res3 as ServerResponse
+			);
+			expect(res3._headers["X-Section-Navigation-Cache"]).toBe("STALE");
+			expect(servedAgain).toEqual(original);
+			jest.useRealTimers();
+		});
+	});
+
 	describe("Cache cleanup functionality", () => {
 		it("should manually clean up expired entries", async () => {
 			const { buildTreeWithOptionalCache, manualCleanup, purgeCache } =
