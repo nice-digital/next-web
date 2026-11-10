@@ -26,6 +26,7 @@ const mockAccordion: StoryblokAccordionProps = {
 		},
 		headingLevel: undefined,
 		displayTitleAsHeading: false,
+		variant: "subtle",
 		_uid: "123123123",
 		component: "accordion",
 	},
@@ -63,7 +64,7 @@ describe("Storyblok accordion component", () => {
 			blok: {
 				...mockAccordion.blok,
 				displayTitleAsHeading: true,
-				headingLevel: 2,
+				headingLevel: "2",
 			},
 		};
 

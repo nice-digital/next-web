@@ -8,7 +8,7 @@ type PaginationFocusedElementProps = {
 
 export const PaginationFocusedElement = ({
 	innerText,
-}: PaginationFocusedElementProps): React.ReactNode => {
+}: PaginationFocusedElementProps): React.ReactElement => {
 	const focusPagination = usePaginationFocus();
 	return (
 		<h2 className="visually-hidden" tabIndex={-1} ref={focusPagination}>

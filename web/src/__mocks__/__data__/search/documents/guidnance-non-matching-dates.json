@@ -5,11 +5,10 @@
   "xml": null,
   "abstract": null,
   "metaDescription": null,
+  "rationale": null,
   "accredited": false,
   "alternativePublicationDate": null,
-  "altSourceNames": [
-      "NICE Live Sitemap Crawl"
-  ],
+  "altSourceNames": ["NICE Live Sitemap Crawl"],
   "areaOfInterest": null,
   "breadcrumbs": null,
   "childDocumentCount": 0,
@@ -23,9 +22,7 @@
   "contentId": "https://www.nice.org.uk/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",
   "index": 0,
   "lessSuitableForPrescribing": false,
-  "niceDocType": [
-      "Guidance"
-  ],
+  "niceDocType": ["Guidance"],
   "niceGuidanceType": [],
   "niceAdviceType": [],
   "niceResultType": "",
@@ -39,15 +36,22 @@
   "expectedPublicationDate": null,
   "consultationEndDate": null,
   "consultationType": null,
-  "resourceType": [
-      "Test Resource Type"
-  ],
+  "topicSelectionDecisionDate": null,
+  "terminatedDate": null,
+  "deferredDate": null,
+  "prioritisationBoardDecisionDate": null,
+  "prioritisationBoardMeetingDate": null,
+  "resourceType": ["Test Resource Type"],
+  "approachType": [],
   "guidanceStatus": [],
+  "prioritisationDecision": [],
+  "prioritisationProgramme": [],
+  "routingDecision": [],
+  "deferredId": null,
+  "subject": null,
   "publicationType": null,
   "publisher": null,
-  "resourceCategory": [
-      "Local practice"
-  ],
+  "resourceCategory": ["Local practice"],
   "relatedLinks": null,
   "relatedLinkList": {},
   "technologyType": null,
@@ -65,7 +69,7 @@
   "boostValue": 90,
   "score": 17.037624,
   "titleParts": [
-      "Empowering patients to be their own personal trainers to improve function and strength - Implementing NICE <b>NG100</b>"
+    "Empowering patients to be their own personal trainers to improve function and strength - Implementing NICE <b>NG100</b>"
   ],
   "ukmiSummaryUrl": null,
   "url": "https://www.nice.org.uk/sharedlearning/empowering-patients-to-be-their-own-personal-trainers-to-improve-function-and-strength-implementing-nice-cg79",

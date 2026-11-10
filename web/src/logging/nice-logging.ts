@@ -53,8 +53,9 @@ export const niceLoggingPinoOptions: LoggerOptions = {
 					: arg
 			);
 
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			return method.apply(this, mappedArgs as [ms: string, args: any[]]);
+			// mappedArgs is a 1:1 mapped copy of inputArgs (same arity/positions),
+			// so it is safe to assert it back to pino's LogFn parameter tuple.
+			return method.apply(this, mappedArgs as Parameters<typeof method>);
 		},
 	},
 	serializers: {

@@ -13,7 +13,7 @@ const blok: ImageRichTextStoryblok = {
 		id: 1,
 		name: "nhs-team.JPG",
 		title: "Desktop Image",
-		focus: null,
+		focus: undefined,
 	},
 	content: {
 		type: "doc",
@@ -31,7 +31,7 @@ const blok: ImageRichTextStoryblok = {
 		id: 2,
 		name: "nhs-team.JPG",
 		title: "Mobile Image",
-		focus: null,
+		focus: undefined,
 	},
 	_uid: "123",
 	component: "imageRichText",
