@@ -13,8 +13,14 @@ const DEFAULT_TTL_SECONDS = 21600;
  * (with a background refresh) after it expires. Scaling off the fresh TTL keeps
  * the stale window proportional to configured freshness rather than a fixed
  * duration that could dwarf a short TTL.
+ *
+ * Kept at 1.5 so that, with the default TTL of 300s, no nav served from this
+ * cache is ever older than 450s. The page cache in front (Varnish, s-maxage
+ * 900s) captures whatever nav the origin had at fetch time and holds it for its
+ * own window, so the two ages stack; bounding this one well under 900s keeps
+ * the nav cache from being the dominant source of stale menus.
  */
-const STALE_TTL_MULTIPLIER = 2;
+const STALE_TTL_MULTIPLIER = 1.5;
 
 /**
  * Get the section navigation cache TTL in milliseconds from runtime config.

@@ -45,8 +45,11 @@ public:
 # ! Server config is accessible to server-only so is great for secrets (like API keys etc):
 server:
   cache:
-    # The TTL (time to live) (aka expiry duration), in seconds, for the storyblok in section navigation memory cache - should always be less than the Ocelot TTL to avoid serving older menus  - set to zero to bypass memoisation
-    sectionNavCacheTTL: 840
+    # The TTL (time to live), in seconds, for the storyblok in-section navigation memory cache. Set to zero to bypass memoisation.
+    # Entries are served stale, with a background refresh, for a further 0.5x TTL (see STALE_TTL_MULTIPLIER), so the oldest
+    # nav this cache can serve is 1.5x this value. The page cache in front (Varnish, 900s) stacks its own age on top, so keep
+    # 1.5x this value well under 900s: at 300 the nav cache adds at most 450s to a page's staleness.
+    sectionNavCacheTTL: 300
     # Prefix added to all cache keys
     keyPrefix: next-web:local
     # The folder into which the feed cache is stored

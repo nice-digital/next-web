@@ -147,7 +147,7 @@ describe("buildTreeWithOptionalCache SWR", () => {
 		expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
 		expect(res2._headers["X-Section-Navigation-Cache-Age"]).toBe("0s");
 
-		jest.setSystemTime(Date.now() + 1000); // 1.5s old: past fresh TTL, within stale window
+		jest.setSystemTime(Date.now() + 700); // 1.2s old: past fresh TTL (1s), within stale window (1.5s)
 		const res3 = makeRes();
 		await buildTreeWithOptionalCache(1, "slug", false, res3 as ServerResponse);
 		expect(res3._headers["X-Section-Navigation-Cache"]).toBe("STALE");
@@ -231,7 +231,7 @@ describe("buildTreeWithOptionalCache SWR", () => {
 
 			// Still in the stale window: the old nav is still served, no error page
 			jest.useFakeTimers();
-			jest.setSystemTime(Date.now() + 1000 + 10);
+			jest.setSystemTime(Date.now() + 1200); // fake clock restarts at real time: 1.2s old, inside the 1.5s stale window
 			const res3 = makeRes();
 			const servedAgain = await buildTreeWithOptionalCache(
 				1,
