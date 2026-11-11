@@ -2,6 +2,10 @@ public:
   search:
     # The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/
     baseURL: SEARCH_BASE_URL
+    # Optional override, in milliseconds. Parsed as JSON so it arrives as a number, not a string.
+    timeout:
+      __name: SEARCH_TIMEOUT
+      __format: json
   storyblok:
     accessToken: STORYBLOK_TOKEN # alpha preview
     enableRootCatchAll: STORYBLOK_ROUTE_CATCHALL
