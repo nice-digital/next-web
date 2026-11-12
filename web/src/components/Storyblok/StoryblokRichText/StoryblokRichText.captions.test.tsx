@@ -176,4 +176,79 @@ describe("StoryblokRichText - image captions (examples and edge cases)", () => {
 		expect(image).toHaveAttribute("height", "9");
 		expect(image?.style.aspectRatio).toBe("16/9");
 	});
+	// Requirement (multiple images): each image is wrapped in its own figure with
+	// its own caption, so captions stay correctly associated with their image when
+	// more than one image is present in the same rich-text document.
+	it("keeps each caption associated with its own image when multiple images are present", () => {
+		const multiImageDoc: RichtextStoryblok = {
+			type: "doc",
+			content: [
+				{
+					type: "paragraph",
+					content: [
+						{
+							type: "image",
+							attrs: {
+								id: "1",
+								src: "https://a.storyblok.com/f/243782/420x234/aaaaaaaaaa/first.png",
+								alt: "First image",
+								title: "First caption",
+								source: "",
+								copyright: "",
+								meta_data: {},
+							},
+						},
+					],
+				},
+				{
+					type: "paragraph",
+					content: [
+						{
+							type: "image",
+							attrs: {
+								id: "2",
+								src: "https://a.storyblok.com/f/243782/640x480/bbbbbbbbbb/second.png",
+								alt: "Second image",
+								title: "Second caption",
+								source: "",
+								copyright: "",
+								meta_data: {},
+							},
+						},
+					],
+				},
+			],
+		};
+
+		const { container } = render(<StoryblokRichText content={multiImageDoc} />);
+
+		const figures = container.querySelectorAll("figure");
+		expect(figures).toHaveLength(2);
+
+		figures.forEach((figure) => {
+			// Exactly one image and exactly one caption per figure.
+			expect(figure.querySelectorAll("img")).toHaveLength(1);
+			expect(figure.querySelectorAll("figcaption")).toHaveLength(1);
+		});
+
+		// Each caption is scoped to the figure that holds its image: the first
+		// image's alt pairs with the first caption, the second with the second.
+		const [firstFigure, secondFigure] = Array.from(figures);
+
+		expect(firstFigure.querySelector("img")).toHaveAttribute(
+			"alt",
+			"First image"
+		);
+		expect(firstFigure.querySelector("figcaption")?.textContent).toBe(
+			"First caption"
+		);
+
+		expect(secondFigure.querySelector("img")).toHaveAttribute(
+			"alt",
+			"Second image"
+		);
+		expect(secondFigure.querySelector("figcaption")?.textContent).toBe(
+			"Second caption"
+		);
+	});
 });

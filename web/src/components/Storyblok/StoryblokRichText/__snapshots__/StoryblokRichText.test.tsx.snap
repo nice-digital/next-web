@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StoryblokRichText image figure/figcaption snapshots renders a figcaption after the image when the flag is on and the title is non-empty 1`] = `
+exports[`StoryblokRichText image figure/figcaption snapshots renders a figcaption after the image when the title is non-empty 1`] = `
 <div
   class="storyblokRichTextWrapper"
   data-testid="storyblok-rich-text"
@@ -39,7 +39,7 @@ exports[`StoryblokRichText image figure/figcaption snapshots renders a figcaptio
 </div>
 `;
 
-exports[`StoryblokRichText image figure/figcaption snapshots wraps a single image in a figure with no figcaption when the flag is off 1`] = `
+exports[`StoryblokRichText image figure/figcaption snapshots wraps a single image in a figure with no figcaption when the title is empty 1`] = `
 <div
   class="storyblokRichTextWrapper"
   data-testid="storyblok-rich-text"
