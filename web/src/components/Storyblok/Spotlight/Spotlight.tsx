@@ -5,6 +5,7 @@ import { Card, type CardHeadingLinkProps } from "@nice-digital/nds-card";
 import { Tag } from "@nice-digital/nds-tag";
 
 import { Link } from "@/components/Link/Link";
+import { Figure } from "@/components/Storyblok/Figure/Figure";
 import { StoryblokImage } from "@/components/Storyblok/StoryblokImage/StoryblokImage";
 import { StoryblokYoutubeEmbed } from "@/components/Storyblok/StoryblokYoutubeEmbed/StoryblokYoutubeEmbed";
 import { NewsStory } from "@/types/News";
@@ -68,20 +69,19 @@ export const Spotlight: React.FC<SpotlightProps> = ({
 				<HeadingElement className={styles.heading}>{heading}</HeadingElement>
 				<div className={styles.content}>
 					<div className={styles.media}>
-						<figure className={styles.figure}>
+						<Figure
+							caption={
+								validMediaDescriptionRichText ? (
+									<StoryblokRichText content={validMediaDescriptionRichText} />
+								) : hasLegacyText ? (
+									mediaDescription
+								) : null
+							}
+						>
 							<StoryblokYoutubeEmbed
 								blok={youtubeEmbed[0] as YoutubeEmbedStoryblok}
 							/>
-							{validMediaDescriptionRichText ? (
-								<figcaption className={styles.caption}>
-									<StoryblokRichText content={validMediaDescriptionRichText} />
-								</figcaption>
-							) : hasLegacyText ? (
-								<figcaption className={styles.caption}>
-									{mediaDescription}
-								</figcaption>
-							) : null}
-						</figure>
+						</Figure>
 					</div>
 					<div className={styles.stories}>
 						<ul className={styles.storyList}>

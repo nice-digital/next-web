@@ -1,0 +1,10 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/utils';
+
+.figure {
+  margin: 0;
+}
+
+.caption {
+  padding-top: utils.rem(spacing.$medium);
+}

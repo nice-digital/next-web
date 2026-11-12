@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoryblokRichText image figure/figcaption snapshots renders a figcaption after the image when the title is non-empty 1`] = `
+<div
+  class="storyblokRichTextWrapper"
+  data-testid="storyblok-rich-text"
+>
+  <figure
+    class="figure"
+  >
+    <picture>
+      <source
+        srcset="https://a.storyblok.com/f/243782/420x234/7a576133e7/example.png/m/420x0/filters:format%28avif%29:quality%2880%29"
+        type="image/avif"
+      />
+      <source
+        srcset="https://a.storyblok.com/f/243782/420x234/7a576133e7/example.png/m/420x0/filters:format%28webp%29:quality%2880%29"
+        type="image/webp"
+      />
+      <img
+        alt="An image"
+        class="imageMain "
+        data-nimg="1"
+        decoding="async"
+        height="0"
+        loading="lazy"
+        src="/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fexample.png%2Fm%2F420x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fexample.png%2Fm%2F420x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fexample.png%2Fm%2F420x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+        style="color: transparent; max-width: 100%; height: auto;"
+        width="420"
+      />
+    </picture>
+    <figcaption
+      class="caption"
+    >
+      A descriptive caption
+    </figcaption>
+  </figure>
+</div>
+`;
+
+exports[`StoryblokRichText image figure/figcaption snapshots wraps a single image in a figure with no figcaption when the title is empty 1`] = `
+<div
+  class="storyblokRichTextWrapper"
+  data-testid="storyblok-rich-text"
+>
+  <figure
+    class="figure"
+  >
+    <picture>
+      <source
+        srcset="https://a.storyblok.com/f/243782/420x234/7a576133e7/example.png/m/420x0/filters:format%28avif%29:quality%2880%29"
+        type="image/avif"
+      />
+      <source
+        srcset="https://a.storyblok.com/f/243782/420x234/7a576133e7/example.png/m/420x0/filters:format%28webp%29:quality%2880%29"
+        type="image/webp"
+      />
+      <img
+        alt="An image"
+        class="imageMain "
+        data-nimg="1"
+        decoding="async"
+        height="0"
+        loading="lazy"
+        src="/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fexample.png%2Fm%2F420x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fexample.png%2Fm%2F420x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fa.storyblok.com%2Ff%2F243782%2F420x234%2F7a576133e7%2Fexample.png%2Fm%2F420x0%2Ffilters%3Aformat%2528jpeg%2529%3Aquality%252880%2529&w=1080&q=75 2x"
+        style="color: transparent; max-width: 100%; height: auto;"
+        width="420"
+      />
+    </picture>
+  </figure>
+</div>
+`;
