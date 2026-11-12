@@ -17,6 +17,7 @@ import {
 import blockquoteStyles from "@/components/Storyblok/Blockquote/Blockquote.module.scss";
 import { type RichtextStoryblok } from "@/types/storyblok";
 
+import { Figure } from "../Figure/Figure";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./StoryblokRichText.module.scss";
@@ -60,7 +61,9 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 						if (Children.count(children) === 1) {
 							const child = Children.toArray(children)[0];
 
-							if (isValidElement(child) && child?.type === StoryblokImage) {
+							// The image resolver now returns a Figure (not a bare
+							// StoryblokImage), so detect the Figure wrapper here.
+							if (isValidElement(child) && child?.type === Figure) {
 								return <React.Fragment>{child}</React.Fragment>;
 							}
 						}
@@ -81,23 +84,33 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 							height: props.src ? props.src.split("/")[5].split("x")[1] : 9,
 						};
 
+						// Captions are rendered from the image title whenever the
+						// trimmed title is non-empty; an empty/whitespace title omits
+						// the figcaption.
+						const rawCaption =
+							typeof props.title === "string" ? props.title : "";
+						const caption =
+							rawCaption.trim().length >= 1 ? rawCaption.trim() : undefined;
+
 						return (
-							<StoryblokImage
-								src={props.src}
-								alt={props.alt}
-								loading="lazy"
-								className={imageClassName}
-								serviceOptions={{
-									height: 0,
-									width: Number(dimensions.width),
-									quality: 80,
-								}}
-								style={{
-									aspectRatio: `${dimensions.width}/${dimensions.height}`,
-								}}
-								width={Number(dimensions.width)}
-								height={Number(dimensions.height)}
-							/>
+							<Figure caption={caption}>
+								<StoryblokImage
+									src={props.src}
+									alt={props.alt}
+									loading="lazy"
+									className={imageClassName}
+									serviceOptions={{
+										height: 0,
+										width: Number(dimensions.width),
+										quality: 80,
+									}}
+									style={{
+										aspectRatio: `${dimensions.width}/${dimensions.height}`,
+									}}
+									width={Number(dimensions.width)}
+									height={Number(dimensions.height)}
+								/>
+							</Figure>
 						);
 					},
 					[NODE_QUOTE]: (children) => {
