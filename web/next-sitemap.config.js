@@ -13,7 +13,7 @@ module.exports = {
 	sitemapBaseFileName: "sitemap-next",
 	exclude: [
 		"/",
-		"/about/what-we-do/science-policy-research/research-recommendations", // Not live on NextJS yet
+		"/about/what-we-do/science-policy-research/research-recommendations", // old research recs page in orchard, content needs to be taken down
 		"/accessibility",
 		"/cks-end-user-licence-agreement",
 		"/cks-is-only-available-in-the-uk",

@@ -34,9 +34,9 @@
   ],
   "dependencies": {
     "@nice-digital/design-system": "^5.6.1",
-    "@nice-digital/global-nav": "^7.1.1152",
+    "@nice-digital/global-nav": "7.1.1204",
     "@nice-digital/nds-prev-next": "^3.0.2",
-    "@nice-digital/search-client": "2.0.1796-SRCH-1044-routing-fi",
+    "@nice-digital/search-client": "2.1.1797",
     "@sindresorhus/slugify": "^1.1.2",
     "@storyblok/react": "^3.0.14",
     "axios": "1.14.0",
