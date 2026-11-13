@@ -8,6 +8,13 @@ public:
   jotForm:
     baseURL: JOTFORM_BASE_URL
 server:
+  cache:
+    # Optional override, in seconds, for the in-section navigation memory cache TTL.
+    # Set to 0 to bypass the cache without a release (status header shows BYPASSED).
+    # Parsed as JSON so it arrives as a number, not a string.
+    sectionNavCacheTTL:
+      __name: SECTION_NAV_CACHE_TTL
+      __format: json
   feeds:
     publications:
       origin: PUBLICATIONS_BASE_URL
