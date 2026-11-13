@@ -1,11 +1,10 @@
 import { Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Document, SortOrder } from "@nice-digital/search-client";
 
-import { GuidanceListNav } from "@/components/ProductListNav/GuidanceListNav";
 import {
 	getGetServerSidePropsFunc,
-	getProductListPage,
-} from "@/components/ProductListPage/ProductListPage";
+	getListPage,
+} from "@/components/Guidance/ListPage/ListPage";
 import { ResponsiveDate } from "@/components/ResponsiveDate/ResponsiveDate";
 import { publicRuntimeConfig } from "@/config";
 
@@ -60,10 +59,9 @@ const tableBodyRender = (documents: Document[]) => (
 	</>
 );
 
-export default getProductListPage({
+export default getListPage({
 	metaDescription:
 		"Browse the complete list of all our published health and social care guidance, including guidelines, NICE advice and quality standards",
-	listNavType: GuidanceListNav,
 	breadcrumbTrail: [
 		<Breadcrumb to="/guidance" key="NICE guidance">
 			NICE guidance

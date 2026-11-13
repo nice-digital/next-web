@@ -18,7 +18,7 @@ import { SkipLink } from "@/components/SkipLink/SkipLink";
 import { ToFromDateFilters } from "@/components/ToFromDateFilters/ToFromDateFilters";
 
 /** navigatorsOrder and navigatorsToCollapse props control what filters are included, what order they are in and which are collapsed
- *  default values are populated in ProductListPage
+ *  default values are populated in ListPage
  */
 
 export interface SearchListFiltersProps {
