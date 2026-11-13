@@ -168,13 +168,13 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               In progress
             </dd>
             <dt>
-              Decision:
+              Prioritisation decision:
             </dt>
             <dd>
               Selected
             </dd>
             <dt>
-              Decision publication date:
+              Prioritisation decision publication date:
             </dt>
              
             <dd>
@@ -192,7 +192,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               MedicinesEvaluation
             </dd>
             <dt>
-              Further information:
+              Prioritisation decision rationale:
             </dt>
              
             <dd>
@@ -506,13 +506,20 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               Diagnostic
             </dd>
             <dt>
-              Decision:
+              Routing decision:
+            </dt>
+             
+            <dd>
+              Routed as a TA
+            </dd>
+            <dt>
+              Prioritisation decision:
             </dt>
             <dd>
               Prioritised
             </dd>
             <dt>
-              Decision publication date:
+              Prioritisation decision publication date:
             </dt>
              
             <dd>
@@ -530,14 +537,7 @@ exports[`/indevelopment/[slug].page IndevelopmentPage should match snapshot for 
               HealthTech
             </dd>
             <dt>
-              Prioritisation routing decision:
-            </dt>
-             
-            <dd>
-              Routed as a TA
-            </dd>
-            <dt>
-              Further information:
+              Prioritisation decision rationale:
             </dt>
              
             <dd>
@@ -825,13 +825,18 @@ Object {
     "indevTopicItems": Array [],
     "isGuidanceHubPage": false,
     "partialUpdates": Array [],
-    "prioritisationRouting": "MedicinesEvaluation",
-    "prioritisationRoutingDecision": null,
+    "prioritisationBoardDecisionDate": "2026-07-01T00:00:00",
+    "prioritisationDecision": "Selected",
+    "prioritisationProgramme": "MedicinesEvaluation",
+    "prioritisationRationale": "Further info",
     "process": "CG",
     "projectPath": "/guidance/indevelopment/gid-ng10237",
     "projectType": "NG",
     "reference": "GID-NG10237",
     "referralDate": null,
+    "routingDecision": null,
+    "routingDecisionPublicationDate": null,
+    "routingDecisionRationale": null,
     "status": "In progress",
     "summary": null,
     "suspendDiscontinuedReason": null,
@@ -839,10 +844,6 @@ Object {
     "suspendDiscontinuedUrlText": null,
     "technologyType": null,
     "title": "Adrenal insufficiency: acute and long-term management",
-    "topicSelectionDecision": "Selected",
-    "topicSelectionDecisionDate": "2026-07-01T00:00:00",
-    "topicSelectionFurtherInfo": "Further info",
-    "topicSelectionReason": null,
   },
 }
 `;

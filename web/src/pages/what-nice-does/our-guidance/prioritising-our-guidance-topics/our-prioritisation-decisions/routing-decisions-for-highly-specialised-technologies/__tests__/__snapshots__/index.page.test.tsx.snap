@@ -716,7 +716,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       </a>
                     </td>
                     <td>
-                      Routed as an HST
+                      Routed as a TA
                     </td>
                     <td>
                       <time
@@ -836,11 +836,11 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="4/3/2025"
-                        datetime="2025-03-04T12:00:00"
+                        data-shortdate="4/3/2022"
+                        datetime="2022-03-04T0:00:00"
                       >
                         <span>
-                          4 March 2025
+                          4 March 2022
                         </span>
                       </time>
                     </td>
@@ -857,11 +857,11 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                     <td>
                       <time
                         class="date"
-                        data-shortdate="29/6/2022"
-                        datetime="2022-06-29T12:00:00"
+                        data-shortdate="3/7/2022"
+                        datetime="2022-07-03T00:00:00"
                       >
                         <span>
-                          29 June 2022
+                          3 July 2022
                         </span>
                       </time>
                     </td>
@@ -886,7 +886,7 @@ exports[`/what-nice-does/our-guidance/prioritising-our-guidance-topics/our-prior
                       </a>
                     </td>
                     <td>
-                      Routed as a TA
+                      Routed as an HST
                     </td>
                     <td>
                       <time
