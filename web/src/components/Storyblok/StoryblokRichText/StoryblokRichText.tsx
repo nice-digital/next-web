@@ -93,7 +93,7 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 							rawCaption.trim().length >= 1 ? rawCaption.trim() : undefined;
 
 						return (
-							<Figure caption={caption}>
+							<Figure caption={caption} className={styles.figure}>
 								<StoryblokImage
 									src={props.src}
 									alt={props.alt}

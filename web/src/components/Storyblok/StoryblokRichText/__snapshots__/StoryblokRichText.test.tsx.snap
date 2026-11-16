@@ -6,7 +6,7 @@ exports[`StoryblokRichText image figure/figcaption snapshots renders a figcaptio
   data-testid="storyblok-rich-text"
 >
   <figure
-    class="figure"
+    class="figure figure"
   >
     <picture>
       <source
@@ -45,7 +45,7 @@ exports[`StoryblokRichText image figure/figcaption snapshots wraps a single imag
   data-testid="storyblok-rich-text"
 >
   <figure
-    class="figure"
+    class="figure figure"
   >
     <picture>
       <source
