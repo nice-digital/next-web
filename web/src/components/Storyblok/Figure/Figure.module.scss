@@ -7,4 +7,11 @@
 
 .caption {
   padding-top: utils.rem(spacing.$medium);
+
+  // Rich text captions (e.g. Spotlight) wrap their content in block elements;
+  // drop the first block's top margin so it doesn't stack on the padding and
+  // a rich text caption sits as close to the media as a plain string one
+  > * > :first-child {
+    margin-top: 0;
+  }
 }
