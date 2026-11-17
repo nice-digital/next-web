@@ -11,11 +11,16 @@ import {
 	getStoryVersionFromQuery,
 	GENERIC_ERROR_MESSAGE,
 } from "@/utils/storyblok";
+import { findRedirect } from "@/utils/storyblokRedirects";
 
 import type { GetServerSidePropsContext } from "next";
 
 jest.mock("@/utils/storyblok");
 jest.mock("@/logger");
+jest.mock("@/utils/storyblokRedirects", () => ({
+	...jest.requireActual("@/utils/storyblokRedirects"),
+	findRedirect: jest.fn(),
+}));
 //TODO do we need a better mock for the tree?
 jest.mock("@/components/Storyblok/StoryblokSectionNav/utils/Utils", () => ({
 	buildTree: jest.fn(),
@@ -26,6 +31,7 @@ const mockGetBreadcrumbs = getBreadcrumbs as jest.Mock;
 const mockGetSlugFromParams = getSlugFromParams as jest.Mock;
 const mockGetStoryVersionFromQuery = getStoryVersionFromQuery as jest.Mock;
 const mockLoggerError = logger.error as jest.Mock;
+const mockFindRedirect = findRedirect as jest.Mock;
 
 const mockBuildTree = SectionNavUtils.buildTree as jest.Mock;
 
@@ -42,6 +48,74 @@ describe("getCorporateContentGssp", () => {
 
 	beforeEach(() => {
 		jest.clearAllMocks();
+		mockFindRedirect.mockResolvedValue(null);
+	});
+
+	describe("self-serve redirects", () => {
+		it("redirects when the story is not found and a redirect exists", async () => {
+			mockGetSlugFromParams.mockReturnValue("about-us/old-page");
+			mockGetStoryVersionFromQuery.mockReturnValue("published");
+			mockFetchStory.mockResolvedValue({ notFound: true });
+			mockFindRedirect.mockResolvedValue("/about-us/new-page");
+
+			const context = {
+				...makeContext(["about-us", "old-page"]),
+				resolvedUrl: "/about-us/old-page",
+			} as GetServerSidePropsContext;
+
+			const result = await getCorporateContentGssp(templateId)(context);
+
+			expect(mockFindRedirect).toHaveBeenCalledWith(
+				"/about-us/old-page",
+				"published"
+			);
+			expect(result).toEqual({
+				redirect: { destination: "/about-us/new-page", permanent: false },
+			});
+			expect(context.res.setHeader).toHaveBeenCalledWith(
+				"Cache-Control",
+				"no-store"
+			);
+		});
+
+		it("does not look for a redirect when the story exists", async () => {
+			mockGetSlugFromParams.mockReturnValue("about");
+			mockFetchStory.mockResolvedValue({
+				story: { content: { component: "infoPage" }, parent_id: null },
+			});
+			mockGetBreadcrumbs.mockResolvedValue([]);
+
+			const result = await getCorporateContentGssp(templateId)(makeContext());
+
+			expect(mockFindRedirect).not.toHaveBeenCalled();
+			expect(result).toHaveProperty("props");
+		});
+
+		it("returns notFound for the redirect list's own folder without fetching it", async () => {
+			mockGetSlugFromParams.mockReturnValue("site-config/redirects");
+
+			const context = {
+				...makeContext(["site-config", "redirects"]),
+				resolvedUrl: "/site-config/redirects",
+			} as GetServerSidePropsContext;
+
+			const result = await getCorporateContentGssp(templateId)(context);
+
+			expect(result).toEqual({ notFound: true });
+			expect(mockFetchStory).not.toHaveBeenCalled();
+		});
+
+		it("returns notFound for a redirect list story saved somewhere else", async () => {
+			mockGetSlugFromParams.mockReturnValue("about");
+			mockFetchStory.mockResolvedValue({
+				story: { content: { component: "redirectsConfig" } },
+			});
+			mockGetBreadcrumbs.mockResolvedValue([]);
+
+			const result = await getCorporateContentGssp(templateId)(makeContext());
+
+			expect(result).toEqual({ notFound: true });
+		});
 	});
 
 	afterEach(() => {

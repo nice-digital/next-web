@@ -15,6 +15,11 @@ import {
 	getSlugFromParams,
 	getStoryVersionFromQuery,
 } from "@/utils/storyblok";
+import {
+	findRedirect,
+	isRedirectsConfigSlug,
+	REDIRECTS_CONTENT_TYPE,
+} from "@/utils/storyblokRedirects";
 
 import type { GetServerSidePropsContext, GetServerSideProps } from "next";
 
@@ -48,7 +53,8 @@ export const getCorporateContentGssp = <
 			slug = rawSlug ? `${basePath}/${rawSlug}` : basePath;
 		}
 
-		if (!slug) {
+		// The self-serve redirect list is a Storyblok story but never a public page
+		if (!slug || isRedirectsConfigSlug(slug)) {
 			return {
 				notFound: true,
 			};
@@ -69,6 +75,23 @@ export const getCorporateContentGssp = <
 				logger.error(
 					`Story not found for slug: ${slug} in getCorporateContentGssp [[...slug]] catch all at ${resolvedUrl}`
 				);
+
+				// Before giving up, see if the web team have set up a redirect for this URL
+				const destination = await findRedirect(`/${slug}`, version);
+
+				if (destination) {
+					// Temporary and not cached, so that a mistake is easy to undo
+					res.setHeader("Cache-Control", "no-store");
+					return { redirect: { destination, permanent: false } };
+				}
+
+				return { notFound: true };
+			}
+
+			if (
+				(storyResult.story?.content?.component as string) ===
+				REDIRECTS_CONTENT_TYPE
+			) {
 				return { notFound: true };
 			}
 
