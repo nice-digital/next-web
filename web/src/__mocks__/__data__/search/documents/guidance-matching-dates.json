@@ -5,11 +5,10 @@
   "xml": null,
   "abstract": null,
   "metaDescription": "This guideline covers the short-term management of violence and aggression in adults (aged 18 and over), young people (aged 13 to 17) and children (aged 12 and under). It is relevant for mental health, health and community settings. The guideline aims to safeguard both staff and people who use services by helping to prevent violent situations and providing guidance to manage them safely when they occur.",
+  "rationale": null,
   "accredited": false,
   "alternativePublicationDate": null,
-  "altSourceNames": [
-      "NICE NG chapters"
-  ],
+  "altSourceNames": ["NICE NG chapters"],
   "areaOfInterest": null,
   "breadcrumbs": null,
   "childDocumentCount": 0,
@@ -23,13 +22,11 @@
   "contentId": "https://www.nice.org.uk/guidance/ng10",
   "index": 0,
   "lessSuitableForPrescribing": false,
-  "niceDocType": [
-      "Guidance"
-  ],
+  "niceDocType": ["Guidance"],
   "niceGuidanceType": [
-      "Clinical guidelines",
-      "Social care guidelines",
-      "NICE guidelines"
+    "Clinical guidelines",
+    "Social care guidelines",
+    "NICE guidelines"
   ],
   "niceAdviceType": [],
   "niceResultType": "",
@@ -43,10 +40,19 @@
   "expectedPublicationDate": null,
   "consultationEndDate": null,
   "consultationType": null,
+  "topicSelectionDecisionDate": null,
+  "terminatedDate": null,
+  "deferredDate": null,
+  "prioritisationBoardDecisionDate": null,
+  "prioritisationBoardMeetingDate": null,
   "resourceType": ["Test Resource Type"],
-  "guidanceStatus": [
-      "Published"
-  ],
+  "approachType": [],
+  "guidanceStatus": ["Published"],
+  "prioritisationDecision": [],
+  "prioritisationProgramme": [],
+  "routingDecision": [],
+  "deferredId": null,
+  "subject": null,
   "publicationType": null,
   "publisher": null,
   "resourceCategory": null,
@@ -67,8 +73,8 @@
   "boostValue": 165,
   "score": 33.02325,
   "titleParts": [
-      "aggression",
-      "d aggression: short-term management in mental health, health and community settings  (<b>NG10</b>)"
+    "aggression",
+    "d aggression: short-term management in mental health, health and community settings  (<b>NG10</b>)"
   ],
   "ukmiSummaryUrl": null,
   "url": "https://www.nice.org.uk/guidance/ng10",

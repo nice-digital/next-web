@@ -32,6 +32,8 @@ const props: ProjectInformationProps = {
 	prioritisationRoutingDecision: "",
 	reference: "",
 	title: "",
+	isGuidanceHubPage: false,
+	content: null,
 };
 
 describe("ProjectInformation", () => {

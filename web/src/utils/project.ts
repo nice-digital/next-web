@@ -11,7 +11,11 @@ import {
 	ProjectDetail,
 	ProjectStatus,
 } from "@/feeds/inDev/inDev";
-import { ProductGroup, ProductTypeAcronym } from "@/feeds/publications/types";
+import {
+	ProductGroup,
+	ProductTypeAcronym,
+	Status,
+} from "@/feeds/publications/types";
 import { logger } from "@/logger";
 import { getProjectPath, getProductPath } from "@/utils/url";
 
@@ -78,6 +82,10 @@ export const validateRouteParams = async ({
 			id: project.reference,
 			productType: project.projectType as unknown as ProductTypeAcronym,
 			title: project.title,
+			// Completed projects redirect to the published product; Status.Published
+			// yields the no-prefix path, matching the previous behaviour where
+			// productStatus was omitted entirely.
+			productStatus: Status.Published,
 		});
 
 		return {
