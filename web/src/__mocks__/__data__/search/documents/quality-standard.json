@@ -46,7 +46,7 @@
   "guidanceStatus": ["Published"],
   "prioritisationDecision": [],
   "prioritisationProgramme": [],
-  "routingDecision": [],
+  "routingDecision": null,
   "deferredId": null,
   "subject": null,
   "publicationType": null,
