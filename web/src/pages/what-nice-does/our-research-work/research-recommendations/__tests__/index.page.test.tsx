@@ -1,11 +1,7 @@
 import mockDate from "mockdate";
 import { useRouter } from "next/router";
 
-import {
-	SearchResultsSuccess,
-	SearchUrl,
-	SearchIndex,
-} from "@nice-digital/search-client";
+import { SearchResultsSuccess, SearchUrl } from "@nice-digital/search-client";
 
 import sampleData from "@/mockData/search/researchrecs-published.json";
 import { render, screen, within } from "@/test-utils/rendering";
