@@ -246,15 +246,17 @@ describe("storyblokRedirects", () => {
 		it("logs a hit", async () => {
 			await findRedirect("/a");
 
-			expect(logger.info).toHaveBeenCalledWith(
-				{ source: "/a", destination: "/b" },
-				expect.stringContaining("hit")
+			expect(logger.warn).toHaveBeenCalledWith(
+				{
+					Properties: { RedirectSource: "/a", RedirectDestination: "/b" },
+				},
+				expect.stringContaining('hit from "/a" to "/b"')
 			);
 		});
 
 		it("returns null when there is no redirect", async () => {
 			expect(await findRedirect("/nothing-here")).toBeNull();
-			expect(logger.info).not.toHaveBeenCalled();
+			expect(logger.warn).not.toHaveBeenCalled();
 		});
 
 		it("returns null for a path it can't tidy, without loading the list", async () => {

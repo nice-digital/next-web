@@ -212,10 +212,16 @@ export const findRedirect = async (
 
 	const destination = (await getRedirectMap(version)).get(source) ?? null;
 
-	// Logged so we can see which redirects are still being used
+	// Logged so we can see which redirects are still being used. This is a warning
+	// because only warnings and above are logged in production.
 	if (destination)
-		logger.info(
-			{ source, destination },
+		logger.warn(
+			{
+				Properties: {
+					RedirectSource: source,
+					RedirectDestination: destination,
+				},
+			},
 			`Redirects: hit from "${source}" to "${destination}"`
 		);
 
