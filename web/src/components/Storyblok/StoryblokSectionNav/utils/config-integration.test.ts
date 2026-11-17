@@ -6,24 +6,14 @@ jest.mock("@/utils/storyblok", () => ({
 }));
 
 /**
- * Simple test to verify that the configuration is read correctly
- * This should show the value from local-production.yml: 900 seconds
+ * Checks that the section nav cache TTL is read from config (default.yml, or an
+ * environment/local override) and that the same value reaches the response header.
  */
 describe("Configuration Reading Integration Test", () => {
 	it("should read sectionNavCacheTTL from runtime config", () => {
-		console.log("Runtime config cache:", serverRuntimeConfig?.cache);
-		console.log(
-			"Section nav cache TTL:",
-			serverRuntimeConfig?.cache?.sectionNavCacheTTL
+		expect(typeof serverRuntimeConfig?.cache?.sectionNavCacheTTL).toBe(
+			"number"
 		);
-
-		// The value should be 900 from local-production.yml
-		// If the value is undefined, it means the config isn't being read properly
-		// For now, we'll just check that the config structure exists
-		expect(serverRuntimeConfig).toBeDefined();
-
-		// This test verifies that our implementation can access the config structure
-		// The actual value will depend on the environment configuration
 	});
 
 	it("should surface the configured TTL via the cache response header", async () => {
@@ -44,7 +34,5 @@ describe("Configuration Reading Integration Test", () => {
 		const ttlSeconds = Number(ttlHeader.replace("s", ""));
 		expect(ttlSeconds).toBeGreaterThan(0);
 		expect(ttlSeconds).toBe(serverRuntimeConfig?.cache?.sectionNavCacheTTL);
-
-		console.log("Cache TTL reported in header (seconds):", ttlSeconds);
 	});
 });

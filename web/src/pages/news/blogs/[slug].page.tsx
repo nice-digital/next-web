@@ -78,14 +78,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const version = getStoryVersionFromQuery(query);
 	const pagePath = `news/blogs/${slug}`;
 
-	logger.info(
-		"Fetching blog post from storyblok at path",
-		// pino ignores extra args when the message has no printf placeholder, so
-		// the trailing param resolves to `undefined`; pagePath is a plain string
-		// (no overlap with `undefined`) so it needs the `unknown` step. Matches
-		// the `as undefined` convention in search.page.tsx.
-		pagePath as unknown as undefined
-	);
+	// The %s placeholder is needed: pino drops extra args when the message has
+	// no placeholder, so without it the path never reaches the log.
+	logger.info("Fetching blog post from storyblok at path %s", pagePath);
 
 	try {
 		// Get the story and its breadcrumbs
