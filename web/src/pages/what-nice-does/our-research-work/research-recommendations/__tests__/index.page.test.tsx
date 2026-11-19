@@ -26,6 +26,7 @@ describe("/research-recommendations/index", () => {
 		container = render(
 			<PublishedPage
 				activeModifiers={[]}
+				index="researchrecs"
 				results={sampleData as unknown as SearchResultsSuccess}
 				searchUrl={{ route: "research-recommendations/index" } as SearchUrl}
 			/>

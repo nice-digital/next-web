@@ -381,7 +381,7 @@ describe("CardGridSection", () => {
 									fieldtype: "asset",
 									name: "test-name",
 									title: "test-title",
-									focus: null,
+									focus: undefined,
 								},
 								variant: "default",
 							} as TestimonialGridItemStoryblok,

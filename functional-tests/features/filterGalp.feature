@@ -14,7 +14,9 @@ Feature: The list of guidance list page is reduced when user filter by name
 
   Scenario: User can apply keyword filter published guidance list page
     Given I open the published guidance list page
-    And I enter keyword or reference number "TA846" to filter page list
+    # TA846 was terminated (now at /guidance/terminated/TA846) so it no longer appears
+    # under Published on alpha or live search. TA800 is published and returns exactly one result.
+    And I enter keyword or reference number "TA800" to filter page list
     And I pause for 5000ms
     Then I expect the result list count contains "Showing 1 to 1 of 1"
 
