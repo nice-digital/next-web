@@ -193,16 +193,23 @@ export const validateRouteParams = async ({
 		actualPathSegments = absoluteURL.pathname.split("/"),
 		expectedPathSegments = productPath.split("/");
 
-	const status = product.productStatus,
-		retiredArchivedOrTerminated = [
-			Status.Retired,
-			Status.Archived,
-			Status.Terminated,
-		],
-		statusIsRetiredArchivedOrTerminated =
-			retiredArchivedOrTerminated.includes(status),
-		retiredArchivedOrTerminatedInUrl =
-			actualPathSegments[2] === status.toLowerCase(); // must be same status
+	const statusPathSegments = [
+		Status.Archived,
+		Status.Retired,
+		Status.Terminated,
+	];
+
+	const expectedStatusPathSegment = statusPathSegments.includes(
+		product.productStatus as Status
+	)
+		? product.productStatus.toLowerCase()
+		: null;
+
+	const actualStatusPathSegment = statusPathSegments
+		.map((status) => status.toLowerCase())
+		.includes(actualPathSegments[2])
+		? actualPathSegments[2]
+		: null;
 
 	if (!query.productRoot || Array.isArray(query.productRoot))
 		throw Error(
@@ -252,15 +259,22 @@ export const validateRouteParams = async ({
 	// So by replacing the slug (2nd) segment we can support redirects to pages at any level
 	// For example from "/indicators/ind1-wrong-title/anything/here" to /indicators/ind1-correct-title/anything/here
 
-	if (
-		statusIsRetiredArchivedOrTerminated !== retiredArchivedOrTerminatedInUrl
-	) {
-		if (statusIsRetiredArchivedOrTerminated) {
-			actualPathSegments.splice(2, 0, status.toLowerCase());
-			actualPathSegments.splice(4);
-		} else {
-			actualPathSegments.splice(2, 1);
+	if (expectedStatusPathSegment !== actualStatusPathSegment) {
+		if (actualStatusPathSegment) {
+			// Replace an incorrect archived, retired or terminated segment.
+			if (expectedStatusPathSegment) {
+				actualPathSegments[2] = expectedStatusPathSegment;
+			} else {
+				// Published products must not have a status segment.
+				actualPathSegments.splice(2, 1);
+			}
+		} else if (expectedStatusPathSegment) {
+			// Add the product's status segment when it is missing.
+			actualPathSegments.splice(2, 0, expectedStatusPathSegment);
 		}
+
+		// The expected output only retains the canonical product URL.
+		actualPathSegments.splice(4);
 	}
 
 	// Retain the 'search' (querystring) part of the URL to retain things like utm params if present

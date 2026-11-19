@@ -1,10 +1,21 @@
-import { ProductDetail, ProductGroup } from "@/feeds/publications/types";
+import {
+	ProductDetail,
+	ProductGroup,
+	Status,
+} from "@/feeds/publications/types";
+import ng100 from "@/mockData/publications/feeds/product/ng100.json";
+import { addDefaultJSONFeedMocks, axiosJSONMock } from "@/test-utils/feeds";
 
 import { validateRouteParams, getChapterLinks } from "./product";
 
 describe("product utils", () => {
 	const slug =
 		"ind1001-test-indicator-ind-1001-the-percentage-of-patients-with-one-or-more-of-the-following-conditions-chd-atrial-fibrillation-chronic-heart-failure-stroke-or-tia-diabetes-or-dementia-with-a-fast-score-of-3-or-more-or-audit-c-score-of-5-or-more-in-the-preceding-2-years-who-have-received-brief-intervention-to-help-them-reduce-their-alcohol-related-risk-within-3-months-of-the-score-being-recorded";
+
+	afterEach(() => {
+		jest.restoreAllMocks();
+		axiosJSONMock.reset();
+	});
 
 	describe("getChapterLinks", () => {
 		it("should have no chapters when there's no contentPartList", () => {
@@ -362,5 +373,79 @@ describe("product utils", () => {
 				},
 			});
 		});
+
+		it.each([
+			[Status.Published, "/guidance/archived/ng100", "/guidance/ng100"],
+			[Status.Published, "/guidance/retired/ng100", "/guidance/ng100"],
+			[Status.Published, "/guidance/terminated/ng100", "/guidance/ng100"],
+			[Status.Published, "/guidance/ng100", "/guidance/ng100"],
+
+			[Status.Archived, "/guidance/archived/ng100", "/guidance/archived/ng100"],
+			[Status.Archived, "/guidance/retired/ng100", "/guidance/archived/ng100"],
+			[
+				Status.Archived,
+				"/guidance/terminated/ng100",
+				"/guidance/archived/ng100",
+			],
+			[Status.Archived, "/guidance/ng100", "/guidance/archived/ng100"],
+
+			[Status.Retired, "/guidance/archived/ng100", "/guidance/retired/ng100"],
+			[Status.Retired, "/guidance/retired/ng100", "/guidance/retired/ng100"],
+			[Status.Retired, "/guidance/terminated/ng100", "/guidance/retired/ng100"],
+			[Status.Retired, "/guidance/ng100", "/guidance/retired/ng100"],
+
+			[
+				Status.Terminated,
+				"/guidance/archived/ng100",
+				"/guidance/terminated/ng100",
+			],
+			[
+				Status.Terminated,
+				"/guidance/retired/ng100",
+				"/guidance/terminated/ng100",
+			],
+			[
+				Status.Terminated,
+				"/guidance/terminated/ng100",
+				"/guidance/terminated/ng100",
+			],
+			[Status.Terminated, "/guidance/ng100", "/guidance/terminated/ng100"],
+		])(
+			"should use the correct path for %s product from %s",
+			async (productStatus, resolvedUrl, expectedPath) => {
+				axiosJSONMock.reset();
+
+				axiosJSONMock.onGet(/ng100/i).reply(200, {
+					...ng100,
+					ProductStatus: productStatus,
+				});
+
+				addDefaultJSONFeedMocks();
+
+				const result = await validateRouteParams({
+					params: {
+						slug: "ng100",
+					},
+					resolvedUrl,
+					query: {
+						productRoot: "guidance",
+					},
+				});
+
+				if (resolvedUrl === expectedPath) {
+					expect(result).toMatchObject({
+						actualPath: expectedPath,
+						productPath: expectedPath,
+					});
+				} else {
+					expect(result).toStrictEqual({
+						redirect: {
+							destination: expectedPath,
+							permanent: true,
+						},
+					});
+				}
+			}
+		);
 	});
 });
