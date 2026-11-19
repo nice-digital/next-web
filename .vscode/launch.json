@@ -5,6 +5,28 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Next - Debug full stack",
+      "type": "node",
+      "request": "launch",
+       "cwd": "${workspaceFolder}/web",
+      "program": "${workspaceFolder}/web/node_modules/next/dist/bin/next",
+      "args": ["dev"],
+      "runtimeArgs": ["--inspect"],
+      "skipFiles": ["<node_internals>/**"],
+      "serverReadyAction": {
+        "action": "debugWithChrome",
+        "killOnServerStop": true,
+        "pattern": "Local:\\s*(https?://.+)",
+        "uriFormat": "%s",
+        "webRoot": "${workspaceFolder}/web/src",
+      },
+      "presentation": {
+        "hidden": false,
+        "group": "Full stack",
+        "order": 1
+      }
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch Next.js with VS Debugger",
@@ -25,7 +47,7 @@
       "presentation": {
         "hidden": false,
         "group": "Static site",
-        "order": 1
+        "order": 2
       }
     },
     {
@@ -51,9 +73,7 @@
         "!**/node_modules/**"
       ],
       "console": "integratedTerminal",
-      "protocol": "inspector",
       "sourceMaps": true,
-      "disableOptimisticBPs": true,
       "presentation": {
         "hidden": false,
         "group": "Functional tests",
