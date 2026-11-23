@@ -73,6 +73,22 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 							return null;
 						}
 
+						// TODO: invalid HTML when an image shares a paragraph with other
+						// content (e.g. text, image, text). The image resolver returns a
+						// <figure>, which isn't allowed inside a <p>: React warns about the
+						// DOM nesting in dev, and in production the browser closes the <p>
+						// early when parsing the server HTML, which can cause a hydration
+						// mismatch. Only a paragraph whose sole child is the Figure is
+						// unwrapped above, so mixed paragraphs hit this branch.
+						//
+						// Fix: split the paragraph around any Figure. Walk
+						// Children.toArray(children), emit each Figure as a sibling block,
+						// and wrap each run of other content in its own <p> (skipping
+						// empty/whitespace-only runs). This replaces the single-child
+						// check above, and renders as <p>text</p><figure/><p>text</p>.
+						// Margins between the paragraphs and figure collapse, so the
+						// spacing stays the same. The text paragraphs lose the
+						// p:has(img) margin/max-width in StoryblokRichText.module.scss.
 						return <p>{children}</p>;
 					},
 					[NODE_IMAGE]: (children, props) => {
