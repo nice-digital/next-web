@@ -22,6 +22,63 @@ import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./StoryblokRichText.module.scss";
 
+const isFigure = (node: ReactNode): boolean =>
+	isValidElement(node) && node.type === Figure;
+
+// A run of nodes left either side of an image that renders nothing visible:
+// whitespace-only text and line breaks.
+const isBlankRun = (nodes: ReactNode[]): boolean =>
+	nodes.every(
+		(node) =>
+			(typeof node === "string" && node.trim().length === 0) ||
+			(isValidElement(node) && node.type === "br")
+	);
+
+/**
+ * Image nodes render as a <figure>, which isn't valid inside a <p> or a heading
+ * (React warns about the DOM nesting in dev and, in production, the browser
+ * closes the element early when parsing the server HTML, which can cause a
+ * hydration mismatch). Editors can put an image in the same paragraph or heading
+ * as other content, so split the block around each figure: figures are emitted as
+ * siblings and each run of other content is wrapped in its own block element, e.g.
+ * text, image, text becomes <p>text</p><figure/><p>text</p>.
+ *
+ * Blocks without a figure are wrapped exactly as before. Adjacent block margins
+ * collapse, so spacing around the figure is unchanged.
+ */
+const splitAroundFigures = (
+	children: ReactNode,
+	wrap: (content: ReactNode, key?: string) => ReactNode
+): ReactNode => {
+	const nodes = Children.toArray(children);
+
+	if (!nodes.some(isFigure)) {
+		return wrap(children);
+	}
+
+	const blocks: ReactNode[] = [];
+	let run: ReactNode[] = [];
+
+	const flush = () => {
+		if (run.length > 0 && !isBlankRun(run)) {
+			blocks.push(wrap(run, `block-${blocks.length}`));
+		}
+		run = [];
+	};
+
+	nodes.forEach((node) => {
+		if (isFigure(node)) {
+			flush();
+			blocks.push(node);
+		} else {
+			run.push(node);
+		}
+	});
+	flush();
+
+	return <React.Fragment>{blocks}</React.Fragment>;
+};
+
 export interface StoryblokRichTextProps {
 	content: RichtextStoryblok;
 	className?: string;
@@ -50,46 +107,28 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 						}
 						const { level } = props;
 
-						return createElement(
-							`h${level}`,
-							{ className: `sbRichtextHeading${level}` },
-							children
+						// an image inside a heading is split out so the figure isn't
+						// nested in the heading element
+						return splitAroundFigures(children, (content, key) =>
+							createElement(
+								`h${level}`,
+								{ className: `sbRichtextHeading${level}`, key },
+								content
+							)
 						);
 					},
 					[NODE_PARAGRAPH]: (children) => {
-						// stops images being wrapped in a paragraph tag
-						if (Children.count(children) === 1) {
-							const child = Children.toArray(children)[0];
-
-							// The image resolver now returns a Figure (not a bare
-							// StoryblokImage), so detect the Figure wrapper here.
-							if (isValidElement(child) && child?.type === Figure) {
-								return <React.Fragment>{child}</React.Fragment>;
-							}
-						}
-
 						// if the paragraph is empty, don't render it
 						if (children === null) {
 							return null;
 						}
 
-						// TODO: invalid HTML when an image shares a paragraph with other
-						// content (e.g. text, image, text). The image resolver returns a
-						// <figure>, which isn't allowed inside a <p>: React warns about the
-						// DOM nesting in dev, and in production the browser closes the <p>
-						// early when parsing the server HTML, which can cause a hydration
-						// mismatch. Only a paragraph whose sole child is the Figure is
-						// unwrapped above, so mixed paragraphs hit this branch.
-						//
-						// Fix: split the paragraph around any Figure. Walk
-						// Children.toArray(children), emit each Figure as a sibling block,
-						// and wrap each run of other content in its own <p> (skipping
-						// empty/whitespace-only runs). This replaces the single-child
-						// check above, and renders as <p>text</p><figure/><p>text</p>.
-						// Margins between the paragraphs and figure collapse, so the
-						// spacing stays the same. The text paragraphs lose the
-						// p:has(img) margin/max-width in StoryblokRichText.module.scss.
-						return <p>{children}</p>;
+						// Stops images being wrapped in a paragraph tag: a paragraph that
+						// only holds an image renders just the figure, and an image mixed
+						// with other content is split out of the paragraph.
+						return splitAroundFigures(children, (content, key) => (
+							<p key={key}>{content}</p>
+						));
 					},
 					[NODE_IMAGE]: (children, props) => {
 						// renders inline images from the stories richText field to StoryblokImage component
