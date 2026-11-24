@@ -8,6 +8,8 @@ const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 export interface SearchConfig {
 	/** The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/ */
 	readonly baseURL: SearchClientInitOptions["baseURL"];
+	/** Timeout, in milliseconds, for requests to the search API. Overrides the search client's 5000ms default. */
+	readonly timeout: NonNullable<SearchClientInitOptions["timeout"]>;
 }
 
 export interface CacheControlConfig {
@@ -71,6 +73,8 @@ export interface PublicConfig {
  * Config for object cache
  */
 export interface CacheConfig {
+	/** in section navigation */
+	readonly sectionNavCacheTTL?: number;
 	/** The prefix for cache keys */
 	readonly keyPrefix: string;
 

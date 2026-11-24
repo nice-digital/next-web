@@ -223,6 +223,7 @@ describe("/indicators/resources/[partSlug]", () => {
 			    "lastUpdated": "2018-07-11T00:05:07.4294909",
 			    "product": Object {
 			      "alert": undefined,
+			      "archivedDate": undefined,
 			      "id": "NG100",
 			      "lastMajorModificationDate": "2020-10-12T00:00:00",
 			      "productStatus": "Published",

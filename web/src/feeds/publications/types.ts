@@ -584,6 +584,7 @@ export type ProductDetail = ProductAndResourceBase & {
 	developedAs: string | null;
 	relevantTo: string[];
 	terminatedDate: string | null;
+	archivedDate: string | null;
 	areasOfInterestList: AreaOfInterest[];
 	indicatorSubTypeList: string[];
 	indicatorOldCode: string;
