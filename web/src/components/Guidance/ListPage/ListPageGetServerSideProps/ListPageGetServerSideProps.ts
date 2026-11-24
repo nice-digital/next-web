@@ -72,17 +72,20 @@ export const getGetServerSidePropsFunc =
 
 		const searchUrl = getSearchUrl(context.resolvedUrl);
 
+		const searchContext = {
+			defaultSortOrder,
+			defaultPageSize,
+			usePrettyUrls: true,
+		};
+
+		if (gstPreFilter) {
+			Object.assign(searchContext, {
+				orModifierPreFilter: { gst: [gstPreFilter] },
+			});
+		}
+
 		const searchStartTime = process.hrtime.bigint(),
-			results = await search(context.resolvedUrl, {
-				defaultSortOrder,
-				defaultPageSize,
-				usePrettyUrls: true,
-				// Only apply the gst pre-filter when one is configured; the gst
-				// 'or modifier' tuple must be exactly [string].
-				...(gstPreFilter
-					? { orModifierPreFilter: { gst: [gstPreFilter] as [string] } }
-					: {}),
-			}),
+			results = await search(context.resolvedUrl, searchContext),
 			searchEndTime = process.hrtime.bigint();
 
 		context.res.setHeader(
