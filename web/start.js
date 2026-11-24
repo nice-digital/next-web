@@ -5,5 +5,5 @@ const exec = require("child_process").exec,
 	});
 
 // Pipe the outut of the subprocess so we have the option of logging it to the console
-nextWebProcess.stdout.pipe(process.stdout);
-nextWebProcess.stderr.pipe(process.stderr);
+nextWebProcess.stdout?.pipe(process.stdout);
+nextWebProcess.stderr?.pipe(process.stderr);

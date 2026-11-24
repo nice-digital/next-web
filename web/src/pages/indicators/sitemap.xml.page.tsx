@@ -56,6 +56,8 @@ const toSitemapURL = (document: Document): ISitemapField => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	initSearchClient({
 		baseURL: publicRuntimeConfig.search.baseURL,
+		// Config-driven; the client's own 5000ms default is too short for a server render. See ProductListGetServerSideProps.
+		timeout: publicRuntimeConfig.search.timeout,
 		index: "indicators",
 	});
 
@@ -71,7 +73,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	if (results.failed) {
 		logger.error(
 			`Error loading guidance from search on page ${context.resolvedUrl}: ${results.errorMessage}`,
-			results.debug?.rawResponse
+			// pino ignores extra args when the message has no printf placeholder; cast matches search.page.tsx
+			results.debug?.rawResponse as undefined
 		);
 		context.res.statusCode = 500;
 	}

@@ -1,0 +1,380 @@
+import { ServerResponse } from "http";
+
+import { logger } from "@/logger";
+
+// Mock the config before importing the module under test
+const mockConfig = {
+	serverRuntimeConfig: {
+		cache: {
+			sectionNavCacheTTL: 1, // 1 second for tests
+		},
+	},
+};
+
+// Mock the config module
+jest.mock("@/config", () => mockConfig);
+
+// Mock Storyblok fetch
+jest.mock("@/utils/storyblok", () => ({
+	fetchLinks: jest.fn().mockResolvedValue([
+		{
+			slug: "slug",
+			name: "Test",
+			id: 1,
+			parent_id: 0,
+			is_folder: false,
+			published: true,
+		},
+	]),
+}));
+
+interface MockRes extends Partial<ServerResponse> {
+	setHeader?: (k: string, v: string) => ServerResponse;
+	_headers: Record<string, string>;
+}
+
+const makeRes = (): MockRes => {
+	const headers: Record<string, string> = {};
+	return {
+		setHeader: (k: string, v: string) => {
+			headers[k] = v;
+			return undefined as unknown as ServerResponse;
+		},
+		_headers: headers,
+	};
+};
+
+describe("buildTreeWithOptionalCache SWR", () => {
+	beforeEach(() => {
+		jest.resetModules();
+		jest.spyOn(logger, "warn").mockImplementation(() => jest.fn());
+		jest.spyOn(logger, "error").mockImplementation(() => jest.fn());
+	});
+
+	it("MISS then HIT within fresh TTL", async () => {
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
+		const res1 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse);
+		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+		const res2 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
+		expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
+	});
+
+	it("serves STALE and triggers background refresh after fresh TTL but before stale TTL", async () => {
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
+
+		// first call → MISS
+		const res1 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse);
+		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+		// Advance time to between fresh TTL and stale TTL.
+		// Fresh TTL = 1s (mock config); stale TTL = fresh * 2 = 2s.
+		jest.useFakeTimers();
+		jest.setSystemTime(Date.now() + 1000 + 10); // Just past fresh TTL, within stale window
+
+		const res2 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
+		expect(res2._headers["X-Section-Navigation-Cache"]).toBe("STALE");
+
+		jest.useRealTimers();
+	});
+
+	it("REFETCH_AFTER_EXPIRY when beyond stale TTL", async () => {
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
+
+		const res1 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse);
+		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+		jest.useFakeTimers();
+		// Fresh TTL = 1s, stale TTL = fresh * 2 = 2s. Advance well beyond the stale window.
+		jest.setSystemTime(Date.now() + 3000); // Past stale TTL
+
+		const res2 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
+		expect(res2._headers["X-Section-Navigation-Cache"]).toBe(
+			"REFETCH_AFTER_EXPIRY"
+		);
+
+		jest.useRealTimers();
+	});
+
+	it("bypasses cache when TTL=0", async () => {
+		// Update the mock config to have TTL=0
+		mockConfig.serverRuntimeConfig.cache.sectionNavCacheTTL = 0;
+
+		// Clear the module cache to force re-evaluation with new config
+		jest.resetModules();
+
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
+
+		const res = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res as ServerResponse);
+		expect(res._headers["X-Section-Navigation-Cache"]).toBe("BYPASSED");
+
+		// Reset config for other tests
+		mockConfig.serverRuntimeConfig.cache.sectionNavCacheTTL = 1;
+	});
+
+	it("always sets BuildTime and Cache-TTL headers", async () => {
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
+		const res = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res as ServerResponse);
+
+		expect(res._headers).toHaveProperty("X-Section-Navigation-Cache");
+		expect(res._headers).toHaveProperty("X-Section-Navigation-BuildTime");
+		expect(res._headers["X-Section-Navigation-BuildTime"]).toMatch(/ms$/);
+		expect(res._headers).toHaveProperty("X-Section-Navigation-Cache-TTL");
+		expect(res._headers["X-Section-Navigation-Cache-TTL"]).toMatch(/s$/);
+		expect(res._headers).toHaveProperty("X-Section-Navigation-Cache-Age");
+		expect(res._headers["X-Section-Navigation-Cache-Age"]).toMatch(/^\d+s$/);
+	});
+
+	it("reports Cache-Age as 0s on a rebuild and as the entry age on HIT and STALE", async () => {
+		const { buildTreeWithOptionalCache } = await import("./memoisedBuildTree");
+		const res1 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse);
+		expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+		expect(res1._headers["X-Section-Navigation-Cache-Age"]).toBe("0s");
+
+		jest.useFakeTimers();
+		jest.setSystemTime(Date.now() + 500); // Within fresh TTL (1s in test config)
+		const res2 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res2 as ServerResponse);
+		expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
+		expect(res2._headers["X-Section-Navigation-Cache-Age"]).toBe("0s");
+
+		jest.setSystemTime(Date.now() + 700); // 1.2s old: past fresh TTL (1s), within stale window (1.5s)
+		const res3 = makeRes();
+		await buildTreeWithOptionalCache(1, "slug", false, res3 as ServerResponse);
+		expect(res3._headers["X-Section-Navigation-Cache"]).toBe("STALE");
+		expect(res3._headers["X-Section-Navigation-Cache-Age"]).toBe("1s");
+		jest.useRealTimers();
+	});
+
+	describe("Storyblok failures", () => {
+		const flushPromises = () => new Promise((r) => setTimeout(r, 0));
+
+		it("does not cache a failed build: a MISS that throws surfaces the error and the next request is a MISS again", async () => {
+			const { buildTreeWithOptionalCache } = await import(
+				"./memoisedBuildTree"
+			);
+			const { fetchLinks } = await import("@/utils/storyblok");
+			(fetchLinks as jest.Mock).mockRejectedValueOnce(
+				new Error("503 error from Storyblok API")
+			);
+
+			const res1 = makeRes();
+			await expect(
+				buildTreeWithOptionalCache(1, "slug", false, res1 as ServerResponse)
+			).rejects.toThrow("503 error from Storyblok API");
+
+			// Storyblok is back; nothing bad was stored so this is a fresh MISS, not a HIT
+			const res2 = makeRes();
+			const tree = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res2 as ServerResponse
+			);
+			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+			expect(tree).toHaveLength(1);
+		});
+
+		it("keeps serving the old nav when a STALE background refresh fails", async () => {
+			const { buildTreeWithOptionalCache } = await import(
+				"./memoisedBuildTree"
+			);
+			const { fetchLinks } = await import("@/utils/storyblok");
+			// resetModules gives the module under test its own logger instance; spy on that one
+			const { logger: moduleLogger } = await import("@/logger");
+			const errorSpy = jest
+				.spyOn(moduleLogger, "error")
+				.mockImplementation(() => jest.fn());
+
+			const res1 = makeRes();
+			const original = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res1 as ServerResponse
+			);
+			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+			// Into the stale window, with Storyblok failing for the background refresh
+			jest.useFakeTimers();
+			jest.setSystemTime(Date.now() + 1000 + 10);
+			(fetchLinks as jest.Mock).mockRejectedValueOnce(
+				new Error("503 error from Storyblok API")
+			);
+
+			const res2 = makeRes();
+			const served = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res2 as ServerResponse
+			);
+			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("STALE");
+			expect(served).toEqual(original);
+
+			// Let the failed refresh settle: it must log, not throw, and leave the entry in place
+			jest.useRealTimers();
+			await flushPromises();
+			expect(errorSpy).toHaveBeenCalledWith(
+				expect.stringContaining("Background refresh failed"),
+				expect.any(Error)
+			);
+
+			// Still in the stale window: the old nav is still served, no error page
+			jest.useFakeTimers();
+			jest.setSystemTime(Date.now() + 1200); // fake clock restarts at real time: 1.2s old, inside the 1.5s stale window
+			const res3 = makeRes();
+			const servedAgain = await buildTreeWithOptionalCache(
+				1,
+				"slug",
+				false,
+				res3 as ServerResponse
+			);
+			expect(res3._headers["X-Section-Navigation-Cache"]).toBe("STALE");
+			expect(servedAgain).toEqual(original);
+			jest.useRealTimers();
+		});
+	});
+
+	describe("Cache cleanup functionality", () => {
+		it("should manually clean up expired entries", async () => {
+			const { buildTreeWithOptionalCache, manualCleanup, purgeCache } =
+				await import("./memoisedBuildTree");
+
+			// Clear any existing cache
+			purgeCache();
+
+			// Add some cache entries
+			const res1 = makeRes();
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res1 as ServerResponse
+			);
+			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+			const res2 = makeRes();
+			await buildTreeWithOptionalCache(
+				2,
+				"test2",
+				false,
+				res2 as ServerResponse
+			);
+			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+			// Verify entries are cached (should be HITs now)
+			const res3 = makeRes();
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res3 as ServerResponse
+			);
+			expect(res3._headers["X-Section-Navigation-Cache"]).toBe("HIT");
+
+			// Advance time past the stale TTL (fresh 1s * 2 = 2s) to expire entries
+			jest.useFakeTimers();
+			jest.setSystemTime(Date.now() + 3000); // Past stale TTL
+
+			// Manually trigger cleanup
+			const cleanedCount = manualCleanup();
+			expect(cleanedCount).toBe(2); // Should clean up 2 expired entries
+
+			jest.useRealTimers();
+		});
+
+		it("should not clean up fresh entries during manual cleanup", async () => {
+			const { buildTreeWithOptionalCache, manualCleanup, purgeCache } =
+				await import("./memoisedBuildTree");
+
+			purgeCache();
+
+			// Add a cache entry
+			const res1 = makeRes();
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res1 as ServerResponse
+			);
+			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+			// Immediately try cleanup (entry should still be fresh)
+			const cleanedCount = manualCleanup();
+			expect(cleanedCount).toBe(0); // Should not clean any fresh entries
+
+			// Verify entry is still cached
+			const res2 = makeRes();
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res2 as ServerResponse
+			);
+			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
+		});
+
+		it("should clean up expired entry on access", async () => {
+			const { buildTreeWithOptionalCache, purgeCache } = await import(
+				"./memoisedBuildTree"
+			);
+
+			purgeCache();
+
+			// Add a cache entry
+			const res1 = makeRes();
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res1 as ServerResponse
+			);
+			expect(res1._headers["X-Section-Navigation-Cache"]).toBe("MISS");
+
+			// Access while fresh (should be cache hit)
+			const res2 = makeRes();
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res2 as ServerResponse
+			);
+			expect(res2._headers["X-Section-Navigation-Cache"]).toBe("HIT");
+
+			// Advance time past the stale TTL (fresh 1s * 2 = 2s) to expire the entry
+			jest.useFakeTimers();
+			jest.setSystemTime(Date.now() + 3000); // Past stale TTL
+
+			// Access expired entry (should refetch and clean up old entry)
+			const res3 = makeRes();
+			await buildTreeWithOptionalCache(
+				1,
+				"test1",
+				false,
+				res3 as ServerResponse
+			);
+			expect(res3._headers["X-Section-Navigation-Cache"]).toBe(
+				"REFETCH_AFTER_EXPIRY"
+			);
+
+			jest.useRealTimers();
+		});
+
+		it("should stop and start periodic cleanup", async () => {
+			const { stopPeriodicCleanup } = await import("./memoisedBuildTree");
+
+			// Should not throw when stopping cleanup
+			expect(() => stopPeriodicCleanup()).not.toThrow();
+		});
+	});
+});

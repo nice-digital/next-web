@@ -78,7 +78,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const version = getStoryVersionFromQuery(query);
 	const pagePath = `news/blogs/${slug}`;
 
-	logger.info("Fetching blog post from storyblok at path", pagePath);
+	// The %s placeholder is needed: pino drops extra args when the message has
+	// no placeholder, so without it the path never reaches the log.
+	logger.info("Fetching blog post from storyblok at path %s", pagePath);
 
 	try {
 		// Get the story and its breadcrumbs

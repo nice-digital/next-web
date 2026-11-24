@@ -23,6 +23,10 @@ public:
   search:
     # The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/
     baseURL: http://localhost:19332/api
+    # Timeout in milliseconds for server-side search requests (list pages, search page, sitemaps).
+    # The search client's own default is 5000ms, tuned for browser typeahead; a slow search API response
+    # on a getServerSideProps render turns into a 500 error page, so allow longer here.
+    timeout: 15000
   cacheControl:
     # The default cache-control header used for 'dynamic' responses - apis/pages with getServerSideProps
     # See https://nextjs.org/docs/going-to-production#caching for more details on cache headers with NextJS
@@ -45,6 +49,11 @@ public:
 # ! Server config is accessible to server-only so is great for secrets (like API keys etc):
 server:
   cache:
+    # The TTL (time to live), in seconds, for the storyblok in-section navigation memory cache. Set to zero to bypass memoisation.
+    # Entries are served stale, with a background refresh, for a further 0.5x TTL (see STALE_TTL_MULTIPLIER), so the oldest
+    # nav this cache can serve is 1.5x this value. The page cache in front (Varnish, 900s) stacks its own age on top, so keep
+    # 1.5x this value well under 900s: at 300 the nav cache adds at most 450s to a page's staleness.
+    sectionNavCacheTTL: 300
     # Prefix added to all cache keys
     keyPrefix: next-web:local
     # The folder into which the feed cache is stored

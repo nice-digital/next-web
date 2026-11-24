@@ -2,12 +2,23 @@ public:
   search:
     # The base URL of the Single Search Endpoint (SSE) e.g. https://beta-search-api.nice.org.uk/api/
     baseURL: SEARCH_BASE_URL
+    # Optional override, in milliseconds. Parsed as JSON so it arrives as a number, not a string.
+    timeout:
+      __name: SEARCH_TIMEOUT
+      __format: json
   storyblok:
     accessToken: STORYBLOK_TOKEN # alpha preview
     enableRootCatchAll: STORYBLOK_ROUTE_CATCHALL
   jotForm:
     baseURL: JOTFORM_BASE_URL
 server:
+  cache:
+    # Optional override, in seconds, for the in-section navigation memory cache TTL.
+    # Set to 0 to bypass the cache without a release (status header shows BYPASSED).
+    # Parsed as JSON so it arrives as a number, not a string.
+    sectionNavCacheTTL:
+      __name: SECTION_NAV_CACHE_TTL
+      __format: json
   feeds:
     publications:
       origin: PUBLICATIONS_BASE_URL
