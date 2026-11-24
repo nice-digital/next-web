@@ -18,6 +18,7 @@ import blockquoteStyles from "@/components/Storyblok/Blockquote/Blockquote.modul
 import { type RichtextStoryblok } from "@/types/storyblok";
 
 import { Figure } from "../Figure/Figure";
+import { getCaption } from "../Figure/figureCaption";
 import { StoryblokImage } from "../StoryblokImage/StoryblokImage";
 
 import styles from "./StoryblokRichText.module.scss";
@@ -48,8 +49,8 @@ const isBlankRun = (nodes: ReactNode[]): boolean =>
  */
 const splitAroundFigures = (
 	children: ReactNode,
-	wrap: (content: ReactNode, key?: string) => ReactNode
-): ReactNode => {
+	wrap: (content: ReactNode, key?: string) => JSX.Element
+): JSX.Element => {
 	const nodes = Children.toArray(children);
 
 	if (!nodes.some(isFigure)) {
@@ -142,13 +143,10 @@ export const StoryblokRichText: React.FC<StoryblokRichTextProps> = ({
 						// Captions are rendered from the image title whenever the
 						// trimmed title is non-empty; an empty/whitespace title omits
 						// the figcaption.
-						const rawCaption =
-							typeof props.title === "string" ? props.title : "";
-						const caption =
-							rawCaption.trim().length >= 1 ? rawCaption.trim() : undefined;
+						const caption = getCaption(props.title);
 
 						return (
-							<Figure caption={caption} className={styles.figure}>
+							<Figure caption={caption} inContent>
 								<StoryblokImage
 									src={props.src}
 									alt={props.alt}

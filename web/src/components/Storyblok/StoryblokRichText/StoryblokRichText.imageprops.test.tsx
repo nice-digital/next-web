@@ -18,6 +18,8 @@ const capturedProps: Record<string, unknown>[] = [];
 jest.mock("../StoryblokImage/StoryblokImage", () => ({
 	StoryblokImage: (props: Record<string, unknown>) => {
 		capturedProps.push(props);
+		// A plain <img> stands in for StoryblokImage in this mock
+		// eslint-disable-next-line @next/next/no-img-element
 		return <img data-testid="mock-storyblok-image" alt="" />;
 	},
 }));

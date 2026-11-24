@@ -1,6 +1,7 @@
 import classnames from "classnames";
 
 import styles from "./Figure.module.scss";
+import { getCaption, getFigureClassName } from "./figureCaption";
 
 export interface FigureProps {
 	/** The media element rendered inside the figure (image, embed, etc.). */
@@ -12,6 +13,13 @@ export interface FigureProps {
 	 * is rendered.
 	 */
 	caption?: React.ReactNode;
+	/**
+	 * Set when the figure sits in a flow of content, such as an image in rich
+	 * text: adds the vertical spacing around the figure and makes the media fill
+	 * the content width. Leave unset when the parent lays the figure out, as
+	 * Spotlight does.
+	 */
+	inContent?: boolean;
 	/** Optional extra class applied to the root <figure>. */
 	className?: string;
 }
@@ -19,18 +27,18 @@ export interface FigureProps {
 export const Figure: React.FC<FigureProps> = ({
 	children,
 	caption,
+	inContent = false,
 	className,
 }: FigureProps) => {
-	const trimmedCaption =
-		typeof caption === "string" ? caption.trim() : undefined;
+	const trimmedCaption = getCaption(caption);
 
 	const hasCaption =
 		typeof caption === "string"
-			? (trimmedCaption as string).length >= 1
+			? trimmedCaption !== undefined
 			: caption !== null && caption !== undefined;
 
 	return (
-		<figure className={classnames(styles.figure, className)}>
+		<figure className={classnames(getFigureClassName(inContent), className)}>
 			{children}
 			{hasCaption ? (
 				<figcaption className={styles.caption}>

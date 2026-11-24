@@ -40,17 +40,6 @@
     margin-top: utils.rem(spacing.$large);
   }
 
-  // Inline image figure: the figure owns the vertical rhythm, not the image,
-  // so the caption sits tight to its image (Figure's own caption spacing, as
-  // in Spotlight) and the whole unit is spaced off the surrounding text
-  .figure {
-    margin: utils.rem(spacing.$large) 0;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   // remove bottom margin on any last child in richtext bloks
   > *:last-child {
     margin-bottom: 0;

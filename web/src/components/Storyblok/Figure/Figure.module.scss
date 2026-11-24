@@ -17,6 +17,23 @@
   }
 }
 
+// A figure in a flow of content, such as an image in rich text: spaced off the
+// surrounding content, with the media filling the content width. Every rich text
+// renderer uses this, so captioned images look and space the same wherever they
+// appear. Must come after .figure so its margin wins.
+.inContent {
+  margin: utils.rem(spacing.$large) 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
 .caption {
   // Own text size: a caption must not take its size from wherever the figure
   // sits (a following lead paragraph in rich text, or a card heading when a
