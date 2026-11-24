@@ -8,7 +8,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.rulers": [80, 120],
   "files.eol": "\n",
-  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "js/ts.tsdk.path": "node_modules\\typescript\\lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -46,18 +47,13 @@
     "functional-tests/steps/then.ts"
   ],
   "workbench.colorCustomizations": {
-		"activityBar.background": "#a1b8ca",
-		"titleBar.activeBackground": "#a1b8ca",
-		"titleBar.activeForeground": "#222",
-		"activityBar.foreground": "#222"
+    "activityBar.background": "#a1b8ca",
+    "titleBar.activeBackground": "#a1b8ca",
+    "titleBar.activeForeground": "#222",
+    "activityBar.foreground": "#222"
   },
   "jest.jestCommandLine": "npm test --",
-  "jest.runMode": {"type": "on-save", "testFileOnly": true},
-"stylelint.validate": [
-    "css",
-    "scss"
-],
-"cSpell.words": [
-    "STORYBLOK"
-]
+  "jest.runMode": { "type": "on-save", "testFileOnly": true },
+  "stylelint.validate": ["css", "scss"],
+  "cSpell.words": ["STORYBLOK"]
 }

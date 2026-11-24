@@ -1,0 +1,62 @@
+@use '@nice-digital/nds-core/scss/spacing';
+@use '@nice-digital/nds-core/scss/typography';
+@use '@nice-digital/nds-core/scss/utils';
+
+.figure {
+  margin: 0;
+
+  // The caption's padding-top is the only space between the media and the
+  // caption: no bottom margin on the media, and no inline-image baseline gap
+  > :not(.caption),
+  img {
+    margin-bottom: 0;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+// A figure in a flow of content, such as an image in rich text: spaced off the
+// surrounding content, with the media filling the content width. Every rich text
+// renderer uses this, so captioned images look and space the same wherever they
+// appear. Must come after .figure so its margin wins.
+.inContent {
+  margin: utils.rem(spacing.$large) 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.caption {
+  // Own text size: a caption must not take its size from wherever the figure
+  // sits (a following lead paragraph in rich text, or a card heading when a
+  // story is added to a card). Body size, as Blockquote's figcaption.
+
+  @include typography.font-size($scale: 0);
+
+  // Design spec: 0.25rem between the media and its caption
+  padding-top: utils.rem(spacing.$x-small);
+
+  // Rich text captions (e.g. Spotlight) wrap their content in block elements
+  // that carry their own global type styles (p, h2...): keep them at the
+  // caption's size, and drop the first block's top margin so it doesn't
+  // stack on the padding and a rich text caption sits as close to the media
+  // as a plain string one
+
+  * {
+    font-size: inherit;
+
+    line-height: inherit;
+  }
+
+  > * > :first-child {
+    margin-top: 0;
+  }
+}
